@@ -1,8 +1,14 @@
 # Rugpull Bakery Season 5 Calculator
 
-Static Season 5 dashboard/calculator for Rugpull Bakery.
+Season 5 dashboard/calculator for Rugpull Bakery, ready for GitHub and Vercel.
 
-## Deploy to Vercel
+## Local Preview
+
+```bash
+npm run dev
+```
+
+## Deploy To Vercel
 
 1. Push this folder to a GitHub repository.
 2. In Vercel, import the GitHub repository.
@@ -11,4 +17,8 @@ Static Season 5 dashboard/calculator for Rugpull Bakery.
 5. Leave the output directory empty.
 6. Deploy.
 
-The site entry point is `index.html`.
+## Notes
+
+- `/api/proxy` is a small Vercel function with a strict host allowlist and edge cache headers.
+- Leaderboard and live metrics use short cache windows to stay Hobby-plan friendly.
+- No analytics or large embedded images are included.
