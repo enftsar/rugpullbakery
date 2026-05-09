@@ -505,6 +505,9 @@ var CONTRACTS = {
 var SEASON5_TX_START_TS = 1778252400; // 2026-05-08 10:00 UTC / 13:00 TRT
 var SEASON5_TX_START_MINUTE = Math.floor(SEASON5_TX_START_TS/60);
 var SEASON5_TX_START_LABEL = "May 8, 2026 13:00 TRT";
+var BAKE_SNAPSHOT_CUTOFF_TS = 1778288400; // 2026-05-09 04:00 TRT
+var BAKE_SNAPSHOT_URL = "data/s5-bake-snapshot.json";
+var BAKE_SNAPSHOT_VERSION = "2026-05-09-0400-trt";
 var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
 var LIVE_REFRESH_MS = 30*1000;
@@ -523,6 +526,7 @@ var LIVE_LEADERBOARD_FALLBACK={
 var playerCache={};
 var memberRowCache={};
 var participantCache={};
+var bakeSnapshotCache=null;
 function cacheFresh(entry,ttl){
   return !!(entry&&entry.ts&&(Date.now()-entry.ts)<ttl);
 }
@@ -1498,7 +1502,7 @@ async function computeNetProfitEntry(address,cutoffTs){
   for(var i=0;i<gBakeries.length;i++){
     if(String(gBakeries[i].id)===String(bakeryId)){fallbackBakery=gBakeries[i];break;}
   }
-  var chain=await withTimeout(fetchChain(addr,SEASON5_TX_START_TS,cutoffTs),PLAYER_SCAN_TIMEOUT_MS,null);
+  var chain=await withTimeout(fetchPlayerBakeChain(addr,SEASON5_TX_START_TS,cutoffTs),PLAYER_SCAN_TIMEOUT_MS,null);
   if(!chain||chain.incomplete)return null;
   var memberRow=await withTimeout(fetchPlayerMemberRow(addr,bakeryId,seasonId),8000,null);
   var liveCookieBalance=memberRow?maxN([memberRow.cookiesBaked,memberRow.cookies_baked,memberRow.txCount,memberRow.cookieBalance,memberRow.cookie_balance,memberRow.cookieCount,memberRow.cookie_count]):null;
@@ -1535,6 +1539,74 @@ async function computeNetProfitEntry(address,cutoffTs){
   };
 }
 
+
+async function loadBakeSnapshot(){
+  if(bakeSnapshotCache)return bakeSnapshotCache;
+  try{
+    var snapshot=await pFetch(BAKE_SNAPSHOT_URL+"?v="+encodeURIComponent(BAKE_SNAPSHOT_VERSION));
+    if(!snapshot||snapshot.season!==5||Number(snapshot.cutoffTs)!==BAKE_SNAPSHOT_CUTOFF_TS)throw new Error("invalid_snapshot");
+    if(String(snapshot.contract||"").toLowerCase()!==BAKE_TO)throw new Error("snapshot_contract_mismatch");
+    if(snapshot.complete!==true)throw new Error("snapshot_incomplete");
+    bakeSnapshotCache={ok:true,data:snapshot};
+  }catch(e){
+    bakeSnapshotCache={ok:false,data:null,error:e};
+  }
+  return bakeSnapshotCache;
+}
+
+function readBakeSnapshotEntry(snapshot,address){
+  var addr=(address||"").toLowerCase();
+  var players=snapshot&&snapshot.players;
+  if(!players||!addr)return null;
+  var row=players[addr]||players[addr.toLowerCase()];
+  if(!row)return {gas:0,rtx:0,source:"snapshot",snapshotHit:false};
+  return {
+    gas:toN(row.gasEth)||0,
+    rtx:toN(row.bakeTx)||0,
+    incomplete:false,
+    reason:"snapshot",
+    source:"snapshot",
+    snapshotHit:true
+  };
+}
+
+function mergeBakeChains(base,live){
+  base=base||{gas:0,rtx:0};
+  live=live||{gas:0,rtx:0};
+  return {
+    gas:(toN(base.gas)||0)+(toN(live.gas)||0),
+    rtx:(toN(base.rtx)||0)+(toN(live.rtx)||0),
+    incomplete:!!live.incomplete,
+    reason:live.reason||base.reason||"verified",
+    source:"snapshot+wallet",
+    snapshotGas:toN(base.gas)||0,
+    snapshotRtx:toN(base.rtx)||0,
+    liveGas:toN(live.gas)||0,
+    liveRtx:toN(live.rtx)||0,
+    snapshotHit:!!base.snapshotHit
+  };
+}
+
+async function fetchPlayerBakeChain(address,fromTs,toTs){
+  var minTs=Number(fromTs||0);
+  var maxTs=Number(toTs||0);
+  if(minTs>BAKE_SNAPSHOT_CUTOFF_TS || (maxTs&&maxTs<=BAKE_SNAPSHOT_CUTOFF_TS)){
+    return fetchChain(address,minTs,maxTs);
+  }
+  var snapshotState=await loadBakeSnapshot();
+  if(!snapshotState.ok||!snapshotState.data){
+    return fetchChain(address,minTs,maxTs);
+  }
+  var base=readBakeSnapshotEntry(snapshotState.data,address);
+  var liveFrom=BAKE_SNAPSHOT_CUTOFF_TS+1;
+  var live=null;
+  if(!maxTs||maxTs>BAKE_SNAPSHOT_CUTOFF_TS){
+    live=await fetchChain(address,liveFrom,maxTs);
+  }else{
+    live={gas:0,rtx:0,incomplete:false,reason:"snapshot",source:"wallet"};
+  }
+  return mergeBakeChains(base,live);
+}
 // Timestamp'e karsilik gelen block numarasini bul
 async function getStartBlock(fromTs){
   if(!fromTs||fromTs<=0)return 0;
@@ -1776,7 +1848,7 @@ async function analyze(fa,fn,fav,opts){
   }
   closeSug();
   if(!raw){ss(st,"Enter an address or portal name.","error");return;}
-  if(!isBackground)ssl(st,"Scanning Bakery contract tx history...","loading");
+  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-09 04:00 TRT...","loading");
   try{
     var addr=raw,name=(chosen&&chosen.name)||fn||null,avatar=(chosen&&chosen.avatar)||fav||null;
     var usedCachedProfile=false;
@@ -1848,7 +1920,7 @@ async function analyze(fa,fn,fav,opts){
     var cachedChain=cached&&cached.result||null;
     var chain=cachedChain||{gas:0,rtx:0,incomplete:true,reason:"loading"};
     try{
-      var freshChain=await withTimeout(fetchChain(addr,seasonStart),PLAYER_SCAN_TIMEOUT_MS,null);
+      var freshChain=await withTimeout(fetchPlayerBakeChain(addr,seasonStart),PLAYER_SCAN_TIMEOUT_MS,null);
       if(freshChain!==null){
         if(freshChain.rtx>=chain.rtx||!cachedChain)chain=freshChain;
         chainCache[cacheKey]={result:chain,ts:Date.now()};
@@ -1877,7 +1949,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else ss(st,isBackground?"ROI card auto-refreshed with the latest live data.":"Contract tx data is up to date for this wallet.","success");
+    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-09 04:00 TRT is up to date for this wallet.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
 
@@ -1921,6 +1993,8 @@ document.addEventListener("DOMContentLoaded",function(){
 <div id="copyToast">Card copied successfully</div>
 </body>
 </html>
+
+
 
 
 
