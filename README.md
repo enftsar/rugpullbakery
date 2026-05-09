@@ -1,4 +1,4 @@
-# Rugpull Bakery Season 5 Calculator
+﻿# Rugpull Bakery Season 5 Calculator
 
 Season 5 dashboard/calculator for Rugpull Bakery, ready for GitHub and Vercel.
 
@@ -22,10 +22,11 @@ npm run dev
 - `/api/proxy` is a small Vercel function with a strict host allowlist and edge cache headers.
 - Leaderboard and live metrics use short cache windows to stay Hobby-plan friendly.
 - No analytics or large embedded images are included.
-- Player ROI uses `data/s5-bake-snapshot.json` for Bake TX up to `2026-05-09 04:00 TRT`, then scans only newer transactions.
+- Player ROI uses `data/s5-bake-snapshot.json` for Bake TX up to `2026-05-10 00:30 TRT`, then scans only newer transactions.
 
 ## Refresh Snapshot
 
 ```bash
 npm run snapshot
 ```
+
