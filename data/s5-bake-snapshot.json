@@ -4,1651 +4,373 @@
   "chainId": 2741,
   "timezone": "Europe/Istanbul",
   "startTs": 1778252400,
-  "cutoffTs": 1778362200,
-  "cutoffLabel": "2026-05-10 00:30 TRT",
+  "cutoffTs": 1778443200,
+  "cutoffLabel": "2026-05-10 23:00 TRT",
   "startBlock": 60019341,
-  "cutoffBlock": 60426986,
-  "generatedAt": "2026-05-09T22:27:49.897Z",
-  "batches": 135,
-  "retries": 2,
-  "extendedFromCutoffTs": 1778288400,
+  "cutoffBlock": 60718611,
+  "generatedAt": "2026-05-10T20:43:19.121Z",
+  "batches": 152,
+  "retries": 1,
+  "extendedFromCutoffTs": 1778362200,
   "complete": true,
-  "totalPlayers": 352,
-  "totalBakeTx": 2093815,
-  "earliestTimestamp": 1778288400,
-  "latestTimestamp": 1778362200,
+  "totalPlayers": 380,
+  "totalBakeTx": 3574669,
+  "earliestTimestamp": 1778362200,
+  "latestTimestamp": 1778443200,
   "players": {
-    "0x7c85ff53a13460d9068d02abfaf8e497d9d53ce7": {
-      "bakeTx": 3739,
-      "gasEth": 0.02447082152899847,
-      "firstTs": 1778265548,
-      "lastTs": 1778361803
-    },
-    "0x7390022cbff03b8501084ca8fa72cdb932a415d6": {
-      "bakeTx": 8885,
-      "gasEth": 0.055788275169754126,
-      "firstTs": 1778252561,
-      "lastTs": 1778361801
-    },
-    "0xfc61f1b7701f6765ff548b3bca403cdaa723d260": {
-      "bakeTx": 14852,
-      "gasEth": 0.0956052189847601,
-      "firstTs": 1778252682,
-      "lastTs": 1778362050
-    },
-    "0xc3d91c3555817df7239cd9681a3c1c661775db98": {
-      "bakeTx": 16230,
-      "gasEth": 0.11919549202999113,
-      "firstTs": 1778272495,
-      "lastTs": 1778362195
-    },
-    "0xf805457f56bb0c456b8be9e6a15d704875832d9b": {
-      "bakeTx": 13708,
-      "gasEth": 0.10160678178025094,
-      "firstTs": 1778252461,
-      "lastTs": 1778331894
-    },
-    "0x91d3d656183ba9062553791ebfb4cd77fafa9233": {
-      "bakeTx": 24688,
-      "gasEth": 0.18342356714876246,
-      "firstTs": 1778252473,
-      "lastTs": 1778346925
-    },
-    "0x86a110a908a660fb6fbe4e6b4165cd59346105bd": {
-      "bakeTx": 16412,
-      "gasEth": 0.1030570141437254,
-      "firstTs": 1778254165,
-      "lastTs": 1778362198
-    },
-    "0xef45b33c0334d3f7d922b954232d3b1c9171c04a": {
-      "bakeTx": 11054,
-      "gasEth": 0.06966987414675076,
-      "firstTs": 1778252504,
-      "lastTs": 1778361987
-    },
-    "0x5328a88c3f9e07a3bdfd8c5d898c21c18c82f596": {
-      "bakeTx": 25202,
-      "gasEth": 0.1581009102972525,
-      "firstTs": 1778252411,
-      "lastTs": 1778359775
-    },
-    "0xc16f030ebbd1f5d9db97171ad0f31ff8c2b50aaa": {
-      "bakeTx": 11932,
-      "gasEth": 0.0885559207204942,
-      "firstTs": 1778254447,
-      "lastTs": 1778361449
-    },
-    "0xabf793be9dbc4c6fb90485552dd223d242166984": {
-      "bakeTx": 26579,
-      "gasEth": 0.16693332997101445,
-      "firstTs": 1778252409,
-      "lastTs": 1778360811
-    },
-    "0x2a709980becb22f0c6c9583b868870945bd6c779": {
-      "bakeTx": 8726,
-      "gasEth": 0.06490953505075191,
-      "firstTs": 1778252444,
-      "lastTs": 1778360626
-    },
-    "0x23687cc01340c1abe99bbbec57092782142895b2": {
-      "bakeTx": 28070,
-      "gasEth": 0.17605820876602687,
-      "firstTs": 1778261621,
-      "lastTs": 1778360810
-    },
-    "0xf28506e6bf73b15ee0cf9e800c60cef4af96bab9": {
-      "bakeTx": 29371,
-      "gasEth": 0.21801884341180236,
-      "firstTs": 1778252575,
-      "lastTs": 1778362095
-    },
-    "0x37ca4d6167a9ce0d32fb8967321c36575bc1208e": {
-      "bakeTx": 1930,
-      "gasEth": 0.014363940763750287,
-      "firstTs": 1778260157,
-      "lastTs": 1778350536
-    },
-    "0x0e7b7aa24868689ae846ceead6aed450c8f8c014": {
-      "bakeTx": 21977,
-      "gasEth": 0.13789407269547616,
-      "firstTs": 1778260402,
-      "lastTs": 1778360812
-    },
-    "0xb38e19ed7412c4095bfdde6064ad93807b983fab": {
-      "bakeTx": 6671,
-      "gasEth": 0.049728034210502904,
-      "firstTs": 1778252511,
-      "lastTs": 1778356266
-    },
-    "0xec0d88a73cf71e6a32d0213c4ec632b7141bd2ea": {
-      "bakeTx": 7070,
-      "gasEth": 0.04438891096200033,
-      "firstTs": 1778266284,
-      "lastTs": 1778361801
-    },
-    "0x29b5e36b814a5640b484e097d2d5a432c0f112e9": {
-      "bakeTx": 24182,
-      "gasEth": 0.1518653874899932,
-      "firstTs": 1778252419,
-      "lastTs": 1778360810
-    },
-    "0xb98f499ae96b2c1b19fb43bfbbfc832600a16527": {
-      "bakeTx": 32532,
-      "gasEth": 0.20434306175206352,
-      "firstTs": 1778252457,
-      "lastTs": 1778360810
-    },
-    "0x3f064dfdbde340f87944ca481e1ba6b448f824fa": {
-      "bakeTx": 11575,
-      "gasEth": 0.08584339756975191,
-      "firstTs": 1778252419,
-      "lastTs": 1778360461
+    "0xcf5c50d35b968a00544d5a3b08ecd2e00d533410": {
+      "bakeTx": 7410,
+      "gasEth": 0.05506648463675301,
+      "firstTs": 1778252408,
+      "lastTs": 1778406021
     },
     "0x1bde3d2861cb5216eb6ec559afde7d44f385d4f6": {
-      "bakeTx": 27024,
-      "gasEth": 0.20097634107027765,
+      "bakeTx": 34755,
+      "gasEth": 0.2586028533260755,
       "firstTs": 1778252456,
-      "lastTs": 1778362199
-    },
-    "0x9c05ab42086d3f044e599ec02a8d33f58ab90699": {
-      "bakeTx": 29456,
-      "gasEth": 0.1848077476800377,
-      "firstTs": 1778252950,
-      "lastTs": 1778360810
-    },
-    "0xdb65734df1db12ee8027d774c3228753d568fd9a": {
-      "bakeTx": 29949,
-      "gasEth": 0.18782416096179158,
-      "firstTs": 1778252412,
-      "lastTs": 1778360811
-    },
-    "0xc2b5252581849d437c0f4d67d6392617fc93037a": {
-      "bakeTx": 30297,
-      "gasEth": 0.1904406560557958,
-      "firstTs": 1778252466,
-      "lastTs": 1778360809
-    },
-    "0x4fb98d9c5b7e790340b2864348ce8d4f97f23b5b": {
-      "bakeTx": 1349,
-      "gasEth": 0.009841895181500053,
-      "firstTs": 1778286826,
-      "lastTs": 1778294005
-    },
-    "0x51f6597d191f171cf2104b3a763f5a7202f7300c": {
-      "bakeTx": 29316,
-      "gasEth": 0.1839006815197863,
-      "firstTs": 1778252408,
-      "lastTs": 1778360810
-    },
-    "0x145ab073125852a639e40e2bbeb68d5964f9cc16": {
-      "bakeTx": 28950,
-      "gasEth": 0.18162276294428303,
-      "firstTs": 1778252414,
-      "lastTs": 1778360811
-    },
-    "0x35a1ea8fb1c4db295820301970f5207803cdc65c": {
-      "bakeTx": 25172,
-      "gasEth": 0.15786435592200165,
-      "firstTs": 1778253229,
-      "lastTs": 1778360811
-    },
-    "0x4db9f40c888af951c35c4a5cf15c52ab3a89270a": {
-      "bakeTx": 27468,
-      "gasEth": 0.1722291158917688,
-      "firstTs": 1778276794,
-      "lastTs": 1778362028
-    },
-    "0xcd7f03591dd0ea58054a2cfc77dc682a0276a0c0": {
-      "bakeTx": 30489,
-      "gasEth": 0.191153171153295,
-      "firstTs": 1778252444,
-      "lastTs": 1778360811
-    },
-    "0x02e81e1def6662a1b53a013714bf1d096dce1bc5": {
-      "bakeTx": 29071,
-      "gasEth": 0.18246794420903478,
-      "firstTs": 1778252646,
-      "lastTs": 1778360810
-    },
-    "0xa6bd14d2861b2261d1fe5b544a5f771ca46c24ae": {
-      "bakeTx": 22768,
-      "gasEth": 0.14296663457423248,
-      "firstTs": 1778252610,
-      "lastTs": 1778360810
-    },
-    "0x5f83f36e73970fdb77921f37ae87cf449399d31c": {
-      "bakeTx": 6536,
-      "gasEth": 0.04870368919075279,
-      "firstTs": 1778254273,
-      "lastTs": 1778356821
-    },
-    "0xa459512a23bcdd659b764d57db926e1c64048e17": {
-      "bakeTx": 11195,
-      "gasEth": 0.07041429434050074,
-      "firstTs": 1778252400,
-      "lastTs": 1778361801
-    },
-    "0x6090c2d41c5d74654e810c4505ff78ec8bf95269": {
-      "bakeTx": 11020,
-      "gasEth": 0.08199285108223961,
-      "firstTs": 1778252792,
-      "lastTs": 1778362161
-    },
-    "0x68d8c0524a2175fba446adf3fbace949c9023be4": {
-      "bakeTx": 5240,
-      "gasEth": 0.03899401052725085,
-      "firstTs": 1778277571,
-      "lastTs": 1778360045
-    },
-    "0x0a767e518b131cf5dfd31508afef99ccbd8f829d": {
-      "bakeTx": 16886,
-      "gasEth": 0.11001641355422226,
-      "firstTs": 1778252553,
-      "lastTs": 1778362028
-    },
-    "0xbb7048b5d9d2bf071971a8feb7e7113bca2bbb15": {
-      "bakeTx": 3629,
-      "gasEth": 0.027168080135251217,
-      "firstTs": 1778252463,
-      "lastTs": 1778353269
-    },
-    "0xb344dcdb2c8888788eaca0961dce53cb280ff067": {
-      "bakeTx": 11113,
-      "gasEth": 0.06998370678874977,
-      "firstTs": 1778285852,
-      "lastTs": 1778362028
-    },
-    "0x078af12db05d996bd803d7b758585eca600784cf": {
-      "bakeTx": 6159,
-      "gasEth": 0.0459888579280027,
-      "firstTs": 1778283568,
-      "lastTs": 1778354687
-    },
-    "0xa8a208b92ebd8fd42f6e6fc40e753c16838c2c3d": {
-      "bakeTx": 8378,
-      "gasEth": 0.06238975278175386,
-      "firstTs": 1778254291,
-      "lastTs": 1778362197
-    },
-    "0xc133b01ed964fa5e7c39d3510abb7c4d48d49dc8": {
-      "bakeTx": 4484,
-      "gasEth": 0.03346568508275201,
-      "firstTs": 1778252871,
-      "lastTs": 1778322730
-    },
-    "0xbb3b97ddb027010268ad9d090106ae2ec10b46e3": {
-      "bakeTx": 6728,
-      "gasEth": 0.05012295892500294,
-      "firstTs": 1778252508,
-      "lastTs": 1778346803
-    },
-    "0xbbb7ddda9d659a8d4da56c41bd707ac591070a8f": {
-      "bakeTx": 6338,
-      "gasEth": 0.04731459346875277,
-      "firstTs": 1778254287,
-      "lastTs": 1778360637
-    },
-    "0xabd4f258d163878bf31790bf71903a846cfe5ca9": {
-      "bakeTx": 3858,
-      "gasEth": 0.028867569725501353,
-      "firstTs": 1778252456,
-      "lastTs": 1778353286
-    },
-    "0xb5c0dfa2aaacc2dc8e1bbac100fd9ddda4c9d078": {
-      "bakeTx": 4056,
-      "gasEth": 0.03023967298650103,
-      "firstTs": 1778254832,
-      "lastTs": 1778360629
-    },
-    "0x6db2a0edf34e6b2967a473efec59edd9fb29ae77": {
-      "bakeTx": 15828,
-      "gasEth": 0.1164313181309917,
-      "firstTs": 1778274435,
-      "lastTs": 1778362197
-    },
-    "0x700d7b774f5af65d26e5b9ae969ca9611ff80f6d": {
-      "bakeTx": 32975,
-      "gasEth": 0.21069214395925684,
-      "firstTs": 1778274002,
-      "lastTs": 1778359044
-    },
-    "0x92f442c021cee67e62e34b8bd7d4ed80d63ff2a0": {
-      "bakeTx": 5666,
-      "gasEth": 0.0421283819162525,
-      "firstTs": 1778268341,
-      "lastTs": 1778313286
-    },
-    "0x4668846cf1b8da660fc24ee77707f2067a207878": {
-      "bakeTx": 335,
-      "gasEth": 0.002529539390749995,
-      "firstTs": 1778287679,
-      "lastTs": 1778304789
-    },
-    "0x808d581031c8a39f861df563b35e2c8f548f7b59": {
-      "bakeTx": 17919,
-      "gasEth": 0.1123072117729687,
-      "firstTs": 1778252421,
-      "lastTs": 1778360810
-    },
-    "0xade5cb66b3c18b845ac463b2e88ef9ddc7e2205d": {
-      "bakeTx": 21604,
-      "gasEth": 0.13562844211947328,
-      "firstTs": 1778252411,
-      "lastTs": 1778360811
-    },
-    "0x6968c93abfdf34e9ec6b2609501cfeb465d6532a": {
-      "bakeTx": 29196,
-      "gasEth": 0.18299307760853475,
-      "firstTs": 1778258716,
-      "lastTs": 1778360811
-    },
-    "0xb5748a472adfa371244cdc5a0a13189410cf8097": {
-      "bakeTx": 20240,
-      "gasEth": 0.1268802027854604,
-      "firstTs": 1778269939,
-      "lastTs": 1778360809
-    },
-    "0xdfb3296753e8a91c7d2e47da0e3d677cd20c9729": {
-      "bakeTx": 25122,
-      "gasEth": 0.15746937717900172,
-      "firstTs": 1778252444,
-      "lastTs": 1778360810
-    },
-    "0x6052354efe95df428da38efa36be764d3eea6bdb": {
-      "bakeTx": 19590,
-      "gasEth": 0.1235228776779605,
-      "firstTs": 1778252495,
-      "lastTs": 1778360811
-    },
-    "0x30ebfb2eb34492b2bd5e68bda4138366844ef0bc": {
-      "bakeTx": 17693,
-      "gasEth": 0.11104406621321933,
-      "firstTs": 1778260033,
-      "lastTs": 1778360810
-    },
-    "0xcf6a641c04dc513743eb415581e142997729cbde": {
-      "bakeTx": 11399,
-      "gasEth": 0.0735376942787505,
-      "firstTs": 1778252444,
-      "lastTs": 1778360816
-    },
-    "0x2c53d33fd90fc8d5fe5cac986db81ba7f3b9aae6": {
-      "bakeTx": 11021,
-      "gasEth": 0.08203376581548992,
-      "firstTs": 1778274805,
-      "lastTs": 1778360811
-    },
-    "0x4ed266c11f8fd74712862ea3545dbf32a6928c60": {
-      "bakeTx": 17992,
-      "gasEth": 0.11340707338646744,
-      "firstTs": 1778252533,
-      "lastTs": 1778360810
-    },
-    "0x7a36b3eed01712e1336eccaaa1f35e09ddc9d56b": {
-      "bakeTx": 15468,
-      "gasEth": 0.09707150781297974,
-      "firstTs": 1778252404,
-      "lastTs": 1778360444
-    },
-    "0xd2930122140e65d44fdfc509f2a59308c097df48": {
-      "bakeTx": 9415,
-      "gasEth": 0.05952835609025412,
-      "firstTs": 1778276520,
-      "lastTs": 1778362027
-    },
-    "0x3d21e244ff63fbc40c7d11b16f8619132ac75efb": {
-      "bakeTx": 6392,
-      "gasEth": 0.047674377757252785,
-      "firstTs": 1778283403,
-      "lastTs": 1778362030
-    },
-    "0xd14e58518da08be248fbd02631d7611ab044c4d3": {
-      "bakeTx": 4319,
-      "gasEth": 0.032150637501501766,
-      "firstTs": 1778257727,
-      "lastTs": 1778312821
-    },
-    "0x3e835c009cb879751c7606348e7ef2f33b6b5244": {
-      "bakeTx": 5557,
-      "gasEth": 0.03545221904349773,
-      "firstTs": 1778252573,
-      "lastTs": 1778357407
-    },
-    "0x295637ccc344594dfe70bc086a835b900c9fa742": {
-      "bakeTx": 9042,
-      "gasEth": 0.056723548279503516,
-      "firstTs": 1778252416,
-      "lastTs": 1778360615
-    },
-    "0x3acc7f2a78694c217b628bc52b4b1528d3e69765": {
-      "bakeTx": 9309,
-      "gasEth": 0.058430981326254246,
-      "firstTs": 1778255090,
-      "lastTs": 1778359775
-    },
-    "0xb881581100ba12d62579d0ac74358fbb73e5d803": {
-      "bakeTx": 385,
-      "gasEth": 0.002868337000749986,
-      "firstTs": 1778283890,
-      "lastTs": 1778287468
-    },
-    "0x4d009e4bef5957150497b5290a39ae3617c02032": {
-      "bakeTx": 10692,
-      "gasEth": 0.07367774904700065,
-      "firstTs": 1778252409,
-      "lastTs": 1778361067
-    },
-    "0xc095ffdf70c124514b267144640eede87b317c5d": {
-      "bakeTx": 9022,
-      "gasEth": 0.06719757134524887,
-      "firstTs": 1778252481,
-      "lastTs": 1778360032
-    },
-    "0xae44abde9b1e06d8bc81eb0d55a522691bd34e28": {
-      "bakeTx": 8189,
-      "gasEth": 0.060868695525501774,
-      "firstTs": 1778252554,
-      "lastTs": 1778360024
-    },
-    "0x80b8682ca40a7566d3deef94dc629f3fd2ddef45": {
-      "bakeTx": 10521,
-      "gasEth": 0.0783100808704924,
-      "firstTs": 1778252471,
-      "lastTs": 1778361082
-    },
-    "0x06b3e3dc4110e01770a4da6c090cb9924e65b8b2": {
-      "bakeTx": 14159,
-      "gasEth": 0.10512637917973038,
-      "firstTs": 1778252615,
-      "lastTs": 1778361060
-    },
-    "0x20c6872a24e485caf957c673a9b6f67f7e3ebe4d": {
-      "bakeTx": 9491,
-      "gasEth": 0.07066151590549644,
-      "firstTs": 1778252478,
-      "lastTs": 1778360016
-    },
-    "0x92e24154046fda87ff6c3fb2e5461712ecc74de9": {
-      "bakeTx": 10716,
-      "gasEth": 0.0796426161739945,
-      "firstTs": 1778252469,
-      "lastTs": 1778361080
-    },
-    "0x2c02e08770cf54d8cb6f25e82a74393b77ae079d": {
-      "bakeTx": 11103,
-      "gasEth": 0.08256120275673898,
-      "firstTs": 1778255301,
-      "lastTs": 1778358280
-    },
-    "0x47fa6bf54cd87abc280989293ed7a4ddba94d1ef": {
-      "bakeTx": 8044,
-      "gasEth": 0.05970280126575274,
-      "firstTs": 1778260321,
-      "lastTs": 1778360047
-    },
-    "0x164cb4eacf03e4635f7c040d28e2fb2f129bb462": {
-      "bakeTx": 24791,
-      "gasEth": 0.15524732375575223,
-      "firstTs": 1778252415,
-      "lastTs": 1778361058
-    },
-    "0x613be07704992c59ae3ae9130b30a13c1d3a56b1": {
-      "bakeTx": 24261,
-      "gasEth": 0.15214968378274943,
-      "firstTs": 1778252576,
-      "lastTs": 1778361063
-    },
-    "0x22f95fa99f996def34225584040fa33493c3bb61": {
-      "bakeTx": 10532,
-      "gasEth": 0.06623074789925175,
-      "firstTs": 1778255373,
-      "lastTs": 1778361059
-    },
-    "0x84596032e367134926cb74fb530d41fcba6020e6": {
-      "bakeTx": 17132,
-      "gasEth": 0.10848525500472292,
-      "firstTs": 1778252446,
-      "lastTs": 1778361056
-    },
-    "0x92f4b24e91e368fad339c6147e81121ec6ee45db": {
-      "bakeTx": 5646,
-      "gasEth": 0.04210828910625145,
-      "firstTs": 1778252558,
-      "lastTs": 1778360893
-    },
-    "0x381dd397e721c72ce321a1ebaf96ce04f4422ac0": {
-      "bakeTx": 1622,
-      "gasEth": 0.012147626262250185,
-      "firstTs": 1778252591,
-      "lastTs": 1778361850
-    },
-    "0xeed31ae6b17f2bec4fa523a75694e817b700af1d": {
-      "bakeTx": 1242,
-      "gasEth": 0.009294229408750009,
-      "firstTs": 1778257985,
-      "lastTs": 1778350184
-    },
-    "0x952486099cb4acf7d922cb64db1f15cf8fc9d675": {
-      "bakeTx": 1766,
-      "gasEth": 0.013139213132750318,
-      "firstTs": 1778257475,
-      "lastTs": 1778349834
-    },
-    "0xa739151392f321f876d82f1780e8ff369be2a71c": {
-      "bakeTx": 8755,
-      "gasEth": 0.05498006437675197,
-      "firstTs": 1778255540,
-      "lastTs": 1778360823
-    },
-    "0x933414d6d4d25c18fa45eb51dc98d76474759f5f": {
-      "bakeTx": 1150,
-      "gasEth": 0.008592842779500015,
-      "firstTs": 1778252445,
-      "lastTs": 1778356541
-    },
-    "0x69c7ed0f6145dcbb5aed30254494b1d24755d51e": {
-      "bakeTx": 7767,
-      "gasEth": 0.04865635040550459,
-      "firstTs": 1778252561,
-      "lastTs": 1778360846
-    },
-    "0x5c2a0b64591e3a228ca2d0d281dfe0dfe55666b5": {
-      "bakeTx": 7818,
-      "gasEth": 0.04898466073975461,
-      "firstTs": 1778252561,
-      "lastTs": 1778360845
-    },
-    "0x02323f3fe4c50c1faeaa38e484b71bdbb6c8fb32": {
-      "bakeTx": 15710,
-      "gasEth": 0.11668180190422939,
-      "firstTs": 1778252585,
-      "lastTs": 1778360851
-    },
-    "0x355871f5a1fd8f39ec088443fad80b3020b1f34a": {
-      "bakeTx": 7706,
-      "gasEth": 0.04827448628900455,
-      "firstTs": 1778252561,
-      "lastTs": 1778360846
-    },
-    "0xf0e2667d49f71d8a5f42492643a7926e935d4210": {
-      "bakeTx": 7804,
-      "gasEth": 0.048887239073504785,
-      "firstTs": 1778252561,
-      "lastTs": 1778360846
-    },
-    "0x857aa8a26b63adbd3984326e78a023d981dd9ef9": {
-      "bakeTx": 9337,
-      "gasEth": 0.05860214433825409,
-      "firstTs": 1778252405,
-      "lastTs": 1778360847
-    },
-    "0x99f32a7fecd5523231e9cc5f3a3cec04187c2409": {
-      "bakeTx": 7727,
-      "gasEth": 0.04841449485700448,
-      "firstTs": 1778252561,
-      "lastTs": 1778360846
-    },
-    "0xe134e9dbf5cc2f6a17026fd5b24135dff946b52f": {
-      "bakeTx": 11998,
-      "gasEth": 0.07576089279849585,
-      "firstTs": 1778268173,
-      "lastTs": 1778360809
-    },
-    "0xba74d5adc211304b006090f0b03232e95d799518": {
-      "bakeTx": 3021,
-      "gasEth": 0.02247706725200093,
-      "firstTs": 1778256379,
-      "lastTs": 1778307553
-    },
-    "0xa4cb287daecbac6d01de64ec66436570856c0331": {
-      "bakeTx": 8271,
-      "gasEth": 0.06150320550550256,
-      "firstTs": 1778257168,
-      "lastTs": 1778341128
-    },
-    "0xca9f0b2d4c4fb0e926d5d825c1c89bd14172f4eb": {
-      "bakeTx": 9660,
-      "gasEth": 0.07181249354799922,
-      "firstTs": 1778252564,
-      "lastTs": 1778361076
-    },
-    "0x549300f79fb33ba2e77344e58b064ede194ef99a": {
-      "bakeTx": 8441,
-      "gasEth": 0.06258311562475104,
-      "firstTs": 1778264526,
-      "lastTs": 1778354400
-    },
-    "0x9cbb72624accfa89f0e993ea649c81a67d6a2985": {
-      "bakeTx": 4332,
-      "gasEth": 0.027634933706750096,
-      "firstTs": 1778252523,
-      "lastTs": 1778359088
-    },
-    "0x0aba1ca18a9259a1e23dc5adf1696c3eef4e0a44": {
-      "bakeTx": 2657,
-      "gasEth": 0.01685181232550005,
-      "firstTs": 1778252449,
-      "lastTs": 1778359061
-    },
-    "0x7e2e92ed93bbb859b6d191059a1725509ac52609": {
-      "bakeTx": 2662,
-      "gasEth": 0.01687745477650006,
-      "firstTs": 1778252422,
-      "lastTs": 1778359061
-    },
-    "0xace4fd0f8ff152d0ebbf01d6b6263f7e9745deb6": {
-      "bakeTx": 3076,
-      "gasEth": 0.019479485165000386,
-      "firstTs": 1778252571,
-      "lastTs": 1778359043
-    },
-    "0x675045ba37b4ee027f6549ab18fbd5cc4cd8a1de": {
-      "bakeTx": 1446,
-      "gasEth": 0.009127898236999825,
-      "firstTs": 1778254416,
-      "lastTs": 1778359045
-    },
-    "0x011ceb40eaadba6a5c479c234bf6f49017a4bdce": {
-      "bakeTx": 1491,
-      "gasEth": 0.00947767268249982,
-      "firstTs": 1778252736,
-      "lastTs": 1778359044
-    },
-    "0x0b9e736d606e9ab0e53b3d055db79dfeaf9357fc": {
-      "bakeTx": 1443,
-      "gasEth": 0.009122428145499826,
-      "firstTs": 1778254418,
-      "lastTs": 1778359043
-    },
-    "0x39b0f1109efdb6ac207e93e15eb749bcfaa819f4": {
-      "bakeTx": 1449,
-      "gasEth": 0.009149492170499825,
-      "firstTs": 1778254418,
-      "lastTs": 1778359044
-    },
-    "0xcd5be762a09321682d84359c62a44837a1435914": {
-      "bakeTx": 7705,
-      "gasEth": 0.048172348984500776,
-      "firstTs": 1778281983,
-      "lastTs": 1778346242
-    },
-    "0x1bdb9ace5ee56cdaf19cc6ffc0ef5b5e85266e0a": {
-      "bakeTx": 1478,
-      "gasEth": 0.01117303280300016,
-      "firstTs": 1778268626,
-      "lastTs": 1778362072
-    },
-    "0x305750674f36042ba675dd8087617d3132fd8951": {
-      "bakeTx": 3792,
-      "gasEth": 0.028457206661251226,
-      "firstTs": 1778252484,
-      "lastTs": 1778362199
-    },
-    "0xa6a2e28c49e063605f8c5ea1516759b68c8e3f2f": {
-      "bakeTx": 4659,
-      "gasEth": 0.03485326945475179,
-      "firstTs": 1778257801,
-      "lastTs": 1778362197
-    },
-    "0xb54afd36dec739dfc6d4817dbfe9b8ca4da9aa5a": {
-      "bakeTx": 3718,
-      "gasEth": 0.025341371527498092,
-      "firstTs": 1778258164,
-      "lastTs": 1778360616
-    },
-    "0x45d1ed2ff5d3203b4971c3c24a5667de3235eb1b": {
-      "bakeTx": 5147,
-      "gasEth": 0.03844271289900206,
-      "firstTs": 1778257831,
-      "lastTs": 1778362198
-    },
-    "0xc966bf597142dbee58af0cf6065b0b86cc83e9af": {
-      "bakeTx": 2014,
-      "gasEth": 0.012659544444499845,
-      "firstTs": 1778255281,
-      "lastTs": 1778286154
-    },
-    "0x123473ed5a68b0bd066cd6fb51e46522f984a2ba": {
-      "bakeTx": 4775,
-      "gasEth": 0.03572504862425185,
-      "firstTs": 1778257768,
-      "lastTs": 1778362199
-    },
-    "0xe22b8b76ed88c060303b920bffea2ebe593cf2ff": {
-      "bakeTx": 4938,
-      "gasEth": 0.036916955299001936,
-      "firstTs": 1778257770,
-      "lastTs": 1778362197
-    },
-    "0x755096abd2855b418b93e60a49b5ee8a23517caf": {
-      "bakeTx": 4713,
-      "gasEth": 0.03526583746100185,
-      "firstTs": 1778257739,
-      "lastTs": 1778362196
-    },
-    "0xdaf59fb31903d63189b94f451a9c1a0b0f991752": {
-      "bakeTx": 4947,
-      "gasEth": 0.03698198375725197,
-      "firstTs": 1778252614,
-      "lastTs": 1778360623
-    },
-    "0x19f45156a8d3687f94ee64135ed60210859634a3": {
-      "bakeTx": 5146,
-      "gasEth": 0.038294783635252114,
-      "firstTs": 1778257995,
-      "lastTs": 1778355857
-    },
-    "0xfad08870e9ec45cda25cefe7d071c541197ca8ad": {
-      "bakeTx": 3933,
-      "gasEth": 0.02923916779350148,
-      "firstTs": 1778252915,
-      "lastTs": 1778361847
-    },
-    "0x95f906c1d14fd1942f331444d1b4a38d66fec2f8": {
-      "bakeTx": 4380,
-      "gasEth": 0.03281615201225167,
-      "firstTs": 1778252663,
-      "lastTs": 1778361827
-    },
-    "0x45bd8333511aee96f445670de862620a8f8cc54c": {
-      "bakeTx": 610,
-      "gasEth": 0.004590233350249954,
-      "firstTs": 1778278632,
-      "lastTs": 1778358325
-    },
-    "0x56956687aef2de73ec29ffd1447bdde414a31002": {
-      "bakeTx": 6213,
-      "gasEth": 0.046248816644002315,
-      "firstTs": 1778263267,
-      "lastTs": 1778362198
-    },
-    "0xf6182bb74c82ddeaf96c43cc60eccfb070bc0b57": {
-      "bakeTx": 1235,
-      "gasEth": 0.009208478848749988,
-      "firstTs": 1778266607,
-      "lastTs": 1778361803
-    },
-    "0x2e66a12985a6807537fc645d887c8b219c6db3af": {
-      "bakeTx": 2262,
-      "gasEth": 0.01603789632200017,
-      "firstTs": 1778255390,
-      "lastTs": 1778328156
-    },
-    "0x36a700798600c44ab116e47df386167a1f0c00ca": {
-      "bakeTx": 452,
-      "gasEth": 0.002919534208249988,
-      "firstTs": 1778254376,
-      "lastTs": 1778361296
-    },
-    "0xbd8943850df5be96896e3676829f3fbb8519b381": {
-      "bakeTx": 601,
-      "gasEth": 0.0044702284497499505,
-      "firstTs": 1778252602,
-      "lastTs": 1778325636
-    },
-    "0x0025f5c452b9a7627dc5664a251208a4b0b7972c": {
-      "bakeTx": 5042,
-      "gasEth": 0.037209625783001216,
-      "firstTs": 1778272936,
-      "lastTs": 1778356007
-    },
-    "0x6d8a7d0b55774bfa2b941de7707b148172634a16": {
-      "bakeTx": 1453,
-      "gasEth": 0.010833781652250157,
-      "firstTs": 1778256164,
-      "lastTs": 1778361595
-    },
-    "0x4c29f19da1324c485dd40fd146cbd38956ec3c8c": {
-      "bakeTx": 4666,
-      "gasEth": 0.03410780439325209,
-      "firstTs": 1778272329,
-      "lastTs": 1778361057
-    },
-    "0x01589e4a96b36ef118e9f5c9a900947a6cb21b23": {
-      "bakeTx": 4338,
-      "gasEth": 0.0320922234167506,
-      "firstTs": 1778271813,
-      "lastTs": 1778347132
-    },
-    "0xaafc32b2c918524e53816aeea56029c93733a03b": {
-      "bakeTx": 7685,
-      "gasEth": 0.048387340422503713,
-      "firstTs": 1778254853,
-      "lastTs": 1778354210
-    },
-    "0x64f6b89df26b7f1aac4b5784da9a2abdb75bb8b5": {
-      "bakeTx": 1450,
-      "gasEth": 0.01079459316125014,
-      "firstTs": 1778282173,
-      "lastTs": 1778339279
-    },
-    "0x531a75ed2a7dea237ded2fc2c14ee878fc723eaa": {
-      "bakeTx": 8280,
-      "gasEth": 0.061511408470752024,
-      "firstTs": 1778252857,
-      "lastTs": 1778320547
-    },
-    "0x8875a1b5390830284fe23c6fe4adea0b3fd26816": {
-      "bakeTx": 642,
-      "gasEth": 0.004774816607249945,
-      "firstTs": 1778253976,
-      "lastTs": 1778284229
-    },
-    "0x6b831ba36251179503aeaa1fba7b8a73a406d56c": {
-      "bakeTx": 804,
-      "gasEth": 0.005819533539000083,
-      "firstTs": 1778280123,
-      "lastTs": 1778284201
-    },
-    "0xd04649b21208cd67426e63c31065401bc6afb909": {
-      "bakeTx": 11247,
-      "gasEth": 0.07075992175924864,
-      "firstTs": 1778252705,
-      "lastTs": 1778361057
-    },
-    "0xad6be45f6e1107964020cf42fa11765dcc25da2c": {
-      "bakeTx": 301,
-      "gasEth": 0.0022303788350000056,
-      "firstTs": 1778281000,
-      "lastTs": 1778283601
-    },
-    "0xe5005cc34d7c3853f28697a76081207d0d0d7a8a": {
-      "bakeTx": 1172,
-      "gasEth": 0.0088878789335,
-      "firstTs": 1778268923,
-      "lastTs": 1778362071
-    },
-    "0xcf9437320ed8b11db5554c14e5c93f1d1c4f4d79": {
-      "bakeTx": 1502,
-      "gasEth": 0.011225561944250135,
-      "firstTs": 1778252411,
-      "lastTs": 1778356509
-    },
-    "0xfee6d2d25da8f9238eb697e5a32d3200bcf38426": {
-      "bakeTx": 1591,
-      "gasEth": 0.011827503734500215,
-      "firstTs": 1778274213,
-      "lastTs": 1778338329
-    },
-    "0xe472b3db47fd9864d64ed5fb4037880a11634950": {
-      "bakeTx": 1083,
-      "gasEth": 0.008002250232250034,
-      "firstTs": 1778280930,
-      "lastTs": 1778292763
-    },
-    "0x2242e4eadfa6f5c529fe5e3d1a90c267fa377f34": {
-      "bakeTx": 5673,
-      "gasEth": 0.04215233391775221,
-      "firstTs": 1778252787,
-      "lastTs": 1778361082
-    },
-    "0x035be9bd0fbee90027d8af651e0ad650b1cf7109": {
-      "bakeTx": 9353,
-      "gasEth": 0.06974447193924858,
-      "firstTs": 1778252755,
-      "lastTs": 1778333196
-    },
-    "0xa0ed173df43f23902a6be2710b823359211151b1": {
-      "bakeTx": 8513,
-      "gasEth": 0.06351662434650257,
-      "firstTs": 1778252614,
-      "lastTs": 1778361678
-    },
-    "0xf2f7e708ef447f9a445120ea0dcf5b4b5d19ac1b": {
-      "bakeTx": 36888,
-      "gasEth": 0.2306695922065862,
-      "firstTs": 1778262240,
-      "lastTs": 1778360809
-    },
-    "0x7fdce32f9e35ed4ed829d1fc80d83c5dee0f86cc": {
-      "bakeTx": 112,
-      "gasEth": 0.0008494617790000009,
-      "firstTs": 1778280213,
-      "lastTs": 1778332890
-    },
-    "0xe90a9bdb63e9ba04a7f3e95140ff803f2f377f5e": {
-      "bakeTx": 17,
-      "gasEth": 0.00013512993924999996,
-      "firstTs": 1778280615,
-      "lastTs": 1778320666
-    },
-    "0x914803386d9345fdf728b5cdf4b91c4b56ce217a": {
-      "bakeTx": 1099,
-      "gasEth": 0.008348886137749941,
-      "firstTs": 1778268616,
-      "lastTs": 1778362075
-    },
-    "0x9a32745457ad88e53e9ca3a46653fa759608050c": {
-      "bakeTx": 1263,
-      "gasEth": 0.009563875290000037,
-      "firstTs": 1778268720,
-      "lastTs": 1778362082
-    },
-    "0xf7da858261b36c8b21acbf4b23d06b7abd2065bb": {
-      "bakeTx": 1244,
-      "gasEth": 0.009432045704750026,
-      "firstTs": 1778268694,
-      "lastTs": 1778362086
-    },
-    "0x3b5b29b8042d47b4c4f90661236cb7bab457eb57": {
-      "bakeTx": 1345,
-      "gasEth": 0.010149702514500102,
-      "firstTs": 1778268665,
-      "lastTs": 1778361067
-    },
-    "0xcf5c50d35b968a00544d5a3b08ecd2e00d533410": {
-      "bakeTx": 5223,
-      "gasEth": 0.03881399607225216,
-      "firstTs": 1778252408,
-      "lastTs": 1778362200
-    },
-    "0x1b4a5e888e9b812db46e4ddaa0e074054d75ac20": {
-      "bakeTx": 173,
-      "gasEth": 0.001279897879000003,
-      "firstTs": 1778276050,
-      "lastTs": 1778279706
-    },
-    "0xfb6954ea6b0f8e9eea008a2cffc26eadce0e69aa": {
-      "bakeTx": 3954,
-      "gasEth": 0.029683930812751454,
-      "firstTs": 1778253192,
-      "lastTs": 1778345911
-    },
-    "0x94f6d0f544680380df02b69c64f033792e8c61a2": {
-      "bakeTx": 1791,
-      "gasEth": 0.013511810728000317,
-      "firstTs": 1778252588,
-      "lastTs": 1778361800
-    },
-    "0xd2b7dde5e7f615fd997d027f1a19a5f2069bc6f2": {
-      "bakeTx": 8425,
-      "gasEth": 0.05283220905275155,
-      "firstTs": 1778252511,
-      "lastTs": 1778361058
-    },
-    "0xa97a257e04a0da6b5146bf8a22796ec73049570f": {
-      "bakeTx": 16438,
-      "gasEth": 0.10348780427972575,
-      "firstTs": 1778252695,
-      "lastTs": 1778360790
-    },
-    "0x7c2125fc8442eea22a83db2cbdb33adb30325349": {
-      "bakeTx": 6,
-      "gasEth": 0.00004531258075,
-      "firstTs": 1778278688,
-      "lastTs": 1778278701
-    },
-    "0x75c6ce8e3083fad4ffa1b1bd325e407a41d612d6": {
-      "bakeTx": 5490,
-      "gasEth": 0.040084162486253905,
-      "firstTs": 1778254980,
-      "lastTs": 1778340398
-    },
-    "0x7706457ecbe3dfe5b9dcb90032658e2793e48f92": {
-      "bakeTx": 4735,
-      "gasEth": 0.03443445477650066,
-      "firstTs": 1778252410,
-      "lastTs": 1778357908
-    },
-    "0x5be16b8c12fda599813b2051b72e77bc78999c04": {
-      "bakeTx": 7021,
-      "gasEth": 0.044119341281750664,
-      "firstTs": 1778252607,
-      "lastTs": 1778361801
-    },
-    "0xb611764b91ede21978a9598240e7c47ec83915b0": {
-      "bakeTx": 2153,
-      "gasEth": 0.016090071427250326,
-      "firstTs": 1778252817,
-      "lastTs": 1778359847
-    },
-    "0xa35ce21b739e37031d795190f2368320195d2096": {
-      "bakeTx": 2052,
-      "gasEth": 0.015235994193500116,
-      "firstTs": 1778266893,
-      "lastTs": 1778349883
-    },
-    "0xe44fcf259aece69b77fb8bd3bdbe9c56a4e1d24e": {
-      "bakeTx": 26969,
-      "gasEth": 0.16907296834751637,
-      "firstTs": 1778252410,
-      "lastTs": 1778360810
-    },
-    "0xc19db0550147cf2ae1cd0f787af8a9ff8cce9dbb": {
-      "bakeTx": 8721,
-      "gasEth": 0.06072992047250087,
-      "firstTs": 1778252613,
-      "lastTs": 1778357438
+      "lastTs": 1778440815
     },
     "0xf2e869d2eff1dba7e53e06f1bce67aec49ab24dd": {
-      "bakeTx": 10151,
-      "gasEth": 0.07547021928749477,
+      "bakeTx": 22247,
+      "gasEth": 0.1652205076492504,
       "firstTs": 1778252825,
-      "lastTs": 1778362199
+      "lastTs": 1778442235
     },
-    "0xe621d61d7333d677db20a2c009d3ee2f6b235614": {
-      "bakeTx": 3321,
-      "gasEth": 0.02375616483950085,
-      "firstTs": 1778257958,
-      "lastTs": 1778340238
+    "0x305750674f36042ba675dd8087617d3132fd8951": {
+      "bakeTx": 6418,
+      "gasEth": 0.048070003530002625,
+      "firstTs": 1778252484,
+      "lastTs": 1778442194
     },
-    "0x23c0fb3a813ca5e3391ac3fd11b32237c4e34b6b": {
-      "bakeTx": 2917,
-      "gasEth": 0.021707005105000936,
-      "firstTs": 1778252522,
-      "lastTs": 1778341135
-    },
-    "0x99ece13e2b91da7998c0dce0b78069b6cf274683": {
-      "bakeTx": 3744,
-      "gasEth": 0.027869914332251312,
-      "firstTs": 1778252496,
-      "lastTs": 1778360624
-    },
-    "0x02d75dd9207a9bf26cbcd7512a20c05bf922baff": {
-      "bakeTx": 7197,
-      "gasEth": 0.045487111900500005,
-      "firstTs": 1778252652,
-      "lastTs": 1778361086
-    },
-    "0x63e2fb6853719ec7f68ddb5fd1db16adf04cc40d": {
-      "bakeTx": 7384,
-      "gasEth": 0.0463092823185012,
-      "firstTs": 1778252403,
-      "lastTs": 1778362198
-    },
-    "0x143b15a260c492054c8adba3865773f4bebb5574": {
-      "bakeTx": 15342,
-      "gasEth": 0.10067969837747899,
-      "firstTs": 1778264089,
-      "lastTs": 1778360810
-    },
-    "0xdb2d6141c3e02a8c0c129b08dc6cbef50b1fe4a9": {
-      "bakeTx": 2,
-      "gasEth": 0.00001609854725,
-      "firstTs": 1778277419,
-      "lastTs": 1778277424
-    },
-    "0xe40ebeeee324bfa15be84cedc01138f7e963bb69": {
-      "bakeTx": 4222,
-      "gasEth": 0.02637538792025252,
-      "firstTs": 1778264902,
-      "lastTs": 1778344794
-    },
-    "0xf0a1fb62bdb5a55ac01b21f4a86eba000aa9a4be": {
-      "bakeTx": 3214,
-      "gasEth": 0.023833147261749944,
-      "firstTs": 1778264800,
-      "lastTs": 1778354222
-    },
-    "0x2ec98a3185ab60eb381d17f0574eed028b2ff718": {
-      "bakeTx": 4276,
-      "gasEth": 0.031837293378501566,
-      "firstTs": 1778252444,
-      "lastTs": 1778358293
-    },
-    "0xb2637e9cb886bb54898d33dc023d8363c0bd9c81": {
-      "bakeTx": 5,
-      "gasEth": 0.000040155936000000005,
-      "firstTs": 1778276551,
-      "lastTs": 1778276771
-    },
-    "0x64b849f34824c42cafa93393aed1303b56c1bb09": {
-      "bakeTx": 4146,
-      "gasEth": 0.03085708647575123,
-      "firstTs": 1778255629,
-      "lastTs": 1778361082
+    "0x123473ed5a68b0bd066cd6fb51e46522f984a2ba": {
+      "bakeTx": 10649,
+      "gasEth": 0.0795646265772426,
+      "firstTs": 1778257768,
+      "lastTs": 1778442174
     },
     "0x833b1529769882f55c637e540058c16742046371": {
-      "bakeTx": 1914,
-      "gasEth": 0.014312952385000475,
+      "bakeTx": 2048,
+      "gasEth": 0.01530974581100035,
       "firstTs": 1778254391,
-      "lastTs": 1778362198
-    },
-    "0x6d8f17b1bc4fb0b1f24e91c0a939c90e4d02bf72": {
-      "bakeTx": 2286,
-      "gasEth": 0.01706622361325071,
-      "firstTs": 1778256442,
-      "lastTs": 1778328473
-    },
-    "0x846e830e1e783e2c5d6459924d16730dfc7a8f78": {
-      "bakeTx": 4393,
-      "gasEth": 0.027632441110498694,
-      "firstTs": 1778254354,
-      "lastTs": 1778360016
-    },
-    "0xbcc25906731d49d7b56d51690cde18389c1527dc": {
-      "bakeTx": 4497,
-      "gasEth": 0.03360638059100185,
-      "firstTs": 1778254122,
-      "lastTs": 1778355673
-    },
-    "0xd0d08ba7d5ef1e634abcb4b86724257be200426a": {
-      "bakeTx": 2,
-      "gasEth": 0.000015733063,
-      "firstTs": 1778275693,
-      "lastTs": 1778275697
-    },
-    "0x5ad4450f174c517cda2bc1d06138f37bd6c4a96d": {
-      "bakeTx": 2606,
-      "gasEth": 0.019383667339750717,
-      "firstTs": 1778256934,
-      "lastTs": 1778349138
-    },
-    "0x6c125e2d0b926698a99999588af1c09ad3a467bd": {
-      "bakeTx": 1698,
-      "gasEth": 0.0126005368155002,
-      "firstTs": 1778271808,
-      "lastTs": 1778353863
-    },
-    "0x75a795397f85491c78b868909b42f54ae62b7230": {
-      "bakeTx": 5770,
-      "gasEth": 0.03849861058600367,
-      "firstTs": 1778257755,
-      "lastTs": 1778345858
-    },
-    "0x772fd8be8ac7ec0d388dca3df654173346c6887b": {
-      "bakeTx": 1487,
-      "gasEth": 0.01106544070150018,
-      "firstTs": 1778252933,
-      "lastTs": 1778360826
-    },
-    "0x4a492735ae3b50ba8ee4e7746ce10f10397d3ef7": {
-      "bakeTx": 2,
-      "gasEth": 0.0000157346015,
-      "firstTs": 1778274989,
-      "lastTs": 1778274993
-    },
-    "0x5fa31e99fc05f8ece97c8090f279ad65b65e9f1b": {
-      "bakeTx": 2268,
-      "gasEth": 0.014257533442999844,
-      "firstTs": 1778265741,
-      "lastTs": 1778360463
-    },
-    "0x0a42a67154221c44c9eae98eb7f9cbff2d269a0e": {
-      "bakeTx": 1621,
-      "gasEth": 0.012075898541500223,
-      "firstTs": 1778252871,
-      "lastTs": 1778362198
-    },
-    "0xa5ac377f9d8b1d4fc6bd22eaac6b8ba8f79af441": {
-      "bakeTx": 5,
-      "gasEth": 0.0000391174485,
-      "firstTs": 1778273797,
-      "lastTs": 1778274020
-    },
-    "0xe516ce9be683433d21911dff80f11194599eac6f": {
-      "bakeTx": 8182,
-      "gasEth": 0.06060880459399868,
-      "firstTs": 1778252463,
-      "lastTs": 1778358814
-    },
-    "0x319937150f931d5bda6b3679305453a8c45e55d0": {
-      "bakeTx": 2393,
-      "gasEth": 0.0178283293170007,
-      "firstTs": 1778266787,
-      "lastTs": 1778361821
-    },
-    "0x81101ece049dfd6e3e7b378df0c017eaeb190578": {
-      "bakeTx": 9948,
-      "gasEth": 0.07385071504524524,
-      "firstTs": 1778252606,
-      "lastTs": 1778341513
-    },
-    "0x6c8d120f1c5c6c169e2331340fe95ade881f0986": {
-      "bakeTx": 3288,
-      "gasEth": 0.02460523846400109,
-      "firstTs": 1778254348,
-      "lastTs": 1778362197
-    },
-    "0xfcae337382d00e2540cd3d5d7aab0346757b7d43": {
-      "bakeTx": 473,
-      "gasEth": 0.0035377887592499993,
-      "firstTs": 1778263278,
-      "lastTs": 1778349969
-    },
-    "0x9dbf523263b80b201d758f9044efcf80698d3232": {
-      "bakeTx": 1822,
-      "gasEth": 0.013607402484250406,
-      "firstTs": 1778257757,
-      "lastTs": 1778357944
-    },
-    "0x55a5b109faa74822b55b9b8ee9fc500c77817bb6": {
-      "bakeTx": 6,
-      "gasEth": 0.000048774658249999996,
-      "firstTs": 1778272439,
-      "lastTs": 1778272753
-    },
-    "0x9b444cfe463342bd1bd199f6d8c34a3fb4f04fac": {
-      "bakeTx": 4177,
-      "gasEth": 0.031105538524001632,
-      "firstTs": 1778253316,
-      "lastTs": 1778362197
-    },
-    "0x6ea07ab303b8802453475becdb9bf40204375136": {
-      "bakeTx": 1617,
-      "gasEth": 0.012024751697250133,
-      "firstTs": 1778255095,
-      "lastTs": 1778354190
-    },
-    "0x823b96bf4af65546e8f13f2b5e6b56dd280e65b1": {
-      "bakeTx": 2478,
-      "gasEth": 0.0185781624967506,
-      "firstTs": 1778257891,
-      "lastTs": 1778360646
-    },
-    "0x439a20a5c7a15dca939238ae441caabc1cf937bc": {
-      "bakeTx": 3515,
-      "gasEth": 0.026200857086501224,
-      "firstTs": 1778261951,
-      "lastTs": 1778344799
-    },
-    "0xc298b9d57ab59c1336694e9c4b8c210ca87b825c": {
-      "bakeTx": 1106,
-      "gasEth": 0.008246182891499946,
-      "firstTs": 1778257880,
-      "lastTs": 1778310681
-    },
-    "0x187171802b74c51a70dba26f693ef212b3196bd2": {
-      "bakeTx": 2410,
-      "gasEth": 0.018089404984000728,
-      "firstTs": 1778252805,
-      "lastTs": 1778352834
-    },
-    "0xb0768fce2454daed6b58c5d21c91d9a34b27a83d": {
-      "bakeTx": 6,
-      "gasEth": 0.00004997839875000001,
-      "firstTs": 1778271436,
-      "lastTs": 1778358561
-    },
-    "0x558d33783239d6fbd124815e152c07be34341d64": {
-      "bakeTx": 4770,
-      "gasEth": 0.03549297386325194,
-      "firstTs": 1778261965,
-      "lastTs": 1778358524
-    },
-    "0x1036b40f96b568c950002ea62b7d463947350a78": {
-      "bakeTx": 3547,
-      "gasEth": 0.02646388126375122,
-      "firstTs": 1778254018,
-      "lastTs": 1778348879
-    },
-    "0x60cc39fcff7bfe8e8f746221a06766a08cbc353c": {
-      "bakeTx": 117,
-      "gasEth": 0.0008669992762500023,
-      "firstTs": 1778270573,
-      "lastTs": 1778345318
-    },
-    "0x476824a91e245ff632eef9080a82b9dab2fbb3bc": {
-      "bakeTx": 6,
-      "gasEth": 0.00004832939825,
-      "firstTs": 1778270563,
-      "lastTs": 1778357451
-    },
-    "0x7a64dc5b94f7e944dceb84c25122997fbf1cb163": {
-      "bakeTx": 3578,
-      "gasEth": 0.026544614956250587,
-      "firstTs": 1778264547,
-      "lastTs": 1778323840
-    },
-    "0xc132eb2430236ce43e7398cabccd449244586555": {
-      "bakeTx": 4152,
-      "gasEth": 0.030877492958751078,
-      "firstTs": 1778261256,
-      "lastTs": 1778361067
-    },
-    "0xfdb925059dee21c6c07eab0402ab2a00328340d6": {
-      "bakeTx": 4051,
-      "gasEth": 0.03021097109250168,
-      "firstTs": 1778252553,
-      "lastTs": 1778360664
-    },
-    "0xeec92fab74ba83d53c6cca91779ae20f9d2bea44": {
-      "bakeTx": 3093,
-      "gasEth": 0.02306627415375095,
-      "firstTs": 1778252501,
-      "lastTs": 1778360659
-    },
-    "0x91972e34cc6d380dcbf64061e7b3e5b84aaec442": {
-      "bakeTx": 2598,
-      "gasEth": 0.019349265620000736,
-      "firstTs": 1778257280,
-      "lastTs": 1778357900
-    },
-    "0x3bccc7b37f738ee4981269b8bd881ee89423a751": {
-      "bakeTx": 2954,
-      "gasEth": 0.0220766376487508,
-      "firstTs": 1778252444,
-      "lastTs": 1778350538
-    },
-    "0xc10cf7b68722e94200244a8b2ce5f8e58a9d89aa": {
-      "bakeTx": 2186,
-      "gasEth": 0.016296080514000638,
-      "firstTs": 1778252506,
-      "lastTs": 1778352488
-    },
-    "0x96a0d9ce06612f06a8f0cbea8f675ea700613ad5": {
-      "bakeTx": 5,
-      "gasEth": 0.0000394656925,
-      "firstTs": 1778269468,
-      "lastTs": 1778269481
-    },
-    "0x679b671adccac0589ca101b826064367f437a505": {
-      "bakeTx": 3627,
-      "gasEth": 0.027098985240501375,
-      "firstTs": 1778269309,
-      "lastTs": 1778360814
-    },
-    "0x3e55508ec605017106bcd320c4b17aeaeef8a3de": {
-      "bakeTx": 4841,
-      "gasEth": 0.03597941765300161,
-      "firstTs": 1778252419,
-      "lastTs": 1778353268
-    },
-    "0xf6579fae1b6dedc83ddfc5d0c16ed50c46e7cd4f": {
-      "bakeTx": 5221,
-      "gasEth": 0.03870648682350108,
-      "firstTs": 1778252431,
-      "lastTs": 1778333165
-    },
-    "0xb88520abe6996d42de8f7325e91c1e66a18e4987": {
-      "bakeTx": 506,
-      "gasEth": 0.003795286463499967,
-      "firstTs": 1778254230,
-      "lastTs": 1778269263
-    },
-    "0xa95f04d2b8ac8d1c04e9614f1742021f032b2bdb": {
-      "bakeTx": 2090,
-      "gasEth": 0.014799405586750181,
-      "firstTs": 1778256229,
-      "lastTs": 1778361799
-    },
-    "0x88ff03155aa1f15b0cd45a1f8944540f5727b324": {
-      "bakeTx": 2613,
-      "gasEth": 0.019460668088250133,
-      "firstTs": 1778257389,
-      "lastTs": 1778349080
-    },
-    "0x1a12ab7a6f66c54fd173cb5133b4949c2e452544": {
-      "bakeTx": 4,
-      "gasEth": 0.00003273072775,
-      "firstTs": 1778268768,
-      "lastTs": 1778355884
-    },
-    "0x8045784a3a7209a24eb09a5a2bc4f9e6fb67782b": {
-      "bakeTx": 6329,
-      "gasEth": 0.047237385746751376,
-      "firstTs": 1778257688,
-      "lastTs": 1778360827
-    },
-    "0xd564d3f5e1322ce77c2192ac28b7e74d86b0a231": {
-      "bakeTx": 18962,
-      "gasEth": 0.11907532427471244,
-      "firstTs": 1778252690,
-      "lastTs": 1778360810
-    },
-    "0x15c0c948d3ea9a67b05319f40871de7bf5003db3": {
-      "bakeTx": 8740,
-      "gasEth": 0.06502868074425235,
-      "firstTs": 1778258168,
-      "lastTs": 1778362198
-    },
-    "0x90c1ed16e9b16db7d031f573d20bead430feb107": {
-      "bakeTx": 2155,
-      "gasEth": 0.016074016229500578,
-      "firstTs": 1778252646,
-      "lastTs": 1778361770
-    },
-    "0x69c4cc0147fbc23965896fb18a1ccea92230ed1b": {
-      "bakeTx": 4422,
-      "gasEth": 0.03303027483125173,
-      "firstTs": 1778252552,
-      "lastTs": 1778341587
-    },
-    "0x0c0a71e32e1954635e2dde143ed9e59fe471fb94": {
-      "bakeTx": 2325,
-      "gasEth": 0.01496702412100024,
-      "firstTs": 1778252483,
-      "lastTs": 1778340601
-    },
-    "0x0bc4bcaa440b48f807048c979c2b6576f88e4aa8": {
-      "bakeTx": 2014,
-      "gasEth": 0.014235996343500194,
-      "firstTs": 1778253909,
-      "lastTs": 1778356287
-    },
-    "0x35e912a39766bd5d5b8e74eee1517ce5bbc71aa7": {
-      "bakeTx": 1817,
-      "gasEth": 0.0135423154272504,
-      "firstTs": 1778254509,
-      "lastTs": 1778361821
-    },
-    "0xb1c6b9f791e3679fd811a9fe456718fa64d64fa4": {
-      "bakeTx": 1721,
-      "gasEth": 0.012877562066750378,
-      "firstTs": 1778252444,
-      "lastTs": 1778355686
-    },
-    "0x7c320b13ba5513d71f3434f7422104cdf21f1aa6": {
-      "bakeTx": 2643,
-      "gasEth": 0.019592189521000076,
-      "firstTs": 1778264168,
-      "lastTs": 1778323831
-    },
-    "0xeb2207f97a0ca2de5b47367c7b744fdf72d38ae7": {
-      "bakeTx": 6491,
-      "gasEth": 0.04592380557774976,
-      "firstTs": 1778254202,
-      "lastTs": 1778355549
-    },
-    "0x0ab815e54f7be0400464eda9660c72b5e14e7780": {
-      "bakeTx": 1662,
-      "gasEth": 0.01241207377825021,
-      "firstTs": 1778253280,
-      "lastTs": 1778356551
-    },
-    "0x5ab272231e653c2265bdfae58310021bca37152e": {
-      "bakeTx": 1052,
-      "gasEth": 0.007890428884749908,
-      "firstTs": 1778266477,
-      "lastTs": 1778314603
-    },
-    "0x2a8c750c49674ab43d078ded37087ff47851b468": {
-      "bakeTx": 305,
-      "gasEth": 0.0023056109419999993,
-      "firstTs": 1778254896,
-      "lastTs": 1778265830
-    },
-    "0x52f3815fd78f8f44b423a4cc090164f2660a7a9f": {
-      "bakeTx": 1468,
-      "gasEth": 0.010856170492499775,
-      "firstTs": 1778252409,
-      "lastTs": 1778301403
-    },
-    "0x9035f46e6507f4c800ffb5a5001cf140e3e5422e": {
-      "bakeTx": 1102,
-      "gasEth": 0.008280128174499935,
-      "firstTs": 1778261739,
-      "lastTs": 1778341054
-    },
-    "0x5d1ee2b779330bd5ffb1eaf1a319d5d8a958e7c2": {
-      "bakeTx": 895,
-      "gasEth": 0.005767471739750069,
-      "firstTs": 1778265068,
-      "lastTs": 1778328535
-    },
-    "0x0a2dd2291e62a14f76a9145161edecc282605d75": {
-      "bakeTx": 735,
-      "gasEth": 0.005484897028500019,
-      "firstTs": 1778263979,
-      "lastTs": 1778329154
-    },
-    "0xd5b9caef89d1f7f8f64816c4f5f762917acf4a01": {
-      "bakeTx": 760,
-      "gasEth": 0.005690304154499966,
-      "firstTs": 1778252627,
-      "lastTs": 1778264541
-    },
-    "0xf826a34de2ac2616d65390a3abd57a2457d2e554": {
-      "bakeTx": 1230,
-      "gasEth": 0.009218989337750009,
-      "firstTs": 1778253607,
-      "lastTs": 1778355508
-    },
-    "0x5b86b7027d2657921bd70eff438ff5936862a699": {
-      "bakeTx": 2632,
-      "gasEth": 0.019657651293250884,
-      "firstTs": 1778252458,
-      "lastTs": 1778353258
-    },
-    "0xbf28a6624fbd3382d5135772417f8fd872c39f6d": {
-      "bakeTx": 358,
-      "gasEth": 0.0027113435284999905,
-      "firstTs": 1778263461,
-      "lastTs": 1778349798
-    },
-    "0x4e9232c76680707a6a5c13a36a6e4a99ccaf2425": {
-      "bakeTx": 2593,
-      "gasEth": 0.01936637717900085,
-      "firstTs": 1778252497,
-      "lastTs": 1778353253
-    },
-    "0x7f6e2f5e24f3eb7b2f12a46b7b2bbe871c3303c1": {
-      "bakeTx": 2215,
-      "gasEth": 0.016549644092750632,
-      "firstTs": 1778252415,
-      "lastTs": 1778352559
-    },
-    "0xdd46472aae4a21b3ca2a4e352d9871cb5de0b409": {
-      "bakeTx": 827,
-      "gasEth": 0.006188437512499942,
-      "firstTs": 1778256826,
-      "lastTs": 1778353062
-    },
-    "0x49826f26fd526c52c7b18d0f2866b6e158328eec": {
-      "bakeTx": 1422,
-      "gasEth": 0.010597188905000091,
-      "firstTs": 1778253909,
-      "lastTs": 1778362014
-    },
-    "0x4355995495a91e3e099fcdcc113f2a75acafbd91": {
-      "bakeTx": 9676,
-      "gasEth": 0.07200694107874749,
-      "firstTs": 1778253951,
-      "lastTs": 1778331723
-    },
-    "0xfe69bfea6d974db7a555a4a8574afecb079eabea": {
-      "bakeTx": 1762,
-      "gasEth": 0.013127781534750242,
-      "firstTs": 1778252855,
-      "lastTs": 1778356109
-    },
-    "0x04e90583475bbed7fb5b7f6aa7fcebebc3f1ea88": {
-      "bakeTx": 642,
-      "gasEth": 0.004760246016749954,
-      "firstTs": 1778258782,
-      "lastTs": 1778348871
-    },
-    "0x670540390d542191881b75d4459d9786756cedae": {
-      "bakeTx": 1870,
-      "gasEth": 0.013927330346499874,
-      "firstTs": 1778254571,
-      "lastTs": 1778344904
-    },
-    "0x08b40c6a85c647a55c7bec29d5e7e18211670a86": {
-      "bakeTx": 196,
-      "gasEth": 0.0014543300225000036,
-      "firstTs": 1778257426,
-      "lastTs": 1778355368
-    },
-    "0x902d8d5e4f83037a1b3357c01e165e86fb5674ae": {
-      "bakeTx": 715,
-      "gasEth": 0.00528551620699998,
-      "firstTs": 1778253642,
-      "lastTs": 1778256333
-    },
-    "0x9eb884b9d15614fd00b324de4c6c446ef68d464a": {
-      "bakeTx": 404,
-      "gasEth": 0.0029907180692499906,
-      "firstTs": 1778252918,
-      "lastTs": 1778256104
-    },
-    "0x1ef3f1ba6060ab1265e487b482f384b26df8c7b6": {
-      "bakeTx": 1180,
-      "gasEth": 0.008735767302750035,
-      "firstTs": 1778252595,
-      "lastTs": 1778340833
-    },
-    "0xf9005df8f9b0a1f6931922871c7172e01ac88f23": {
-      "bakeTx": 301,
-      "gasEth": 0.0022247919532500013,
-      "firstTs": 1778252663,
-      "lastTs": 1778254091
-    },
-    "0x904ccce0e9fc58f13e727294edc29e6b07667d84": {
-      "bakeTx": 325,
-      "gasEth": 0.002402048285,
-      "firstTs": 1778252562,
-      "lastTs": 1778254081
-    },
-    "0xb28aeae86eddd1efaeaf28036200a484301e2bfe": {
-      "bakeTx": 317,
-      "gasEth": 0.0023458275130000005,
-      "firstTs": 1778252564,
-      "lastTs": 1778254078
-    },
-    "0xbcf910e93e22f01e674cd0d749ae52a31d3c93eb": {
-      "bakeTx": 326,
-      "gasEth": 0.0024126953385000005,
-      "firstTs": 1778252565,
-      "lastTs": 1778254068
-    },
-    "0x1239d031f38d0c329630daf7d7838de55a2fae96": {
-      "bakeTx": 150,
-      "gasEth": 0.0011217367305000022,
-      "firstTs": 1778253946,
-      "lastTs": 1778313472
-    },
-    "0x5393271b0e47b3e8637a7a554bb634b97c535021": {
-      "bakeTx": 6354,
-      "gasEth": 0.04682663783124821,
-      "firstTs": 1778252567,
-      "lastTs": 1778338336
+      "lastTs": 1778402698
     },
     "0x2647799e63d60f6aa706f42ec7fccd3a3047881b": {
-      "bakeTx": 5504,
-      "gasEth": 0.040924200274002134,
+      "bakeTx": 12292,
+      "gasEth": 0.09136172208549853,
       "firstTs": 1778326062,
-      "lastTs": 1778362198
+      "lastTs": 1778443197
+    },
+    "0x56956687aef2de73ec29ffd1447bdde414a31002": {
+      "bakeTx": 10498,
+      "gasEth": 0.07816592559249291,
+      "firstTs": 1778263267,
+      "lastTs": 1778439809
+    },
+    "0x86a110a908a660fb6fbe4e6b4165cd59346105bd": {
+      "bakeTx": 27223,
+      "gasEth": 0.17100752322602045,
+      "firstTs": 1778254165,
+      "lastTs": 1778442140
+    },
+    "0x45d1ed2ff5d3203b4971c3c24a5667de3235eb1b": {
+      "bakeTx": 11156,
+      "gasEth": 0.08331458371749043,
+      "firstTs": 1778257831,
+      "lastTs": 1778442152
+    },
+    "0x63e2fb6853719ec7f68ddb5fd1db16adf04cc40d": {
+      "bakeTx": 14772,
+      "gasEth": 0.09263192777648288,
+      "firstTs": 1778252403,
+      "lastTs": 1778442145
+    },
+    "0x0a42a67154221c44c9eae98eb7f9cbff2d269a0e": {
+      "bakeTx": 3291,
+      "gasEth": 0.024503977018501127,
+      "firstTs": 1778252871,
+      "lastTs": 1778436460
+    },
+    "0x15c0c948d3ea9a67b05319f40871de7bf5003db3": {
+      "bakeTx": 18570,
+      "gasEth": 0.13805199501447368,
+      "firstTs": 1778258168,
+      "lastTs": 1778443159
     },
     "0x48e0e3e43df061944d1073e30b60ae91cd3d3956": {
-      "bakeTx": 3022,
-      "gasEth": 0.022393131307500858,
+      "bakeTx": 10544,
+      "gasEth": 0.0780892501914935,
       "firstTs": 1778340254,
-      "lastTs": 1778362198
+      "lastTs": 1778430203
+    },
+    "0x6c8d120f1c5c6c169e2331340fe95ade881f0986": {
+      "bakeTx": 5481,
+      "gasEth": 0.04093328380425233,
+      "firstTs": 1778254348,
+      "lastTs": 1778442225
+    },
+    "0xa6a2e28c49e063605f8c5ea1516759b68c8e3f2f": {
+      "bakeTx": 10379,
+      "gasEth": 0.0775586181929939,
+      "firstTs": 1778257801,
+      "lastTs": 1778442148
+    },
+    "0xe22b8b76ed88c060303b920bffea2ebe593cf2ff": {
+      "bakeTx": 10983,
+      "gasEth": 0.08203074297974111,
+      "firstTs": 1778257770,
+      "lastTs": 1778442169
+    },
+    "0x9b444cfe463342bd1bd199f6d8c34a3fb4f04fac": {
+      "bakeTx": 5520,
+      "gasEth": 0.04108359267500159,
+      "firstTs": 1778253316,
+      "lastTs": 1778403989
+    },
+    "0xa8a208b92ebd8fd42f6e6fc40e753c16838c2c3d": {
+      "bakeTx": 12788,
+      "gasEth": 0.09553354864098333,
+      "firstTs": 1778254291,
+      "lastTs": 1778443153
+    },
+    "0x6db2a0edf34e6b2967a473efec59edd9fb29ae77": {
+      "bakeTx": 15887,
+      "gasEth": 0.11686416623698392,
+      "firstTs": 1778274435,
+      "lastTs": 1778362459
+    },
+    "0x755096abd2855b418b93e60a49b5ee8a23517caf": {
+      "bakeTx": 10625,
+      "gasEth": 0.07942059496749278,
+      "firstTs": 1778257739,
+      "lastTs": 1778442153
     },
     "0x4b7aae48d05b84d5eae7d049e4d8dae9a193064a": {
-      "bakeTx": 314,
-      "gasEth": 0.0023540645514999975,
+      "bakeTx": 962,
+      "gasEth": 0.007183190208749884,
       "firstTs": 1778318794,
-      "lastTs": 1778362196
+      "lastTs": 1778410536
+    },
+    "0xc3d91c3555817df7239cd9681a3c1c661775db98": {
+      "bakeTx": 16283,
+      "gasEth": 0.11958681611147713,
+      "firstTs": 1778272495,
+      "lastTs": 1778362436
+    },
+    "0x6090c2d41c5d74654e810c4505ff78ec8bf95269": {
+      "bakeTx": 21663,
+      "gasEth": 0.16102655954524428,
+      "firstTs": 1778252792,
+      "lastTs": 1778442151
+    },
+    "0xf28506e6bf73b15ee0cf9e800c60cef4af96bab9": {
+      "bakeTx": 38162,
+      "gasEth": 0.2832746597438365,
+      "firstTs": 1778252575,
+      "lastTs": 1778443199
+    },
+    "0xf7da858261b36c8b21acbf4b23d06b7abd2065bb": {
+      "bakeTx": 3186,
+      "gasEth": 0.0238971317120011,
+      "firstTs": 1778268694,
+      "lastTs": 1778430643
+    },
+    "0x9a32745457ad88e53e9ca3a46653fa759608050c": {
+      "bakeTx": 2534,
+      "gasEth": 0.019063455352750697,
+      "firstTs": 1778268720,
+      "lastTs": 1778427931
+    },
+    "0x914803386d9345fdf728b5cdf4b91c4b56ce217a": {
+      "bakeTx": 2278,
+      "gasEth": 0.01717614541100062,
+      "firstTs": 1778268616,
+      "lastTs": 1778427931
+    },
+    "0x1bdb9ace5ee56cdaf19cc6ffc0ef5b5e85266e0a": {
+      "bakeTx": 3333,
+      "gasEth": 0.02499101041575118,
+      "firstTs": 1778268626,
+      "lastTs": 1778430653
+    },
+    "0xe5005cc34d7c3853f28697a76081207d0d0d7a8a": {
+      "bakeTx": 2415,
+      "gasEth": 0.018172487830250647,
+      "firstTs": 1778268923,
+      "lastTs": 1778427927
+    },
+    "0xfc61f1b7701f6765ff548b3bca403cdaa723d260": {
+      "bakeTx": 16197,
+      "gasEth": 0.10489154204200739,
+      "firstTs": 1778252682,
+      "lastTs": 1778443045
     },
     "0x3c15d4d03228349e5d60426d02dad86f9da57da6": {
-      "bakeTx": 3708,
-      "gasEth": 0.02403999234224964,
+      "bakeTx": 8787,
+      "gasEth": 0.05595668141600433,
       "firstTs": 1778314773,
-      "lastTs": 1778362032
+      "lastTs": 1778442624
+    },
+    "0x3d21e244ff63fbc40c7d11b16f8619132ac75efb": {
+      "bakeTx": 13768,
+      "gasEth": 0.102616227603977,
+      "firstTs": 1778283403,
+      "lastTs": 1778442343
+    },
+    "0x0a767e518b131cf5dfd31508afef99ccbd8f829d": {
+      "bakeTx": 24837,
+      "gasEth": 0.16005837878026202,
+      "firstTs": 1778252553,
+      "lastTs": 1778442613
+    },
+    "0x4db9f40c888af951c35c4a5cf15c52ab3a89270a": {
+      "bakeTx": 42916,
+      "gasEth": 0.2691162677385545,
+      "firstTs": 1778276794,
+      "lastTs": 1778441639
+    },
+    "0xb344dcdb2c8888788eaca0961dce53cb280ff067": {
+      "bakeTx": 23472,
+      "gasEth": 0.14751635718323955,
+      "firstTs": 1778285852,
+      "lastTs": 1778442613
+    },
+    "0xd2930122140e65d44fdfc509f2a59308c097df48": {
+      "bakeTx": 17651,
+      "gasEth": 0.11130178283697344,
+      "firstTs": 1778276520,
+      "lastTs": 1778441486
     },
     "0xb352f288906d118ebc51a3a6006cfd34299ac68b": {
-      "bakeTx": 1056,
-      "gasEth": 0.00788957700824991,
+      "bakeTx": 2259,
+      "gasEth": 0.0168708188187506,
       "firstTs": 1778290173,
-      "lastTs": 1778362027
+      "lastTs": 1778433990
+    },
+    "0x49826f26fd526c52c7b18d0f2866b6e158328eec": {
+      "bakeTx": 4642,
+      "gasEth": 0.03451776323925203,
+      "firstTs": 1778253909,
+      "lastTs": 1778442371
+    },
+    "0xef45b33c0334d3f7d922b954232d3b1c9171c04a": {
+      "bakeTx": 25899,
+      "gasEth": 0.16281448197975906,
+      "firstTs": 1778252504,
+      "lastTs": 1778442867
+    },
+    "0x381dd397e721c72ce321a1ebaf96ce04f4422ac0": {
+      "bakeTx": 5573,
+      "gasEth": 0.041621738255002205,
+      "firstTs": 1778252591,
+      "lastTs": 1778436039
+    },
+    "0xfad08870e9ec45cda25cefe7d071c541197ca8ad": {
+      "bakeTx": 4635,
+      "gasEth": 0.034463656004251844,
+      "firstTs": 1778252915,
+      "lastTs": 1778364614
     },
     "0x428604e8eda7d232eee813a3aec28cf3e92aeb9c": {
-      "bakeTx": 2046,
-      "gasEth": 0.015221043095750513,
+      "bakeTx": 4623,
+      "gasEth": 0.03437177017775189,
       "firstTs": 1778293996,
-      "lastTs": 1778361834
+      "lastTs": 1778412417
+    },
+    "0x95f906c1d14fd1942f331444d1b4a38d66fec2f8": {
+      "bakeTx": 8078,
+      "gasEth": 0.06038428970525362,
+      "firstTs": 1778252663,
+      "lastTs": 1778442450
+    },
+    "0x319937150f931d5bda6b3679305453a8c45e55d0": {
+      "bakeTx": 4798,
+      "gasEth": 0.035717587170751984,
+      "firstTs": 1778266787,
+      "lastTs": 1778383658
+    },
+    "0x35e912a39766bd5d5b8e74eee1517ce5bbc71aa7": {
+      "bakeTx": 3308,
+      "gasEth": 0.024621425113001128,
+      "firstTs": 1778254509,
+      "lastTs": 1778439131
+    },
+    "0x7c85ff53a13460d9068d02abfaf8e497d9d53ce7": {
+      "bakeTx": 9435,
+      "gasEth": 0.060488685030005235,
+      "firstTs": 1778265548,
+      "lastTs": 1778442432
+    },
+    "0xf6182bb74c82ddeaf96c43cc60eccfb070bc0b57": {
+      "bakeTx": 2552,
+      "gasEth": 0.01902481465825069,
+      "firstTs": 1778266607,
+      "lastTs": 1778442434
+    },
+    "0xec0d88a73cf71e6a32d0213c4ec632b7141bd2ea": {
+      "bakeTx": 9735,
+      "gasEth": 0.061104005254254634,
+      "firstTs": 1778266284,
+      "lastTs": 1778441444
+    },
+    "0xa459512a23bcdd659b764d57db926e1c64048e17": {
+      "bakeTx": 24690,
+      "gasEth": 0.15512411447649754,
+      "firstTs": 1778252400,
+      "lastTs": 1778442426
+    },
+    "0x5be16b8c12fda599813b2051b72e77bc78999c04": {
+      "bakeTx": 8614,
+      "gasEth": 0.05410888852550242,
+      "firstTs": 1778252607,
+      "lastTs": 1778418147
+    },
+    "0x7390022cbff03b8501084ca8fa72cdb932a415d6": {
+      "bakeTx": 22261,
+      "gasEth": 0.1397369393542258,
+      "firstTs": 1778252561,
+      "lastTs": 1778442423
+    },
+    "0x94f6d0f544680380df02b69c64f033792e8c61a2": {
+      "bakeTx": 3187,
+      "gasEth": 0.023980248314750905,
+      "firstTs": 1778252588,
+      "lastTs": 1778442422
+    },
+    "0xa95f04d2b8ac8d1c04e9614f1742021f032b2bdb": {
+      "bakeTx": 4419,
+      "gasEth": 0.03119151660100052,
+      "firstTs": 1778256229,
+      "lastTs": 1778442423
+    },
+    "0x90c1ed16e9b16db7d031f573d20bead430feb107": {
+      "bakeTx": 3997,
+      "gasEth": 0.029760607073501498,
+      "firstTs": 1778252646,
+      "lastTs": 1778442142
+    },
+    "0xa0ed173df43f23902a6be2710b823359211151b1": {
+      "bakeTx": 10016,
+      "gasEth": 0.07475405857849851,
+      "firstTs": 1778252614,
+      "lastTs": 1778423080
+    },
+    "0x6d8a7d0b55774bfa2b941de7707b148172634a16": {
+      "bakeTx": 2501,
+      "gasEth": 0.018641911556500572,
+      "firstTs": 1778256164,
+      "lastTs": 1778435266
+    },
+    "0xc16f030ebbd1f5d9db97171ad0f31ff8c2b50aaa": {
+      "bakeTx": 21544,
+      "gasEth": 0.15958332007151543,
+      "firstTs": 1778254447,
+      "lastTs": 1778443197
+    },
+    "0x36a700798600c44ab116e47df386167a1f0c00ca": {
+      "bakeTx": 516,
+      "gasEth": 0.0033651318637499886,
+      "firstTs": 1778254376,
+      "lastTs": 1778441445
     },
     "0x9c79e23d524a178dcb5fb04fa8367b986376cfca": {
       "bakeTx": 4,
@@ -1656,89 +378,665 @@
       "firstTs": 1778351442,
       "lastTs": 1778361113
     },
+    "0x02d75dd9207a9bf26cbcd7512a20c05bf922baff": {
+      "bakeTx": 14388,
+      "gasEth": 0.0906620993012392,
+      "firstTs": 1778252652,
+      "lastTs": 1778442058
+    },
+    "0x2242e4eadfa6f5c529fe5e3d1a90c267fa377f34": {
+      "bakeTx": 8874,
+      "gasEth": 0.06576662575349965,
+      "firstTs": 1778252787,
+      "lastTs": 1778441791
+    },
+    "0x80b8682ca40a7566d3deef94dc629f3fd2ddef45": {
+      "bakeTx": 17635,
+      "gasEth": 0.13116602938547425,
+      "firstTs": 1778252471,
+      "lastTs": 1778442399
+    },
+    "0x64b849f34824c42cafa93393aed1303b56c1bb09": {
+      "bakeTx": 6016,
+      "gasEth": 0.044777139626751186,
+      "firstTs": 1778255629,
+      "lastTs": 1778441797
+    },
+    "0x92e24154046fda87ff6c3fb2e5461712ecc74de9": {
+      "bakeTx": 16311,
+      "gasEth": 0.12110303840522,
+      "firstTs": 1778252469,
+      "lastTs": 1778442050
+    },
+    "0xca9f0b2d4c4fb0e926d5d825c1c89bd14172f4eb": {
+      "bakeTx": 14383,
+      "gasEth": 0.1068641406769778,
+      "firstTs": 1778252564,
+      "lastTs": 1778442038
+    },
+    "0x3b5b29b8042d47b4c4f90661236cb7bab457eb57": {
+      "bakeTx": 2400,
+      "gasEth": 0.0180495307745006,
+      "firstTs": 1778268665,
+      "lastTs": 1778427927
+    },
+    "0x4d009e4bef5957150497b5290a39ae3617c02032": {
+      "bakeTx": 20870,
+      "gasEth": 0.13765695074947507,
+      "firstTs": 1778252409,
+      "lastTs": 1778442062
+    },
+    "0xc132eb2430236ce43e7398cabccd449244586555": {
+      "bakeTx": 10737,
+      "gasEth": 0.07978993999274198,
+      "firstTs": 1778261256,
+      "lastTs": 1778441773
+    },
+    "0x613be07704992c59ae3ae9130b30a13c1d3a56b1": {
+      "bakeTx": 39933,
+      "gasEth": 0.2503679437481051,
+      "firstTs": 1778252576,
+      "lastTs": 1778442062
+    },
+    "0x06b3e3dc4110e01770a4da6c090cb9924e65b8b2": {
+      "bakeTx": 23211,
+      "gasEth": 0.17233441671424907,
+      "firstTs": 1778252615,
+      "lastTs": 1778442072
+    },
+    "0x22f95fa99f996def34225584040fa33493c3bb61": {
+      "bakeTx": 19284,
+      "gasEth": 0.12120069948922049,
+      "firstTs": 1778255373,
+      "lastTs": 1778442051
+    },
+    "0xd2b7dde5e7f615fd997d027f1a19a5f2069bc6f2": {
+      "bakeTx": 11973,
+      "gasEth": 0.07506148626400301,
+      "firstTs": 1778252511,
+      "lastTs": 1778441764
+    },
+    "0x164cb4eacf03e4635f7c040d28e2fb2f129bb462": {
+      "bakeTx": 42423,
+      "gasEth": 0.26567822522856427,
+      "firstTs": 1778252415,
+      "lastTs": 1778442153
+    },
+    "0x4c29f19da1324c485dd40fd146cbd38956ec3c8c": {
+      "bakeTx": 9738,
+      "gasEth": 0.07115134502875517,
+      "firstTs": 1778272329,
+      "lastTs": 1778442050
+    },
+    "0xd04649b21208cd67426e63c31065401bc6afb909": {
+      "bakeTx": 22665,
+      "gasEth": 0.14241892839323508,
+      "firstTs": 1778252705,
+      "lastTs": 1778442050
+    },
+    "0x84596032e367134926cb74fb530d41fcba6020e6": {
+      "bakeTx": 27312,
+      "gasEth": 0.17248435286076716,
+      "firstTs": 1778252446,
+      "lastTs": 1778442050
+    },
+    "0x92f4b24e91e368fad339c6147e81121ec6ee45db": {
+      "bakeTx": 7065,
+      "gasEth": 0.05272049150875211,
+      "firstTs": 1778252558,
+      "lastTs": 1778441936
+    },
     "0x96eb386c3fbe85f01a7279cd5b7b810575ee2079": {
-      "bakeTx": 6374,
-      "gasEth": 0.047624127179752694,
+      "bakeTx": 14278,
+      "gasEth": 0.10660830265222865,
       "firstTs": 1778292150,
-      "lastTs": 1778360854
+      "lastTs": 1778443197
+    },
+    "0x02323f3fe4c50c1faeaa38e484b71bdbb6c8fb32": {
+      "bakeTx": 22385,
+      "gasEth": 0.1662001370262443,
+      "firstTs": 1778252585,
+      "lastTs": 1778443198
+    },
+    "0x857aa8a26b63adbd3984326e78a023d981dd9ef9": {
+      "bakeTx": 17435,
+      "gasEth": 0.10932833187298943,
+      "firstTs": 1778252405,
+      "lastTs": 1778443198
+    },
+    "0xf0e2667d49f71d8a5f42492643a7926e935d4210": {
+      "bakeTx": 14788,
+      "gasEth": 0.0926278779919984,
+      "firstTs": 1778252561,
+      "lastTs": 1778443197
+    },
+    "0x99f32a7fecd5523231e9cc5f3a3cec04187c2409": {
+      "bakeTx": 14764,
+      "gasEth": 0.09249998275849831,
+      "firstTs": 1778252561,
+      "lastTs": 1778443197
+    },
+    "0x69c7ed0f6145dcbb5aed30254494b1d24755d51e": {
+      "bakeTx": 14693,
+      "gasEth": 0.09203671511374807,
+      "firstTs": 1778252561,
+      "lastTs": 1778443197
+    },
+    "0x355871f5a1fd8f39ec088443fad80b3020b1f34a": {
+      "bakeTx": 14780,
+      "gasEth": 0.09258620391849776,
+      "firstTs": 1778252561,
+      "lastTs": 1778443197
+    },
+    "0x5c2a0b64591e3a228ca2d0d281dfe0dfe55666b5": {
+      "bakeTx": 13587,
+      "gasEth": 0.085127278490752,
+      "firstTs": 1778252561,
+      "lastTs": 1778443197
     },
     "0xe113789adda6b1b836c1365315e244d736663576": {
-      "bakeTx": 5783,
-      "gasEth": 0.04318527838325252,
+      "bakeTx": 13490,
+      "gasEth": 0.1007814555819825,
       "firstTs": 1778294828,
-      "lastTs": 1778360827
+      "lastTs": 1778443197
+    },
+    "0x8045784a3a7209a24eb09a5a2bc4f9e6fb67782b": {
+      "bakeTx": 14753,
+      "gasEth": 0.11005482623397882,
+      "firstTs": 1778257688,
+      "lastTs": 1778443198
+    },
+    "0x772fd8be8ac7ec0d388dca3df654173346c6887b": {
+      "bakeTx": 2198,
+      "gasEth": 0.016337884590750272,
+      "firstTs": 1778252933,
+      "lastTs": 1778442144
+    },
+    "0xa739151392f321f876d82f1780e8ff369be2a71c": {
+      "bakeTx": 14818,
+      "gasEth": 0.09301894238373784,
+      "firstTs": 1778255540,
+      "lastTs": 1778441999
     },
     "0x917c1aae361c00520d5afea7277338bbb7edd68c": {
-      "bakeTx": 3321,
-      "gasEth": 0.024842527699251157,
+      "bakeTx": 11159,
+      "gasEth": 0.08340527643724077,
       "firstTs": 1778325678,
-      "lastTs": 1778360821
+      "lastTs": 1778443198
     },
     "0x13d3ed54b5daf97b0f8ccae55cdcb2d54eea8365": {
-      "bakeTx": 2649,
-      "gasEth": 0.01981015673475078,
+      "bakeTx": 11676,
+      "gasEth": 0.08699500142698631,
       "firstTs": 1778329022,
-      "lastTs": 1778360820
+      "lastTs": 1778443199
+    },
+    "0xcf6a641c04dc513743eb415581e142997729cbde": {
+      "bakeTx": 22869,
+      "gasEth": 0.14565725876123825,
+      "firstTs": 1778252444,
+      "lastTs": 1778443198
+    },
+    "0x679b671adccac0589ca101b826064367f437a505": {
+      "bakeTx": 12081,
+      "gasEth": 0.09013535423248546,
+      "firstTs": 1778269309,
+      "lastTs": 1778443200
+    },
+    "0x0e7b7aa24868689ae846ceead6aed450c8f8c014": {
+      "bakeTx": 44927,
+      "gasEth": 0.28167290635252146,
+      "firstTs": 1778260402,
+      "lastTs": 1778443199
+    },
+    "0x2c53d33fd90fc8d5fe5cac986db81ba7f3b9aae6": {
+      "bakeTx": 21237,
+      "gasEth": 0.15805423175474084,
+      "firstTs": 1778274805,
+      "lastTs": 1778443200
+    },
+    "0xabf793be9dbc4c6fb90485552dd223d242166984": {
+      "bakeTx": 42490,
+      "gasEth": 0.26676384621455984,
+      "firstTs": 1778252409,
+      "lastTs": 1778443199
+    },
+    "0x145ab073125852a639e40e2bbeb68d5964f9cc16": {
+      "bakeTx": 45116,
+      "gasEth": 0.28304488825301516,
+      "firstTs": 1778252414,
+      "lastTs": 1778443199
+    },
+    "0x35a1ea8fb1c4db295820301970f5207803cdc65c": {
+      "bakeTx": 37787,
+      "gasEth": 0.23700446709034292,
+      "firstTs": 1778253229,
+      "lastTs": 1778443199
+    },
+    "0xcd7f03591dd0ea58054a2cfc77dc682a0276a0c0": {
+      "bakeTx": 48344,
+      "gasEth": 0.30303045073023716,
+      "firstTs": 1778252444,
+      "lastTs": 1778443199
+    },
+    "0xdb65734df1db12ee8027d774c3228753d568fd9a": {
+      "bakeTx": 46547,
+      "gasEth": 0.2919421584620114,
+      "firstTs": 1778252412,
+      "lastTs": 1778443199
+    },
+    "0x6968c93abfdf34e9ec6b2609501cfeb465d6532a": {
+      "bakeTx": 49468,
+      "gasEth": 0.31000706057096916,
+      "firstTs": 1778258716,
+      "lastTs": 1778443200
+    },
+    "0x6052354efe95df428da38efa36be764d3eea6bdb": {
+      "bakeTx": 39783,
+      "gasEth": 0.2500266963031073,
+      "firstTs": 1778252495,
+      "lastTs": 1778443199
+    },
+    "0xade5cb66b3c18b845ac463b2e88ef9ddc7e2205d": {
+      "bakeTx": 36057,
+      "gasEth": 0.22634345351282936,
+      "firstTs": 1778252411,
+      "lastTs": 1778443198
+    },
+    "0x23687cc01340c1abe99bbbec57092782142895b2": {
+      "bakeTx": 44245,
+      "gasEth": 0.2775197373222815,
+      "firstTs": 1778261621,
+      "lastTs": 1778443199
+    },
+    "0x808d581031c8a39f861df563b35e2c8f548f7b59": {
+      "bakeTx": 37341,
+      "gasEth": 0.23399049975209102,
+      "firstTs": 1778252421,
+      "lastTs": 1778443199
+    },
+    "0xdfb3296753e8a91c7d2e47da0e3d677cd20c9729": {
+      "bakeTx": 45411,
+      "gasEth": 0.2845819449137578,
+      "firstTs": 1778252444,
+      "lastTs": 1778443199
     },
     "0x34b04d588e29334180a1052add4c219356759e85": {
-      "bakeTx": 6899,
-      "gasEth": 0.043265349253749925,
+      "bakeTx": 27110,
+      "gasEth": 0.16988563965927028,
       "firstTs": 1778333832,
-      "lastTs": 1778360810
+      "lastTs": 1778443199
+    },
+    "0x9c05ab42086d3f044e599ec02a8d33f58ab90699": {
+      "bakeTx": 31339,
+      "gasEth": 0.19664336483004746,
+      "firstTs": 1778252950,
+      "lastTs": 1778442789
     },
     "0xc1166a3a433f9e3684669fd6d885dfd504509492": {
-      "bakeTx": 4251,
-      "gasEth": 0.02672049939849757,
+      "bakeTx": 15679,
+      "gasEth": 0.09844621398973206,
       "firstTs": 1778336195,
-      "lastTs": 1778360810
+      "lastTs": 1778434259
+    },
+    "0x4ed266c11f8fd74712862ea3545dbf32a6928c60": {
+      "bakeTx": 32232,
+      "gasEth": 0.20268897569505362,
+      "firstTs": 1778252533,
+      "lastTs": 1778443199
+    },
+    "0x02e81e1def6662a1b53a013714bf1d096dce1bc5": {
+      "bakeTx": 45551,
+      "gasEth": 0.28584265371576284,
+      "firstTs": 1778252646,
+      "lastTs": 1778443199
     },
     "0xff7a38c01cefe1aa86014b9a4ff9a79e8727c562": {
-      "bakeTx": 9489,
-      "gasEth": 0.05920577820700021,
+      "bakeTx": 23295,
+      "gasEth": 0.14580809954573545,
       "firstTs": 1778335818,
-      "lastTs": 1778360810
+      "lastTs": 1778428752
+    },
+    "0x143b15a260c492054c8adba3865773f4bebb5574": {
+      "bakeTx": 32396,
+      "gasEth": 0.20755020645356587,
+      "firstTs": 1778264089,
+      "lastTs": 1778443198
+    },
+    "0x29b5e36b814a5640b484e097d2d5a432c0f112e9": {
+      "bakeTx": 31626,
+      "gasEth": 0.19858361202279368,
+      "firstTs": 1778252419,
+      "lastTs": 1778442208
+    },
+    "0x51f6597d191f171cf2104b3a763f5a7202f7300c": {
+      "bakeTx": 45639,
+      "gasEth": 0.28630526921751387,
+      "firstTs": 1778252408,
+      "lastTs": 1778443199
+    },
+    "0xb98f499ae96b2c1b19fb43bfbbfc832600a16527": {
+      "bakeTx": 49552,
+      "gasEth": 0.3110932192174667,
+      "firstTs": 1778252457,
+      "lastTs": 1778443199
+    },
+    "0x30ebfb2eb34492b2bd5e68bda4138366844ef0bc": {
+      "bakeTx": 37866,
+      "gasEth": 0.23746232957734187,
+      "firstTs": 1778260033,
+      "lastTs": 1778443199
+    },
+    "0xa6bd14d2861b2261d1fe5b544a5f771ca46c24ae": {
+      "bakeTx": 36125,
+      "gasEth": 0.22684735262582936,
+      "firstTs": 1778252610,
+      "lastTs": 1778443200
+    },
+    "0xd564d3f5e1322ce77c2192ac28b7e74d86b0a231": {
+      "bakeTx": 36089,
+      "gasEth": 0.22642522379233265,
+      "firstTs": 1778252690,
+      "lastTs": 1778443200
     },
     "0xbb7bcd4d6b53a92105f6eed1c7b176e31544623a": {
-      "bakeTx": 7644,
-      "gasEth": 0.04793927361025146,
+      "bakeTx": 26831,
+      "gasEth": 0.16814394136677027,
       "firstTs": 1778330767,
-      "lastTs": 1778360810
+      "lastTs": 1778443199
+    },
+    "0xe44fcf259aece69b77fb8bd3bdbe9c56a4e1d24e": {
+      "bakeTx": 39586,
+      "gasEth": 0.24808805277036267,
+      "firstTs": 1778252410,
+      "lastTs": 1778443199
+    },
+    "0xf2f7e708ef447f9a445120ea0dcf5b4b5d19ac1b": {
+      "bakeTx": 59026,
+      "gasEth": 0.3693220319601272,
+      "firstTs": 1778262240,
+      "lastTs": 1778443200
+    },
+    "0xc2b5252581849d437c0f4d67d6392617fc93037a": {
+      "bakeTx": 46058,
+      "gasEth": 0.2893448695042676,
+      "firstTs": 1778252466,
+      "lastTs": 1778443198
+    },
+    "0xe134e9dbf5cc2f6a17026fd5b24135dff946b52f": {
+      "bakeTx": 31951,
+      "gasEth": 0.2008300332498012,
+      "firstTs": 1778268173,
+      "lastTs": 1778443200
+    },
+    "0xb5748a472adfa371244cdc5a0a13189410cf8097": {
+      "bakeTx": 39888,
+      "gasEth": 0.24993534791085897,
+      "firstTs": 1778269939,
+      "lastTs": 1778443199
     },
     "0x1485128bfd62f724daf4e264c0c37154af03ab98": {
-      "bakeTx": 2868,
-      "gasEth": 0.019011797636000236,
+      "bakeTx": 11732,
+      "gasEth": 0.07482824844224698,
       "firstTs": 1778331395,
-      "lastTs": 1778360808
+      "lastTs": 1778442214
+    },
+    "0xa97a257e04a0da6b5146bf8a22796ec73049570f": {
+      "bakeTx": 25950,
+      "gasEth": 0.16337842653049922,
+      "firstTs": 1778252695,
+      "lastTs": 1778443188
+    },
+    "0xfdb925059dee21c6c07eab0402ab2a00328340d6": {
+      "bakeTx": 6042,
+      "gasEth": 0.04502699876900191,
+      "firstTs": 1778252553,
+      "lastTs": 1778442140
+    },
+    "0xeec92fab74ba83d53c6cca91779ae20f9d2bea44": {
+      "bakeTx": 5214,
+      "gasEth": 0.038841336755751674,
+      "firstTs": 1778252501,
+      "lastTs": 1778442144
+    },
+    "0x823b96bf4af65546e8f13f2b5e6b56dd280e65b1": {
+      "bakeTx": 4042,
+      "gasEth": 0.030321530870001348,
+      "firstTs": 1778257891,
+      "lastTs": 1778442172
     },
     "0xfeab5b9e34c389e810388a3f7967d44cf5e87912": {
-      "bakeTx": 2451,
-      "gasEth": 0.01819849096900074,
+      "bakeTx": 5386,
+      "gasEth": 0.03998831719425216,
       "firstTs": 1778292624,
-      "lastTs": 1778360645
+      "lastTs": 1778443198
+    },
+    "0xbbb7ddda9d659a8d4da56c41bd707ac591070a8f": {
+      "bakeTx": 7186,
+      "gasEth": 0.05364954355800275,
+      "firstTs": 1778254287,
+      "lastTs": 1778442089
+    },
+    "0xb5c0dfa2aaacc2dc8e1bbac100fd9ddda4c9d078": {
+      "bakeTx": 6406,
+      "gasEth": 0.0477289804797521,
+      "firstTs": 1778254832,
+      "lastTs": 1778443199
+    },
+    "0x2a709980becb22f0c6c9583b868870945bd6c779": {
+      "bakeTx": 12462,
+      "gasEth": 0.09266727209898602,
+      "firstTs": 1778252444,
+      "lastTs": 1778442139
+    },
+    "0x99ece13e2b91da7998c0dce0b78069b6cf274683": {
+      "bakeTx": 5872,
+      "gasEth": 0.043669731625502306,
+      "firstTs": 1778252496,
+      "lastTs": 1778442155
+    },
+    "0xdaf59fb31903d63189b94f451a9c1a0b0f991752": {
+      "bakeTx": 10924,
+      "gasEth": 0.08160303563574167,
+      "firstTs": 1778252614,
+      "lastTs": 1778442157
+    },
+    "0xb54afd36dec739dfc6d4817dbfe9b8ca4da9aa5a": {
+      "bakeTx": 5749,
+      "gasEth": 0.038108719979252,
+      "firstTs": 1778258164,
+      "lastTs": 1778442028
+    },
+    "0x295637ccc344594dfe70bc086a835b900c9fa742": {
+      "bakeTx": 12159,
+      "gasEth": 0.07624324431399707,
+      "firstTs": 1778252416,
+      "lastTs": 1778442142
+    },
+    "0x5fa31e99fc05f8ece97c8090f279ad65b65e9f1b": {
+      "bakeTx": 3705,
+      "gasEth": 0.023182075827000825,
+      "firstTs": 1778265741,
+      "lastTs": 1778377302
+    },
+    "0x3f064dfdbde340f87944ca481e1ba6b448f824fa": {
+      "bakeTx": 15445,
+      "gasEth": 0.11451749082949766,
+      "firstTs": 1778252419,
+      "lastTs": 1778440719
+    },
+    "0x7a36b3eed01712e1336eccaaa1f35e09ddc9d56b": {
+      "bakeTx": 19509,
+      "gasEth": 0.12238606681496458,
+      "firstTs": 1778252404,
+      "lastTs": 1778442209
+    },
+    "0x47fa6bf54cd87abc280989293ed7a4ddba94d1ef": {
+      "bakeTx": 12889,
+      "gasEth": 0.09571974981173782,
+      "firstTs": 1778260321,
+      "lastTs": 1778427848
+    },
+    "0x68d8c0524a2175fba446adf3fbace949c9023be4": {
+      "bakeTx": 6760,
+      "gasEth": 0.05035284793000103,
+      "firstTs": 1778277571,
+      "lastTs": 1778442796
+    },
+    "0xc095ffdf70c124514b267144640eede87b317c5d": {
+      "bakeTx": 10682,
+      "gasEth": 0.07959137557175212,
+      "firstTs": 1778252481,
+      "lastTs": 1778441780
+    },
+    "0xae44abde9b1e06d8bc81eb0d55a522691bd34e28": {
+      "bakeTx": 9810,
+      "gasEth": 0.07284562801825638,
+      "firstTs": 1778252554,
+      "lastTs": 1778441799
+    },
+    "0x846e830e1e783e2c5d6459924d16730dfc7a8f78": {
+      "bakeTx": 7407,
+      "gasEth": 0.0465064165680008,
+      "firstTs": 1778254354,
+      "lastTs": 1778441731
+    },
+    "0x20c6872a24e485caf957c673a9b6f67f7e3ebe4d": {
+      "bakeTx": 11140,
+      "gasEth": 0.08298413387275015,
+      "firstTs": 1778252478,
+      "lastTs": 1778441792
     },
     "0x8394b66f1ee0523a85c5d8b1d2139f846958f288": {
-      "bakeTx": 535,
-      "gasEth": 0.003295714155499974,
+      "bakeTx": 2135,
+      "gasEth": 0.013197988312500342,
       "firstTs": 1778352077,
-      "lastTs": 1778359902
+      "lastTs": 1778432594
+    },
+    "0xb611764b91ede21978a9598240e7c47ec83915b0": {
+      "bakeTx": 2468,
+      "gasEth": 0.018438099447750773,
+      "firstTs": 1778252817,
+      "lastTs": 1778441578
+    },
+    "0x5328a88c3f9e07a3bdfd8c5d898c21c18c82f596": {
+      "bakeTx": 31837,
+      "gasEth": 0.199738673387296,
+      "firstTs": 1778252411,
+      "lastTs": 1778442348
+    },
+    "0x3acc7f2a78694c217b628bc52b4b1528d3e69765": {
+      "bakeTx": 15183,
+      "gasEth": 0.09522880609048702,
+      "firstTs": 1778255090,
+      "lastTs": 1778443199
     },
     "0x1f1e4129530a7665bb69a3387069cba1fb042ec0": {
-      "bakeTx": 4,
-      "gasEth": 0.000033468619500000003,
+      "bakeTx": 10,
+      "gasEth": 0.000086524878,
       "firstTs": 1778359573,
-      "lastTs": 1778359636
+      "lastTs": 1778441033
     },
     "0x23c86cf591f82c42177496e2662227c3d314822e": {
-      "bakeTx": 222,
-      "gasEth": 0.0016307857007499967,
+      "bakeTx": 302,
+      "gasEth": 0.002218077712999999,
       "firstTs": 1778358344,
-      "lastTs": 1778359250
+      "lastTs": 1778443199
+    },
+    "0x9cbb72624accfa89f0e993ea649c81a67d6a2985": {
+      "bakeTx": 6605,
+      "gasEth": 0.041983052174501816,
+      "firstTs": 1778252523,
+      "lastTs": 1778442470
     },
     "0x66a3c171e02b77b2feaa4cc78ca08f03ab633f5a": {
-      "bakeTx": 578,
-      "gasEth": 0.0036708591899999926,
+      "bakeTx": 2085,
+      "gasEth": 0.013159353771999853,
       "firstTs": 1778294855,
-      "lastTs": 1778359084
+      "lastTs": 1778442456
+    },
+    "0x7e2e92ed93bbb859b6d191059a1725509ac52609": {
+      "bakeTx": 8974,
+      "gasEth": 0.05640289560275235,
+      "firstTs": 1778252422,
+      "lastTs": 1778443199
+    },
+    "0x0aba1ca18a9259a1e23dc5adf1696c3eef4e0a44": {
+      "bakeTx": 8191,
+      "gasEth": 0.05144952421500084,
+      "firstTs": 1778252449,
+      "lastTs": 1778443199
+    },
+    "0x675045ba37b4ee027f6549ab18fbd5cc4cd8a1de": {
+      "bakeTx": 3012,
+      "gasEth": 0.018975692208500355,
+      "firstTs": 1778254416,
+      "lastTs": 1778442446
+    },
+    "0x011ceb40eaadba6a5c479c234bf6f49017a4bdce": {
+      "bakeTx": 3278,
+      "gasEth": 0.0207168598995008,
+      "firstTs": 1778252736,
+      "lastTs": 1778443198
+    },
+    "0x700d7b774f5af65d26e5b9ae969ca9611ff80f6d": {
+      "bakeTx": 43297,
+      "gasEth": 0.2765837031527035,
+      "firstTs": 1778274002,
+      "lastTs": 1778443199
+    },
+    "0x39b0f1109efdb6ac207e93e15eb749bcfaa819f4": {
+      "bakeTx": 3013,
+      "gasEth": 0.018984401521250357,
+      "firstTs": 1778254418,
+      "lastTs": 1778442448
+    },
+    "0xace4fd0f8ff152d0ebbf01d6b6263f7e9745deb6": {
+      "bakeTx": 5660,
+      "gasEth": 0.035712823205501336,
+      "firstTs": 1778252571,
+      "lastTs": 1778442467
+    },
+    "0x0b9e736d606e9ab0e53b3d055db79dfeaf9357fc": {
+      "bakeTx": 3006,
+      "gasEth": 0.018958018825500363,
+      "firstTs": 1778254418,
+      "lastTs": 1778442446
+    },
+    "0xe516ce9be683433d21911dff80f11194599eac6f": {
+      "bakeTx": 11907,
+      "gasEth": 0.08826637918349346,
+      "firstTs": 1778252463,
+      "lastTs": 1778429790
+    },
+    "0xb0768fce2454daed6b58c5d21c91d9a34b27a83d": {
+      "bakeTx": 1001,
+      "gasEth": 0.006345357227249955,
+      "firstTs": 1778271436,
+      "lastTs": 1778438665
+    },
+    "0x558d33783239d6fbd124815e152c07be34341d64": {
+      "bakeTx": 6241,
+      "gasEth": 0.04643198099675275,
+      "firstTs": 1778261965,
+      "lastTs": 1778439440
+    },
+    "0x45bd8333511aee96f445670de862620a8f8cc54c": {
+      "bakeTx": 630,
+      "gasEth": 0.00474324817099997,
+      "firstTs": 1778278632,
+      "lastTs": 1778441594
+    },
+    "0x2ec98a3185ab60eb381d17f0574eed028b2ff718": {
+      "bakeTx": 7631,
+      "gasEth": 0.05567111816850195,
+      "firstTs": 1778252444,
+      "lastTs": 1778442425
+    },
+    "0x2c02e08770cf54d8cb6f25e82a74393b77ae079d": {
+      "bakeTx": 15515,
+      "gasEth": 0.1153346471854718,
+      "firstTs": 1778255301,
+      "lastTs": 1778442058
     },
     "0x5427abc54440ee65b69eb5b4561f1a07b124b619": {
       "bakeTx": 4022,
@@ -1746,119 +1044,461 @@
       "firstTs": 1778325746,
       "lastTs": 1778358004
     },
+    "0x9dbf523263b80b201d758f9044efcf80698d3232": {
+      "bakeTx": 7688,
+      "gasEth": 0.057360889868753484,
+      "firstTs": 1778257757,
+      "lastTs": 1778438346
+    },
+    "0x7706457ecbe3dfe5b9dcb90032658e2793e48f92": {
+      "bakeTx": 9117,
+      "gasEth": 0.0656012891767501,
+      "firstTs": 1778252410,
+      "lastTs": 1778442424
+    },
+    "0x91972e34cc6d380dcbf64061e7b3e5b84aaec442": {
+      "bakeTx": 3801,
+      "gasEth": 0.028276034575501374,
+      "firstTs": 1778257280,
+      "lastTs": 1778441607
+    },
     "0x99bfa1f0e5b769a814e988350562751e5fc365b3": {
-      "bakeTx": 2772,
-      "gasEth": 0.019793766822750504,
+      "bakeTx": 8386,
+      "gasEth": 0.05936384537125137,
       "firstTs": 1778316763,
-      "lastTs": 1778357879
+      "lastTs": 1778442424
+    },
+    "0x476824a91e245ff632eef9080a82b9dab2fbb3bc": {
+      "bakeTx": 898,
+      "gasEth": 0.00568607708049996,
+      "firstTs": 1778270563,
+      "lastTs": 1778434878
+    },
+    "0xc19db0550147cf2ae1cd0f787af8a9ff8cce9dbb": {
+      "bakeTx": 15055,
+      "gasEth": 0.1005041234452267,
+      "firstTs": 1778252613,
+      "lastTs": 1778442148
+    },
+    "0x3e835c009cb879751c7606348e7ef2f33b6b5244": {
+      "bakeTx": 8938,
+      "gasEth": 0.05675839906025243,
+      "firstTs": 1778252573,
+      "lastTs": 1778442033
+    },
+    "0x5f83f36e73970fdb77921f37ae87cf449399d31c": {
+      "bakeTx": 7385,
+      "gasEth": 0.05503407631525304,
+      "firstTs": 1778254273,
+      "lastTs": 1778442089
+    },
+    "0x0ab815e54f7be0400464eda9660c72b5e14e7780": {
+      "bakeTx": 2657,
+      "gasEth": 0.01981500228575075,
+      "firstTs": 1778253280,
+      "lastTs": 1778439356
+    },
+    "0x933414d6d4d25c18fa45eb51dc98d76474759f5f": {
+      "bakeTx": 1310,
+      "gasEth": 0.009788723309250002,
+      "firstTs": 1778252445,
+      "lastTs": 1778386551
+    },
+    "0xcf9437320ed8b11db5554c14e5c93f1d1c4f4d79": {
+      "bakeTx": 3966,
+      "gasEth": 0.029575557786751087,
+      "firstTs": 1778252411,
+      "lastTs": 1778443198
+    },
+    "0x0bc4bcaa440b48f807048c979c2b6576f88e4aa8": {
+      "bakeTx": 6770,
+      "gasEth": 0.04773377431000083,
+      "firstTs": 1778253909,
+      "lastTs": 1778429391
+    },
+    "0xb38e19ed7412c4095bfdde6064ad93807b983fab": {
+      "bakeTx": 7911,
+      "gasEth": 0.05846200364025365,
+      "firstTs": 1778252511,
+      "lastTs": 1778442039
+    },
+    "0xfe69bfea6d974db7a555a4a8574afecb079eabea": {
+      "bakeTx": 2362,
+      "gasEth": 0.01759259306175063,
+      "firstTs": 1778252855,
+      "lastTs": 1778412561
+    },
+    "0x0025f5c452b9a7627dc5664a251208a4b0b7972c": {
+      "bakeTx": 6693,
+      "gasEth": 0.049438895307998505,
+      "firstTs": 1778272936,
+      "lastTs": 1778443197
+    },
+    "0x1a12ab7a6f66c54fd173cb5133b4949c2e452544": {
+      "bakeTx": 554,
+      "gasEth": 0.003497106565749991,
+      "firstTs": 1778268768,
+      "lastTs": 1778424029
+    },
+    "0x19f45156a8d3687f94ee64135ed60210859634a3": {
+      "bakeTx": 8236,
+      "gasEth": 0.06131965566800347,
+      "firstTs": 1778257995,
+      "lastTs": 1778442471
+    },
+    "0xb1c6b9f791e3679fd811a9fe456718fa64d64fa4": {
+      "bakeTx": 2930,
+      "gasEth": 0.021859866528250727,
+      "firstTs": 1778252444,
+      "lastTs": 1778439060
+    },
+    "0xbcc25906731d49d7b56d51690cde18389c1527dc": {
+      "bakeTx": 8264,
+      "gasEth": 0.06161494495050405,
+      "firstTs": 1778254122,
+      "lastTs": 1778442451
     },
     "0x53d15a0bc2535a1e7581a992724e7c8b7067e322": {
-      "bakeTx": 2765,
-      "gasEth": 0.020568856606750903,
+      "bakeTx": 4851,
+      "gasEth": 0.03609322081475221,
       "firstTs": 1778311207,
-      "lastTs": 1778355657
+      "lastTs": 1778439731
+    },
+    "0xeb2207f97a0ca2de5b47367c7b744fdf72d38ae7": {
+      "bakeTx": 9940,
+      "gasEth": 0.07013314658799684,
+      "firstTs": 1778254199,
+      "lastTs": 1778442062
+    },
+    "0xf826a34de2ac2616d65390a3abd57a2457d2e554": {
+      "bakeTx": 1727,
+      "gasEth": 0.012935867370500254,
+      "firstTs": 1778253607,
+      "lastTs": 1778441868
+    },
+    "0x08b40c6a85c647a55c7bec29d5e7e18211670a86": {
+      "bakeTx": 886,
+      "gasEth": 0.00657835060850001,
+      "firstTs": 1778257426,
+      "lastTs": 1778439493
     },
     "0x467cf21975dbec9db23ce59107123a8a8a9854c1": {
-      "bakeTx": 273,
-      "gasEth": 0.0020165640327499943,
+      "bakeTx": 785,
+      "gasEth": 0.005805509568500058,
       "firstTs": 1778349798,
-      "lastTs": 1778355278
+      "lastTs": 1778425404
+    },
+    "0x078af12db05d996bd803d7b758585eca600784cf": {
+      "bakeTx": 7302,
+      "gasEth": 0.054539605944753086,
+      "firstTs": 1778283568,
+      "lastTs": 1778419802
+    },
+    "0x549300f79fb33ba2e77344e58b064ede194ef99a": {
+      "bakeTx": 9662,
+      "gasEth": 0.07163764958424648,
+      "firstTs": 1778264526,
+      "lastTs": 1778411174
+    },
+    "0xf0a1fb62bdb5a55ac01b21f4a86eba000aa9a4be": {
+      "bakeTx": 4372,
+      "gasEth": 0.03242946727750086,
+      "firstTs": 1778264800,
+      "lastTs": 1778439487
+    },
+    "0xaafc32b2c918524e53816aeea56029c93733a03b": {
+      "bakeTx": 10446,
+      "gasEth": 0.06564105487675409,
+      "firstTs": 1778254853,
+      "lastTs": 1778439484
+    },
+    "0x6ea07ab303b8802453475becdb9bf40204375136": {
+      "bakeTx": 1948,
+      "gasEth": 0.014480002036250248,
+      "firstTs": 1778255095,
+      "lastTs": 1778439517
     },
     "0x060941f82f3dd29542a5e56696a51525dfd9cfbc": {
-      "bakeTx": 992,
-      "gasEth": 0.0073587975852500345,
+      "bakeTx": 1980,
+      "gasEth": 0.01467876754824984,
       "firstTs": 1778298111,
-      "lastTs": 1778354128
+      "lastTs": 1778407414
     },
     "0x7c9856f4a519498795b400a9542df2c7084a33b6": {
-      "bakeTx": 1056,
-      "gasEth": 0.007852462415249978,
+      "bakeTx": 1529,
+      "gasEth": 0.011367823328750097,
       "firstTs": 1778327419,
-      "lastTs": 1778354099
+      "lastTs": 1778407483
     },
     "0xcfb600b09105865844b5e692baf6f911999e3a69": {
-      "bakeTx": 1059,
-      "gasEth": 0.00787492483199998,
+      "bakeTx": 1520,
+      "gasEth": 0.011301830909750092,
       "firstTs": 1778327444,
-      "lastTs": 1778354098
+      "lastTs": 1778407483
     },
     "0x8950e4f22b02f56db198b910c140804a39a5f437": {
-      "bakeTx": 1048,
-      "gasEth": 0.007790261584249979,
+      "bakeTx": 1514,
+      "gasEth": 0.011251037694250093,
       "firstTs": 1778327457,
-      "lastTs": 1778354096
+      "lastTs": 1778407428
     },
     "0x6241a90f0a85ca5ad6d6d6ddc3040ea4f1ed658e": {
-      "bakeTx": 1057,
-      "gasEth": 0.007823643233250136,
+      "bakeTx": 2593,
+      "gasEth": 0.01929364422950096,
       "firstTs": 1778328258,
-      "lastTs": 1778354095
+      "lastTs": 1778415134
     },
     "0xb63abe4ffea28a84ad5fdc2bb0c494e4bd124e6c": {
-      "bakeTx": 25,
-      "gasEth": 0.00019576625150000002,
+      "bakeTx": 416,
+      "gasEth": 0.0030652073070000117,
       "firstTs": 1778345936,
-      "lastTs": 1778354094
+      "lastTs": 1778430548
     },
     "0xc3b796dd5b15aa2a70b588f89a9cc32269861eb0": {
-      "bakeTx": 1054,
-      "gasEth": 0.007811796828500136,
+      "bakeTx": 2589,
+      "gasEth": 0.019274513887000973,
       "firstTs": 1778328176,
-      "lastTs": 1778354092
+      "lastTs": 1778415143
     },
     "0xa604a08ada854d360b6e1131fe0c35645f74f393": {
-      "bakeTx": 1054,
-      "gasEth": 0.007800621933750134,
+      "bakeTx": 2576,
+      "gasEth": 0.01916886613275096,
       "firstTs": 1778328265,
-      "lastTs": 1778354087
+      "lastTs": 1778415145
     },
     "0x9a41eaab99ec208f995366834bd04334777bed9f": {
-      "bakeTx": 1078,
-      "gasEth": 0.007982280004500124,
+      "bakeTx": 2601,
+      "gasEth": 0.019355040606000944,
       "firstTs": 1778328148,
-      "lastTs": 1778354086
+      "lastTs": 1778415142
     },
     "0xcdc7ba85cd1b815bd1fdf851da2ba93a8f3f0c17": {
-      "bakeTx": 1040,
-      "gasEth": 0.007700941568500133,
+      "bakeTx": 2573,
+      "gasEth": 0.019155407244250952,
       "firstTs": 1778328256,
-      "lastTs": 1778354086
+      "lastTs": 1778415138
     },
     "0x2f37e2ab03139ddb7a33b350ca89d3fd3ca28807": {
-      "bakeTx": 1049,
-      "gasEth": 0.0077614785117501315,
+      "bakeTx": 2535,
+      "gasEth": 0.01885991021900093,
       "firstTs": 1778328250,
-      "lastTs": 1778354085
+      "lastTs": 1778415139
     },
     "0xde0bd9f6c587d40df6dc86bdf232eb3b18d09b35": {
-      "bakeTx": 1074,
-      "gasEth": 0.007957244039250124,
+      "bakeTx": 2606,
+      "gasEth": 0.019418972747250955,
       "firstTs": 1778328129,
-      "lastTs": 1778354085
+      "lastTs": 1778415153
     },
     "0xbe24e6213f9b5fa0f1b4f70d8d48ba17bb222a24": {
-      "bakeTx": 1076,
-      "gasEth": 0.008003978736999989,
+      "bakeTx": 1536,
+      "gasEth": 0.011424528321000101,
       "firstTs": 1778327305,
-      "lastTs": 1778354077
+      "lastTs": 1778407397
+    },
+    "0x6c125e2d0b926698a99999588af1c09ad3a467bd": {
+      "bakeTx": 1846,
+      "gasEth": 0.013699593657750048,
+      "firstTs": 1778271808,
+      "lastTs": 1778402873
+    },
+    "0xabd4f258d163878bf31790bf71903a846cfe5ca9": {
+      "bakeTx": 6390,
+      "gasEth": 0.04784411485125257,
+      "firstTs": 1778252456,
+      "lastTs": 1778433061
+    },
+    "0xbb7048b5d9d2bf071971a8feb7e7113bca2bbb15": {
+      "bakeTx": 5788,
+      "gasEth": 0.04335325575000223,
+      "firstTs": 1778252463,
+      "lastTs": 1778433073
+    },
+    "0x3e55508ec605017106bcd320c4b17aeaeef8a3de": {
+      "bakeTx": 5116,
+      "gasEth": 0.038020747825252055,
+      "firstTs": 1778252419,
+      "lastTs": 1778407958
+    },
+    "0x5b86b7027d2657921bd70eff438ff5936862a699": {
+      "bakeTx": 5112,
+      "gasEth": 0.03817966768050185,
+      "firstTs": 1778252458,
+      "lastTs": 1778433069
+    },
+    "0x4e9232c76680707a6a5c13a36a6e4a99ccaf2425": {
+      "bakeTx": 5004,
+      "gasEth": 0.03736614820275184,
+      "firstTs": 1778252497,
+      "lastTs": 1778433069
+    },
+    "0xdd46472aae4a21b3ca2a4e352d9871cb5de0b409": {
+      "bakeTx": 2933,
+      "gasEth": 0.021831532426250824,
+      "firstTs": 1778256826,
+      "lastTs": 1778419493
     },
     "0xbf629b8ecc8f294ceaf4f212ecb7a163b8c9a6d1": {
-      "bakeTx": 1210,
-      "gasEth": 0.009003614360749998,
+      "bakeTx": 2902,
+      "gasEth": 0.021457977793500824,
       "firstTs": 1778312982,
-      "lastTs": 1778352848
+      "lastTs": 1778442612
+    },
+    "0x187171802b74c51a70dba26f693ef212b3196bd2": {
+      "bakeTx": 4170,
+      "gasEth": 0.031268675317251374,
+      "firstTs": 1778252805,
+      "lastTs": 1778439892
+    },
+    "0x7f6e2f5e24f3eb7b2f12a46b7b2bbe871c3303c1": {
+      "bakeTx": 3132,
+      "gasEth": 0.02338284654750074,
+      "firstTs": 1778252415,
+      "lastTs": 1778427054
+    },
+    "0xc10cf7b68722e94200244a8b2ce5f8e58a9d89aa": {
+      "bakeTx": 2526,
+      "gasEth": 0.018836794799500563,
+      "firstTs": 1778252506,
+      "lastTs": 1778439175
+    },
+    "0x3bccc7b37f738ee4981269b8bd881ee89423a751": {
+      "bakeTx": 4081,
+      "gasEth": 0.03046323599625133,
+      "firstTs": 1778252444,
+      "lastTs": 1778441218
+    },
+    "0x37ca4d6167a9ce0d32fb8967321c36575bc1208e": {
+      "bakeTx": 3474,
+      "gasEth": 0.025837030660750458,
+      "firstTs": 1778260157,
+      "lastTs": 1778443198
+    },
+    "0xeed31ae6b17f2bec4fa523a75694e817b700af1d": {
+      "bakeTx": 3169,
+      "gasEth": 0.023652287084251072,
+      "firstTs": 1778257985,
+      "lastTs": 1778423124
+    },
+    "0xfcae337382d00e2540cd3d5d7aab0346757b7d43": {
+      "bakeTx": 475,
+      "gasEth": 0.003552516955499997,
+      "firstTs": 1778263278,
+      "lastTs": 1778349969
+    },
+    "0xa35ce21b739e37031d795190f2368320195d2096": {
+      "bakeTx": 2522,
+      "gasEth": 0.018711329898250435,
+      "firstTs": 1778266893,
+      "lastTs": 1778405272
+    },
+    "0x952486099cb4acf7d922cb64db1f15cf8fc9d675": {
+      "bakeTx": 2259,
+      "gasEth": 0.01682007673575051,
+      "firstTs": 1778257475,
+      "lastTs": 1778377107
+    },
+    "0xbf28a6624fbd3382d5135772417f8fd872c39f6d": {
+      "bakeTx": 1040,
+      "gasEth": 0.007819753362249895,
+      "firstTs": 1778263461,
+      "lastTs": 1778412789
+    },
+    "0x5ad4450f174c517cda2bc1d06138f37bd6c4a96d": {
+      "bakeTx": 2915,
+      "gasEth": 0.021687741501250954,
+      "firstTs": 1778256934,
+      "lastTs": 1778363351
+    },
+    "0x88ff03155aa1f15b0cd45a1f8944540f5727b324": {
+      "bakeTx": 3232,
+      "gasEth": 0.02407581645050056,
+      "firstTs": 1778257389,
+      "lastTs": 1778433760
+    },
+    "0x1036b40f96b568c950002ea62b7d463947350a78": {
+      "bakeTx": 4218,
+      "gasEth": 0.03148117289200173,
+      "firstTs": 1778254018,
+      "lastTs": 1778441003
+    },
+    "0x04e90583475bbed7fb5b7f6aa7fcebebc3f1ea88": {
+      "bakeTx": 965,
+      "gasEth": 0.007165911631999962,
+      "firstTs": 1778258782,
+      "lastTs": 1778398568
+    },
+    "0x01589e4a96b36ef118e9f5c9a900947a6cb21b23": {
+      "bakeTx": 4903,
+      "gasEth": 0.036277968781750804,
+      "firstTs": 1778271813,
+      "lastTs": 1778440133
+    },
+    "0x91d3d656183ba9062553791ebfb4cd77fafa9233": {
+      "bakeTx": 32813,
+      "gasEth": 0.23526919040631636,
+      "firstTs": 1778252473,
+      "lastTs": 1778442612
+    },
+    "0xbb3b97ddb027010268ad9d090106ae2ec10b46e3": {
+      "bakeTx": 7636,
+      "gasEth": 0.05692510499250315,
+      "firstTs": 1778252508,
+      "lastTs": 1778442089
     },
     "0x5e7652dc99eff4f8a7ed6553e455b88af72a9fb5": {
-      "bakeTx": 1250,
-      "gasEth": 0.009206276938500069,
+      "bakeTx": 2440,
+      "gasEth": 0.01794978877874985,
       "firstTs": 1778340990,
-      "lastTs": 1778346492
+      "lastTs": 1778425227
+    },
+    "0xcd5be762a09321682d84359c62a44837a1435914": {
+      "bakeTx": 14019,
+      "gasEth": 0.08770152868249102,
+      "firstTs": 1778281983,
+      "lastTs": 1778443199
+    },
+    "0xfb6954ea6b0f8e9eea008a2cffc26eadce0e69aa": {
+      "bakeTx": 10056,
+      "gasEth": 0.07524765978699477,
+      "firstTs": 1778253192,
+      "lastTs": 1778443199
+    },
+    "0x75a795397f85491c78b868909b42f54ae62b7230": {
+      "bakeTx": 10468,
+      "gasEth": 0.06860602981375521,
+      "firstTs": 1778257755,
+      "lastTs": 1778442102
+    },
+    "0x60cc39fcff7bfe8e8f746221a06766a08cbc353c": {
+      "bakeTx": 117,
+      "gasEth": 0.0008669992762500022,
+      "firstTs": 1778270573,
+      "lastTs": 1778345318
+    },
+    "0x670540390d542191881b75d4459d9786756cedae": {
+      "bakeTx": 3261,
+      "gasEth": 0.024264466325000546,
+      "firstTs": 1778254571,
+      "lastTs": 1778419268
     },
     "0x19bc61ad16e29050cf2a082fca7f5adfe5f4cc61": {
       "bakeTx": 498,
       "gasEth": 0.0031314135774999966,
       "firstTs": 1778337742,
       "lastTs": 1778344882
+    },
+    "0x439a20a5c7a15dca939238ae441caabc1cf937bc": {
+      "bakeTx": 6692,
+      "gasEth": 0.049827164969252914,
+      "firstTs": 1778261951,
+      "lastTs": 1778441198
+    },
+    "0xe40ebeeee324bfa15be84cedc01138f7e963bb69": {
+      "bakeTx": 6670,
+      "gasEth": 0.041717809389752995,
+      "firstTs": 1778264902,
+      "lastTs": 1778436254
     },
     "0xb45d0c64fb7094e5677b6adf3dffa590447f0dec": {
       "bakeTx": 2442,
@@ -1867,160 +1507,220 @@
       "lastTs": 1778344703
     },
     "0x1fb45b0da15fa705a9b4c019daa7c867816a9aed": {
-      "bakeTx": 589,
-      "gasEth": 0.004369321492749975,
+      "bakeTx": 1663,
+      "gasEth": 0.01239159218025017,
       "firstTs": 1778334515,
-      "lastTs": 1778344656
+      "lastTs": 1778408509
     },
     "0x4845ee4c5c797571775b49ade24ec7fa66572058": {
-      "bakeTx": 575,
-      "gasEth": 0.004268392815749972,
+      "bakeTx": 1659,
+      "gasEth": 0.012368242592000173,
       "firstTs": 1778334516,
-      "lastTs": 1778344646
+      "lastTs": 1778408466
     },
     "0x655f83717a282b606d294039391e3111f3ae761e": {
-      "bakeTx": 418,
-      "gasEth": 0.0031106776292499803,
+      "bakeTx": 2481,
+      "gasEth": 0.01851445298550065,
       "firstTs": 1778337242,
-      "lastTs": 1778344646
+      "lastTs": 1778436353
     },
     "0x897fa28d75e2912dd94e73a2ad60ed7e074c305c": {
-      "bakeTx": 417,
-      "gasEth": 0.0031034306607499802,
+      "bakeTx": 2484,
+      "gasEth": 0.018536078005750647,
       "firstTs": 1778337242,
-      "lastTs": 1778344646
+      "lastTs": 1778436354
     },
     "0x1df1ef39cf068d7865d999b647e208b5bfc2c45a": {
-      "bakeTx": 417,
-      "gasEth": 0.0031049412414999806,
+      "bakeTx": 2418,
+      "gasEth": 0.018068350294750606,
       "firstTs": 1778337242,
-      "lastTs": 1778344646
+      "lastTs": 1778436337
     },
     "0x8f076744ef5abd1e226b1c88732d7bf38d6d7a19": {
-      "bakeTx": 425,
-      "gasEth": 0.0031692414462499785,
+      "bakeTx": 2510,
+      "gasEth": 0.018740260666750677,
       "firstTs": 1778337242,
-      "lastTs": 1778344639
+      "lastTs": 1778436356
     },
     "0x37a7c5ff1f886a017f218e27217e202e1428ea87": {
-      "bakeTx": 403,
-      "gasEth": 0.002994841294499982,
+      "bakeTx": 2483,
+      "gasEth": 0.018529602368750647,
       "firstTs": 1778337242,
-      "lastTs": 1778344638
+      "lastTs": 1778436356
     },
     "0xfcdbc097f8a10bff738edba036dbd1138a2dcd58": {
-      "bakeTx": 560,
-      "gasEth": 0.004155210574499968,
+      "bakeTx": 1646,
+      "gasEth": 0.012280869276500161,
       "firstTs": 1778334515,
-      "lastTs": 1778344634
+      "lastTs": 1778408485
     },
     "0xa9d561bf2da99f5d3034a65f94e02fd5d7fb5faa": {
-      "bakeTx": 573,
-      "gasEth": 0.004250796674499972,
+      "bakeTx": 1654,
+      "gasEth": 0.012322866073000167,
       "firstTs": 1778334515,
-      "lastTs": 1778344634
+      "lastTs": 1778408496
     },
     "0x176454c815a15f841242aa2dd52e24a9fb574ab3": {
-      "bakeTx": 585,
-      "gasEth": 0.004340583172499975,
+      "bakeTx": 1686,
+      "gasEth": 0.012575251794250192,
       "firstTs": 1778334516,
-      "lastTs": 1778344634
+      "lastTs": 1778408486
     },
     "0xa6ddc53b1163d25b66f29e770206200a01462ba3": {
-      "bakeTx": 419,
-      "gasEth": 0.00311530629699998,
+      "bakeTx": 2477,
+      "gasEth": 0.018487774535750644,
       "firstTs": 1778337242,
-      "lastTs": 1778344631
+      "lastTs": 1778436356
     },
     "0xa4743107cdbd61713bead940b0c71e32c85f410a": {
-      "bakeTx": 426,
-      "gasEth": 0.003166853694249979,
+      "bakeTx": 2481,
+      "gasEth": 0.01851751315250065,
       "firstTs": 1778337242,
-      "lastTs": 1778344629
+      "lastTs": 1778436337
     },
     "0xf75c4c69765ac84e8b89674f916b42fa087faf68": {
-      "bakeTx": 559,
-      "gasEth": 0.004147749528249967,
+      "bakeTx": 1645,
+      "gasEth": 0.012266302487000155,
       "firstTs": 1778334516,
-      "lastTs": 1778344625
+      "lastTs": 1778408491
     },
     "0x82cf424e3f05bd55a0aacd185e34c855081767d0": {
-      "bakeTx": 411,
-      "gasEth": 0.0030563795297499823,
+      "bakeTx": 2483,
+      "gasEth": 0.018541317231750655,
       "firstTs": 1778337242,
-      "lastTs": 1778344625
+      "lastTs": 1778436336
     },
     "0x96e8ebc7cbde9ff2bf6f6e36cfb7aeaf24ac6971": {
-      "bakeTx": 406,
-      "gasEth": 0.0030184963202499818,
+      "bakeTx": 2456,
+      "gasEth": 0.01832813728700062,
       "firstTs": 1778337242,
-      "lastTs": 1778344624
+      "lastTs": 1778436337
     },
     "0x5f5fe51efa5708ca1d6ef46434e0362fb1c7e3a0": {
-      "bakeTx": 407,
-      "gasEth": 0.0030249381102499823,
+      "bakeTx": 2455,
+      "gasEth": 0.018324177957250613,
       "firstTs": 1778337242,
-      "lastTs": 1778344624
+      "lastTs": 1778436354
     },
     "0xa018cab987ce7e99dfb52f9aaede29a21c0f20da": {
-      "bakeTx": 410,
-      "gasEth": 0.003048855359749981,
+      "bakeTx": 2478,
+      "gasEth": 0.018488076851000644,
       "firstTs": 1778337242,
-      "lastTs": 1778344624
+      "lastTs": 1778436354
     },
     "0x94354b79de2ab6dff83e086e2b1a8fca67c5a5d1": {
-      "bakeTx": 573,
-      "gasEth": 0.004250573275249971,
+      "bakeTx": 1655,
+      "gasEth": 0.012336728682000166,
       "firstTs": 1778334515,
-      "lastTs": 1778344624
+      "lastTs": 1778408486
     },
     "0x03410fdfed512e3c83b95b79456374d3ed25c1a1": {
-      "bakeTx": 564,
-      "gasEth": 0.00418588147699997,
+      "bakeTx": 1646,
+      "gasEth": 0.012271106724750163,
       "firstTs": 1778334516,
-      "lastTs": 1778344621
+      "lastTs": 1778408487
     },
     "0xd39b676123816847fa1f94767485af471f16eef1": {
-      "bakeTx": 563,
-      "gasEth": 0.004185439882249969,
+      "bakeTx": 1646,
+      "gasEth": 0.012270921199750161,
       "firstTs": 1778334516,
-      "lastTs": 1778344621
+      "lastTs": 1778408487
     },
     "0x281c2badc5ec5f3bc9361b8ab6b0241647401897": {
-      "bakeTx": 557,
-      "gasEth": 0.004142793114749968,
+      "bakeTx": 1634,
+      "gasEth": 0.01219187026425016,
       "firstTs": 1778334516,
-      "lastTs": 1778344620
+      "lastTs": 1778408490
     },
     "0xb4843414825e54726005c559d17e7cfb65d51940": {
-      "bakeTx": 410,
-      "gasEth": 0.0030564437847499823,
+      "bakeTx": 2480,
+      "gasEth": 0.018526342423000657,
       "firstTs": 1778337242,
-      "lastTs": 1778344618
+      "lastTs": 1778436356
     },
     "0x8f4f17682022bb7a578235e3aeb948c185146f6b": {
-      "bakeTx": 409,
-      "gasEth": 0.0030298347484999967,
+      "bakeTx": 773,
+      "gasEth": 0.005735762757000037,
       "firstTs": 1778310041,
-      "lastTs": 1778343924
+      "lastTs": 1778421990
     },
     "0xb2015c6903a0b867de520b8d14e0da3d9dc9b87e": {
-      "bakeTx": 1381,
-      "gasEth": 0.010070459854750047,
+      "bakeTx": 3572,
+      "gasEth": 0.026148858230000207,
       "firstTs": 1778335683,
-      "lastTs": 1778342965
+      "lastTs": 1778420352
     },
     "0xdac97e77b3a89ce54135011707d6b60a12bbb455": {
-      "bakeTx": 3972,
-      "gasEth": 0.028890297669248947,
+      "bakeTx": 4790,
+      "gasEth": 0.034844840556250124,
       "firstTs": 1778304834,
-      "lastTs": 1778341944
+      "lastTs": 1778393179
+    },
+    "0x69c4cc0147fbc23965896fb18a1ccea92230ed1b": {
+      "bakeTx": 5207,
+      "gasEth": 0.038890320107002,
+      "firstTs": 1778252552,
+      "lastTs": 1778429345
+    },
+    "0x81101ece049dfd6e3e7b378df0c017eaeb190578": {
+      "bakeTx": 10263,
+      "gasEth": 0.07620964148299883,
+      "firstTs": 1778252606,
+      "lastTs": 1778435110
     },
     "0x75179c8ce69692581fef7114e740b7abc7e30ab6": {
-      "bakeTx": 46,
-      "gasEth": 0.00033575020350000006,
+      "bakeTx": 120,
+      "gasEth": 0.0008768820119999986,
       "firstTs": 1778341223,
-      "lastTs": 1778341447
+      "lastTs": 1778428851
+    },
+    "0x23c0fb3a813ca5e3391ac3fd11b32237c4e34b6b": {
+      "bakeTx": 3457,
+      "gasEth": 0.025728733247501245,
+      "firstTs": 1778252522,
+      "lastTs": 1778411182
+    },
+    "0xa4cb287daecbac6d01de64ec66436570856c0331": {
+      "bakeTx": 8288,
+      "gasEth": 0.061631320699252604,
+      "firstTs": 1778257168,
+      "lastTs": 1778341128
+    },
+    "0x9035f46e6507f4c800ffb5a5001cf140e3e5422e": {
+      "bakeTx": 1649,
+      "gasEth": 0.012368020414500233,
+      "firstTs": 1778261739,
+      "lastTs": 1778422369
+    },
+    "0x1ef3f1ba6060ab1265e487b482f384b26df8c7b6": {
+      "bakeTx": 2032,
+      "gasEth": 0.015008964490749536,
+      "firstTs": 1778252595,
+      "lastTs": 1778440014
+    },
+    "0x0c0a71e32e1954635e2dde143ed9e59fe471fb94": {
+      "bakeTx": 4293,
+      "gasEth": 0.0272663243559975,
+      "firstTs": 1778252483,
+      "lastTs": 1778377301
+    },
+    "0x75c6ce8e3083fad4ffa1b1bd325e407a41d612d6": {
+      "bakeTx": 5677,
+      "gasEth": 0.04144480111675386,
+      "firstTs": 1778254980,
+      "lastTs": 1778408389
+    },
+    "0xe621d61d7333d677db20a2c009d3ee2f6b235614": {
+      "bakeTx": 6524,
+      "gasEth": 0.046653630972248325,
+      "firstTs": 1778257958,
+      "lastTs": 1778438330
+    },
+    "0x64f6b89df26b7f1aac4b5784da9a2abdb75bb8b5": {
+      "bakeTx": 5333,
+      "gasEth": 0.03961879931400221,
+      "firstTs": 1778282173,
+      "lastTs": 1778439902
     },
     "0x9f0c140d56d2b9959cad3b84b248c3239293785c": {
       "bakeTx": 6888,
@@ -2029,22 +1729,34 @@
       "lastTs": 1778338980
     },
     "0x135b235d2a3ef00e3fa9e6199a15e92f27cb03b0": {
-      "bakeTx": 52,
-      "gasEth": 0.0003750818202500001,
+      "bakeTx": 125,
+      "gasEth": 0.0009052242137499983,
       "firstTs": 1778338425,
-      "lastTs": 1778338572
+      "lastTs": 1778418631
+    },
+    "0x5393271b0e47b3e8637a7a554bb634b97c535021": {
+      "bakeTx": 7083,
+      "gasEth": 0.052248093318998115,
+      "firstTs": 1778252567,
+      "lastTs": 1778400800
+    },
+    "0xfee6d2d25da8f9238eb697e5a32d3200bcf38426": {
+      "bakeTx": 3001,
+      "gasEth": 0.022328215793250915,
+      "firstTs": 1778274213,
+      "lastTs": 1778439939
     },
     "0xe718c14186e2af2d19e83c8cdee51590c6c7a1fb": {
-      "bakeTx": 6742,
-      "gasEth": 0.05021875765475299,
+      "bakeTx": 9876,
+      "gasEth": 0.07361629579124644,
       "firstTs": 1778296201,
-      "lastTs": 1778337968
+      "lastTs": 1778422525
     },
     "0xb22e1934cd0e63192777560afa538a20383da25f": {
-      "bakeTx": 4273,
-      "gasEth": 0.031730367402251734,
+      "bakeTx": 5284,
+      "gasEth": 0.039249585830502094,
       "firstTs": 1778318932,
-      "lastTs": 1778336807
+      "lastTs": 1778433934
     },
     "0x515723556c37c4554365403fb57c5c1981b75570": {
       "bakeTx": 565,
@@ -2053,16 +1765,34 @@
       "lastTs": 1778334629
     },
     "0xfa66bbbfd59e81c61187a8b327ada0100a09e6b9": {
-      "bakeTx": 29,
-      "gasEth": 0.00022776216450000008,
+      "bakeTx": 49,
+      "gasEth": 0.0003804456194999999,
       "firstTs": 1778289900,
-      "lastTs": 1778333969
+      "lastTs": 1778424682
     },
     "0x0f010f85ecfc81b5176a0f02f4d9b89753e7ad51": {
-      "bakeTx": 492,
-      "gasEth": 0.00363236917799996,
+      "bakeTx": 1229,
+      "gasEth": 0.009050373900749923,
       "firstTs": 1778331401,
-      "lastTs": 1778333929
+      "lastTs": 1778413131
+    },
+    "0x035be9bd0fbee90027d8af651e0ad650b1cf7109": {
+      "bakeTx": 9812,
+      "gasEth": 0.07318686636799794,
+      "firstTs": 1778252755,
+      "lastTs": 1778420065
+    },
+    "0xf6579fae1b6dedc83ddfc5d0c16ed50c46e7cd4f": {
+      "bakeTx": 10365,
+      "gasEth": 0.07681289484449516,
+      "firstTs": 1778252431,
+      "lastTs": 1778441422
+    },
+    "0x7fdce32f9e35ed4ed829d1fc80d83c5dee0f86cc": {
+      "bakeTx": 115,
+      "gasEth": 0.0008740755165000012,
+      "firstTs": 1778280213,
+      "lastTs": 1778368567
     },
     "0x8167eba8d8c69c8a2678d066aee52dc11f0565c5": {
       "bakeTx": 2659,
@@ -2070,17 +1800,47 @@
       "firstTs": 1778303740,
       "lastTs": 1778332435
     },
+    "0xf805457f56bb0c456b8be9e6a15d704875832d9b": {
+      "bakeTx": 19984,
+      "gasEth": 0.14803224329275347,
+      "firstTs": 1778252461,
+      "lastTs": 1778412810
+    },
+    "0x4355995495a91e3e099fcdcc113f2a75acafbd91": {
+      "bakeTx": 14593,
+      "gasEth": 0.10847388381548759,
+      "firstTs": 1778253951,
+      "lastTs": 1778399120
+    },
     "0xf3b370665fb363eaf93ccb49fcd44baeb887f7a2": {
-      "bakeTx": 613,
-      "gasEth": 0.004571099749749957,
+      "bakeTx": 799,
+      "gasEth": 0.005960104247749965,
       "firstTs": 1778327430,
-      "lastTs": 1778330933
+      "lastTs": 1778407398
     },
     "0xecbdd91e19cf3ea0f0aa12134d29c76efaff7ba8": {
-      "bakeTx": 2808,
-      "gasEth": 0.020424317789749426,
+      "bakeTx": 6042,
+      "gasEth": 0.04401091196475402,
       "firstTs": 1778315693,
-      "lastTs": 1778329929
+      "lastTs": 1778393445
+    },
+    "0x0a2dd2291e62a14f76a9145161edecc282605d75": {
+      "bakeTx": 736,
+      "gasEth": 0.005492275629249991,
+      "firstTs": 1778263979,
+      "lastTs": 1778329154
+    },
+    "0x5d1ee2b779330bd5ffb1eaf1a319d5d8a958e7c2": {
+      "bakeTx": 4016,
+      "gasEth": 0.025750189168500522,
+      "firstTs": 1778265068,
+      "lastTs": 1778433112
+    },
+    "0x6d8f17b1bc4fb0b1f24e91c0a939c90e4d02bf72": {
+      "bakeTx": 2295,
+      "gasEth": 0.01713533832750043,
+      "firstTs": 1778256442,
+      "lastTs": 1778328473
     },
     "0x9f4b6e5c444db6c2a3529ae0694cf4127f1dd802": {
       "bakeTx": 1569,
@@ -2088,29 +1848,101 @@
       "firstTs": 1778292635,
       "lastTs": 1778328166
     },
+    "0x2e66a12985a6807537fc645d887c8b219c6db3af": {
+      "bakeTx": 5884,
+      "gasEth": 0.04152899095900078,
+      "firstTs": 1778255390,
+      "lastTs": 1778442425
+    },
+    "0xbd8943850df5be96896e3676829f3fbb8519b381": {
+      "bakeTx": 901,
+      "gasEth": 0.006695146514749998,
+      "firstTs": 1778252602,
+      "lastTs": 1778411322
+    },
+    "0x7a64dc5b94f7e944dceb84c25122997fbf1cb163": {
+      "bakeTx": 4201,
+      "gasEth": 0.031165520430751475,
+      "firstTs": 1778264547,
+      "lastTs": 1778428086
+    },
+    "0x7c320b13ba5513d71f3434f7422104cdf21f1aa6": {
+      "bakeTx": 2900,
+      "gasEth": 0.02149649794200077,
+      "firstTs": 1778264168,
+      "lastTs": 1778407402
+    },
     "0x242626d8fa6bbf38adb8bb813e9ac0845458c2d1": {
-      "bakeTx": 122,
-      "gasEth": 0.0009092962160000008,
+      "bakeTx": 239,
+      "gasEth": 0.0017868461632499946,
       "firstTs": 1778323096,
-      "lastTs": 1778323637
+      "lastTs": 1778415205
+    },
+    "0xc133b01ed964fa5e7c39d3510abb7c4d48d49dc8": {
+      "bakeTx": 7156,
+      "gasEth": 0.05338402425050315,
+      "firstTs": 1778252871,
+      "lastTs": 1778442173
+    },
+    "0xe90a9bdb63e9ba04a7f3e95140ff803f2f377f5e": {
+      "bakeTx": 17,
+      "gasEth": 0.00013512993924999996,
+      "firstTs": 1778280615,
+      "lastTs": 1778320666
+    },
+    "0x531a75ed2a7dea237ded2fc2c14ee878fc723eaa": {
+      "bakeTx": 9002,
+      "gasEth": 0.06686384680325012,
+      "firstTs": 1778252857,
+      "lastTs": 1778408574
     },
     "0xb4c72d8bf18d760a7189e3088f5af69219b50232": {
-      "bakeTx": 96,
-      "gasEth": 0.0007191839067500005,
+      "bakeTx": 1483,
+      "gasEth": 0.011071236095250136,
       "firstTs": 1778319075,
-      "lastTs": 1778319926
+      "lastTs": 1778405140
+    },
+    "0x5ab272231e653c2265bdfae58310021bca37152e": {
+      "bakeTx": 1786,
+      "gasEth": 0.01338521914700031,
+      "firstTs": 1778266477,
+      "lastTs": 1778397958
+    },
+    "0x1239d031f38d0c329630daf7d7838de55a2fae96": {
+      "bakeTx": 206,
+      "gasEth": 0.0015462438587500037,
+      "firstTs": 1778253946,
+      "lastTs": 1778390231
+    },
+    "0x92f442c021cee67e62e34b8bd7d4ed80d63ff2a0": {
+      "bakeTx": 7561,
+      "gasEth": 0.056211666206752504,
+      "firstTs": 1778268341,
+      "lastTs": 1778442922
+    },
+    "0xd14e58518da08be248fbd02631d7611ab044c4d3": {
+      "bakeTx": 5209,
+      "gasEth": 0.03875306604225214,
+      "firstTs": 1778257727,
+      "lastTs": 1778400255
     },
     "0x4ebc17059cfc143d86fb92ed707805d68142e3ec": {
-      "bakeTx": 1743,
-      "gasEth": 0.012965213850750317,
+      "bakeTx": 3448,
+      "gasEth": 0.025657461420501307,
       "firstTs": 1778289731,
-      "lastTs": 1778311906
+      "lastTs": 1778402074
+    },
+    "0xc298b9d57ab59c1336694e9c4b8c210ca87b825c": {
+      "bakeTx": 1111,
+      "gasEth": 0.008285665416999896,
+      "firstTs": 1778257880,
+      "lastTs": 1778310681
     },
     "0xbb93189595d5e3a742490c50b3a140b1a4a26c6a": {
-      "bakeTx": 757,
-      "gasEth": 0.005576432167500061,
+      "bakeTx": 922,
+      "gasEth": 0.006811987173250055,
       "firstTs": 1778306874,
-      "lastTs": 1778310514
+      "lastTs": 1778425024
     },
     "0x8572a06e9c5157864a865f8f443311e1a9d82631": {
       "bakeTx": 53,
@@ -2118,17 +1950,353 @@
       "firstTs": 1778309166,
       "lastTs": 1778309393
     },
+    "0xba74d5adc211304b006090f0b03232e95d799518": {
+      "bakeTx": 3026,
+      "gasEth": 0.022516611272251047,
+      "firstTs": 1778256379,
+      "lastTs": 1778307553
+    },
+    "0x4668846cf1b8da660fc24ee77707f2067a207878": {
+      "bakeTx": 335,
+      "gasEth": 0.0025295393907499935,
+      "firstTs": 1778287679,
+      "lastTs": 1778304789
+    },
     "0x2f62e8f06a628d95c0afabd23769665531cbef91": {
-      "bakeTx": 237,
-      "gasEth": 0.001729814239750008,
+      "bakeTx": 920,
+      "gasEth": 0.0067272474077500624,
       "firstTs": 1778302386,
-      "lastTs": 1778303503
+      "lastTs": 1778424964
+    },
+    "0x52f3815fd78f8f44b423a4cc090164f2660a7a9f": {
+      "bakeTx": 1747,
+      "gasEth": 0.01290954793424978,
+      "firstTs": 1778252409,
+      "lastTs": 1778397280
+    },
+    "0x4fb98d9c5b7e790340b2864348ce8d4f97f23b5b": {
+      "bakeTx": 1896,
+      "gasEth": 0.01381153794949984,
+      "firstTs": 1778286826,
+      "lastTs": 1778371290
+    },
+    "0xe472b3db47fd9864d64ed5fb4037880a11634950": {
+      "bakeTx": 1999,
+      "gasEth": 0.01481880982750004,
+      "firstTs": 1778280930,
+      "lastTs": 1778414121
     },
     "0xd1e70c70a116118d76c2d1842ada1f265c96b641": {
       "bakeTx": 20,
       "gasEth": 0.000150819698,
       "firstTs": 1778291336,
       "lastTs": 1778291479
+    },
+    "0xb881581100ba12d62579d0ac74358fbb73e5d803": {
+      "bakeTx": 387,
+      "gasEth": 0.0028858003332499858,
+      "firstTs": 1778283890,
+      "lastTs": 1778287468
+    },
+    "0xc966bf597142dbee58af0cf6065b0b86cc83e9af": {
+      "bakeTx": 2024,
+      "gasEth": 0.012721474680499844,
+      "firstTs": 1778255281,
+      "lastTs": 1778286154
+    },
+    "0x8875a1b5390830284fe23c6fe4adea0b3fd26816": {
+      "bakeTx": 729,
+      "gasEth": 0.005423727354499928,
+      "firstTs": 1778253976,
+      "lastTs": 1778368422
+    },
+    "0x6b831ba36251179503aeaa1fba7b8a73a406d56c": {
+      "bakeTx": 1332,
+      "gasEth": 0.009641943440750079,
+      "firstTs": 1778280123,
+      "lastTs": 1778364667
+    },
+    "0xad6be45f6e1107964020cf42fa11765dcc25da2c": {
+      "bakeTx": 530,
+      "gasEth": 0.003930592877749978,
+      "firstTs": 1778281000,
+      "lastTs": 1778398315
+    },
+    "0x1b4a5e888e9b812db46e4ddaa0e074054d75ac20": {
+      "bakeTx": 239,
+      "gasEth": 0.0017723024965000055,
+      "firstTs": 1778276050,
+      "lastTs": 1778404803
+    },
+    "0x7c2125fc8442eea22a83db2cbdb33adb30325349": {
+      "bakeTx": 1152,
+      "gasEth": 0.007379619644249919,
+      "firstTs": 1778278688,
+      "lastTs": 1778439490
+    },
+    "0xdb2d6141c3e02a8c0c129b08dc6cbef50b1fe4a9": {
+      "bakeTx": 432,
+      "gasEth": 0.0027502242289999946,
+      "firstTs": 1778277419,
+      "lastTs": 1778427992
+    },
+    "0xb2637e9cb886bb54898d33dc023d8363c0bd9c81": {
+      "bakeTx": 385,
+      "gasEth": 0.0024426271275000003,
+      "firstTs": 1778276551,
+      "lastTs": 1778418047
+    },
+    "0xd0d08ba7d5ef1e634abcb4b86724257be200426a": {
+      "bakeTx": 669,
+      "gasEth": 0.004228383444499989,
+      "firstTs": 1778275693,
+      "lastTs": 1778428228
+    },
+    "0x4a492735ae3b50ba8ee4e7746ce10f10397d3ef7": {
+      "bakeTx": 452,
+      "gasEth": 0.002848416548000006,
+      "firstTs": 1778274989,
+      "lastTs": 1778418426
+    },
+    "0xa5ac377f9d8b1d4fc6bd22eaac6b8ba8f79af441": {
+      "bakeTx": 386,
+      "gasEth": 0.0024380386870000016,
+      "firstTs": 1778273797,
+      "lastTs": 1778418011
+    },
+    "0x55a5b109faa74822b55b9b8ee9fc500c77817bb6": {
+      "bakeTx": 740,
+      "gasEth": 0.004684174748499966,
+      "firstTs": 1778272439,
+      "lastTs": 1778428381
+    },
+    "0x96a0d9ce06612f06a8f0cbea8f675ea700613ad5": {
+      "bakeTx": 454,
+      "gasEth": 0.0028668510812500047,
+      "firstTs": 1778269468,
+      "lastTs": 1778418471
+    },
+    "0xb88520abe6996d42de8f7325e91c1e66a18e4987": {
+      "bakeTx": 513,
+      "gasEth": 0.003848624222249966,
+      "firstTs": 1778254230,
+      "lastTs": 1778380381
+    },
+    "0x2a8c750c49674ab43d078ded37087ff47851b468": {
+      "bakeTx": 308,
+      "gasEth": 0.002330406312999999,
+      "firstTs": 1778254896,
+      "lastTs": 1778265830
+    },
+    "0xd5b9caef89d1f7f8f64816c4f5f762917acf4a01": {
+      "bakeTx": 1012,
+      "gasEth": 0.00726555376099999,
+      "firstTs": 1778252627,
+      "lastTs": 1778377301
+    },
+    "0x902d8d5e4f83037a1b3357c01e165e86fb5674ae": {
+      "bakeTx": 716,
+      "gasEth": 0.0052928658024999796,
+      "firstTs": 1778253642,
+      "lastTs": 1778256333
+    },
+    "0x9eb884b9d15614fd00b324de4c6c446ef68d464a": {
+      "bakeTx": 405,
+      "gasEth": 0.0029979396977499904,
+      "firstTs": 1778252918,
+      "lastTs": 1778256104
+    },
+    "0xf9005df8f9b0a1f6931922871c7172e01ac88f23": {
+      "bakeTx": 569,
+      "gasEth": 0.004207604011000029,
+      "firstTs": 1778252663,
+      "lastTs": 1778374373
+    },
+    "0x904ccce0e9fc58f13e727294edc29e6b07667d84": {
+      "bakeTx": 580,
+      "gasEth": 0.004287521800750027,
+      "firstTs": 1778252562,
+      "lastTs": 1778374380
+    },
+    "0xb28aeae86eddd1efaeaf28036200a484301e2bfe": {
+      "bakeTx": 591,
+      "gasEth": 0.00437215169925003,
+      "firstTs": 1778252564,
+      "lastTs": 1778374382
+    },
+    "0xbcf910e93e22f01e674cd0d749ae52a31d3c93eb": {
+      "bakeTx": 604,
+      "gasEth": 0.004468188398750031,
+      "firstTs": 1778252565,
+      "lastTs": 1778374382
+    },
+    "0x97b0e1fa2fa9895be735c1a67557716f2640cedc": {
+      "bakeTx": 18735,
+      "gasEth": 0.11738916171447,
+      "firstTs": 1778365041,
+      "lastTs": 1778443199
+    },
+    "0x3abaf7670bdbc037dcb4dfa058a052a5e47b1667": {
+      "bakeTx": 2277,
+      "gasEth": 0.016519889864749688,
+      "firstTs": 1778435097,
+      "lastTs": 1778443199
+    },
+    "0xe386409ad9eb5bddfb6591c44fe5e43dc8f86309": {
+      "bakeTx": 2761,
+      "gasEth": 0.01733265049999981,
+      "firstTs": 1778428014,
+      "lastTs": 1778443199
+    },
+    "0x7fd643b7da56b3acb6a5a4e83a8818b14f195a50": {
+      "bakeTx": 3242,
+      "gasEth": 0.023934838084500483,
+      "firstTs": 1778427534,
+      "lastTs": 1778443198
+    },
+    "0x5598f0ca952a7cd3ad90c35407eec3e41e0c12f4": {
+      "bakeTx": 3715,
+      "gasEth": 0.027580409945501375,
+      "firstTs": 1778407366,
+      "lastTs": 1778443198
+    },
+    "0x15ae23080073d11f8e98770c39e4ba161879c278": {
+      "bakeTx": 1343,
+      "gasEth": 0.008442654273750095,
+      "firstTs": 1778436300,
+      "lastTs": 1778443198
+    },
+    "0xa9d7609dcbe58114bcdd2dcf56fe3466f61da15a": {
+      "bakeTx": 129,
+      "gasEth": 0.0009656482130000016,
+      "firstTs": 1778437773,
+      "lastTs": 1778442682
+    },
+    "0xc55ab4247c0201b90fc4f127d42e9b5c7328038c": {
+      "bakeTx": 2317,
+      "gasEth": 0.01724716107775065,
+      "firstTs": 1778381763,
+      "lastTs": 1778442672
+    },
+    "0x1cd147897fee7db7568f1afcfaabb21568f25959": {
+      "bakeTx": 80,
+      "gasEth": 0.0004892856254999996,
+      "firstTs": 1778439253,
+      "lastTs": 1778439484
+    },
+    "0xe89c3c605b49e29e532bcdc914e5713141cde866": {
+      "bakeTx": 1124,
+      "gasEth": 0.00680311156675007,
+      "firstTs": 1778382984,
+      "lastTs": 1778439482
+    },
+    "0xc2f6087b7eaf24f4d3a64f668d1528ddb9ecd427": {
+      "bakeTx": 1133,
+      "gasEth": 0.006856525752750076,
+      "firstTs": 1778382984,
+      "lastTs": 1778439482
+    },
+    "0xf680700b183a4cdcbabfadfca7a071cd4b9af986": {
+      "bakeTx": 1132,
+      "gasEth": 0.006851849074750074,
+      "firstTs": 1778382984,
+      "lastTs": 1778439481
+    },
+    "0x56edbbdf30160973d263df96bf3d0ce760fddef7": {
+      "bakeTx": 1131,
+      "gasEth": 0.006844674189500075,
+      "firstTs": 1778382984,
+      "lastTs": 1778439481
+    },
+    "0x85c8e3955771da9369e55a3416b7bb62db15baef": {
+      "bakeTx": 1132,
+      "gasEth": 0.006852315919000074,
+      "firstTs": 1778382984,
+      "lastTs": 1778439481
+    },
+    "0x7ee81b0d61d0aa189816b8d7c9398b37dd24f5c6": {
+      "bakeTx": 1371,
+      "gasEth": 0.010117031109499927,
+      "firstTs": 1778431957,
+      "lastTs": 1778436728
+    },
+    "0xd876c42a0ca1bbecca379ed6724ef91c576ef6d6": {
+      "bakeTx": 1030,
+      "gasEth": 0.006488807736500053,
+      "firstTs": 1778414265,
+      "lastTs": 1778436339
+    },
+    "0x414bb44850b3b428b283235091917cb254305954": {
+      "bakeTx": 286,
+      "gasEth": 0.002079242929999994,
+      "firstTs": 1778434837,
+      "lastTs": 1778435859
+    },
+    "0x5b94c444b56abcf52a708b574551d06337a2969f": {
+      "bakeTx": 1283,
+      "gasEth": 0.00948763374599992,
+      "firstTs": 1778424256,
+      "lastTs": 1778435640
+    },
+    "0xf2e529a733e4dcbb1999574abe0113b01dac9a3a": {
+      "bakeTx": 611,
+      "gasEth": 0.0044810411182500095,
+      "firstTs": 1778424132,
+      "lastTs": 1778426464
+    },
+    "0xe89509a4c5412ad68aa8e0dfbad5b81a6154f924": {
+      "bakeTx": 527,
+      "gasEth": 0.003926967221499971,
+      "firstTs": 1778417035,
+      "lastTs": 1778422778
+    },
+    "0x2029f340dfb1203ae5b4a12305fc52077e4b3cdb": {
+      "bakeTx": 1798,
+      "gasEth": 0.013175080092749822,
+      "firstTs": 1778411628,
+      "lastTs": 1778421083
+    },
+    "0xd5234a5819c1a0254db2b8d19ebb0b6bca710c49": {
+      "bakeTx": 2,
+      "gasEth": 0.000021251436250000002,
+      "firstTs": 1778400626,
+      "lastTs": 1778419786
+    },
+    "0xd4cabe42dd842aee3e6d375885db26fe00377c8b": {
+      "bakeTx": 1578,
+      "gasEth": 0.011625425560499761,
+      "firstTs": 1778404937,
+      "lastTs": 1778416646
+    },
+    "0x0736ea7f788b47564b28a97e8441e0481a6b54e7": {
+      "bakeTx": 653,
+      "gasEth": 0.004784615178000026,
+      "firstTs": 1778403207,
+      "lastTs": 1778405365
+    },
+    "0xc65fbd61e8b264d7da9bc1fcfc7ad1695a8d1e61": {
+      "bakeTx": 121,
+      "gasEth": 0.0008951640527499985,
+      "firstTs": 1778376278,
+      "lastTs": 1778393866
+    },
+    "0xc28b790e936302e42283ba94a747523d77053c86": {
+      "bakeTx": 302,
+      "gasEth": 0.0022085974759999964,
+      "firstTs": 1778387999,
+      "lastTs": 1778389418
+    },
+    "0x0ca54a298c1e725ebbbb321c01eee1411c67dad0": {
+      "bakeTx": 105,
+      "gasEth": 0.0007664192052500008,
+      "firstTs": 1778388402,
+      "lastTs": 1778389021
+    },
+    "0xf981283b16ecdd3a77c4e701a5001e97450bbfad": {
+      "bakeTx": 2241,
+      "gasEth": 0.016401869991250016,
+      "firstTs": 1778370101,
+      "lastTs": 1778377730
     }
   }
 }
