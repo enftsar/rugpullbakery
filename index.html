@@ -1279,8 +1279,7 @@ function renderLB(){
         '<div class="bakery-name">'+esc(b.name||"Bakery #"+rank)+'</div>'+
         '<div class="bakery-sub">'+
           '<span style="color:var(--ambersoft)">'+esc(fN(b.memberCount,0))+'</span> members'+
-          ' &nbsp;&middot;&nbsp; score <span style="color:var(--blue)">'+esc(fCook(scoreRaw))+'</span>'+
-          (pay!=null?' &nbsp;&middot;&nbsp; <span style="color:var(--green)">'+esc(fE(pay,4))+'</span>':'')
+          ' &nbsp;&middot;&nbsp; score <span style="color:var(--blue)">'+esc(fCook(scoreRaw))+'</span>'
         +'</div>'+
       '</div>'+
       '<div class="bakery-cookies" title="Cookies Baked">'+esc(fCook(cookRaw))+' &#x1F36A;</div>'+
