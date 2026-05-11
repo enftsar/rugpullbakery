@@ -304,6 +304,17 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 .bakery-cookies,.bakery-payout{padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.02);border:1px solid rgba(255,223,161,.08);font-weight:800;font-size:14px;white-space:nowrap}
 .bakery-cookies{color:var(--cookie)}
 .bakery-payout{color:var(--ambersoft)}
+.roi-leaderboard-card .section-head{margin-bottom:10px}
+.roi-list{gap:10px}
+.roi-row{grid-template-columns:auto minmax(0,1fr) auto}
+.roi-chef{min-width:0}
+.roi-chef-name{font-weight:900;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.roi-chef-sub{margin-top:5px;color:rgba(228,195,138,.76);font-size:12px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.roi-metrics{display:grid;gap:4px;min-width:128px;text-align:right}
+.roi-net{font-size:18px;font-weight:900;color:var(--green);line-height:1.05}
+.roi-detail{font-size:11px;color:var(--muted);font-weight:800;line-height:1.25}
+.roi-detail span{color:var(--ambersoft)}
+.roi-report-meta{margin-top:2px;padding:10px 12px;border-radius:16px;background:rgba(255,255,255,.025);border:1px solid rgba(255,223,161,.08);color:var(--muted);font-size:11px;line-height:1.4}
 /* Top-5 row accents */
 .bakery-row.top-1,.bakery-row.top-2,.bakery-row.top-3,.bakery-row.top-4,.bakery-row.top-5{
   transition:transform .18s ease,box-shadow .22s ease,border-color .18s ease,filter .18s ease;
@@ -356,6 +367,9 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
   .search-row,.stats,.summary-grid{grid-template-columns:1fr}
   .lookup-btn{width:100%}
   .bakery-row{grid-template-columns:auto 1fr}
+  .roi-row{grid-template-columns:auto 1fr}
+  .roi-metrics{grid-column:2;grid-template-columns:repeat(2,minmax(0,auto));justify-content:start;min-width:0;text-align:left}
+  .roi-net{font-size:16px}
   .bakery-cookies,.bakery-payout{grid-column:2}
   .brand-card{min-height:auto;padding:20px}
   .logo-wrap img{height:126px}
@@ -403,6 +417,14 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
     </div>
 
     <div class="right-stack">
+      <div class="card roi-leaderboard-card">
+        <div class="section-head">
+          <div><h2 class="section-title">Top 10 Net ROI USD</h2><div class="meta" id="roiLeaderboardMeta">Snapshot net USD</div></div>
+          <div class="ghost live-pill">Top 10</div>
+        </div>
+        <div class="list roi-list" id="roiLeaderboardList"><div class="meta">Loading ROI report...</div></div>
+      </div>
+
       <div class="card">
         <div class="hero-top">
           <div class="section-head" style="width:100%;margin-bottom:0">
@@ -505,9 +527,11 @@ var CONTRACTS = {
 var SEASON5_TX_START_TS = 1778252400; // 2026-05-08 10:00 UTC / 13:00 TRT
 var SEASON5_TX_START_MINUTE = Math.floor(SEASON5_TX_START_TS/60);
 var SEASON5_TX_START_LABEL = "May 8, 2026 13:00 TRT";
-var BAKE_SNAPSHOT_CUTOFF_TS = 1778443200; // 2026-05-10 23:00 TRT
+var BAKE_SNAPSHOT_CUTOFF_TS = 1778536800; // 2026-05-12 01:00 TRT
 var BAKE_SNAPSHOT_URL = "data/s5-bake-snapshot.json";
-var BAKE_SNAPSHOT_VERSION = "2026-05-10-2300-trt";
+var BAKE_SNAPSHOT_VERSION = "2026-05-12-0100-trt";
+var ROI_REPORT_URL = "reports/top-roi-chefs.json";
+var ROI_REPORT_VERSION = BAKE_SNAPSHOT_VERSION;
 var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
 var LIVE_REFRESH_MS = 30*1000;
@@ -527,6 +551,7 @@ var playerCache={};
 var memberRowCache={};
 var participantCache={};
 var bakeSnapshotCache=null;
+var roiReportCache=null;
 function cacheFresh(entry,ttl){
   return !!(entry&&entry.ts&&(Date.now()-entry.ts)<ttl);
 }
@@ -1071,6 +1096,7 @@ function fN(v,d){d=d||0;var n=toN(v);if(n===null)return"--";return n.toLocaleStr
 function fE(v,d){d=(d!==undefined)?d:5;var n=toN(v);return n===null?"--":n.toFixed(d)+" ETH";}
 function fPct(v,d){d=(d!==undefined)?d:1;var n=toN(v);if(n===null)return"--";return (n>=0?"+":"")+n.toFixed(d)+"%";}
 function fUsd(v){var n=toN(v);return n===null?"--":"$"+Math.round(n).toLocaleString("en-US");}
+function fUsd2(v){var n=toN(v);return n===null?"--":"$"+n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fEU(v,d){var n=toN(v);if(n===null)return"--";var eth=fE(n,d);return gEthUsd!=null?eth+" ("+fUsd(n*gEthUsd)+")":eth;}
 function sa(v){return v?v.slice(0,6)+"..."+v.slice(-4):"--";}
 function ini(v){var c=(v||"").replace(/[^a-zA-Z0-9]/g,"").slice(0,2);return c?c.toUpperCase():"BT";}
@@ -1261,6 +1287,49 @@ function renderLB(){
       (pay!=null?'<div class="bakery-payout">'+esc(splitLabel+" "+fE(pay,4))+'</div>':'')+
     '</div>';
   }).join("");
+}
+async function fetchRoiReport(){
+  if(roiReportCache)return roiReportCache;
+  var report=await pFetch(ROI_REPORT_URL+"?v="+encodeURIComponent(ROI_REPORT_VERSION));
+  if(!report||!Array.isArray(report.top10))throw new Error("invalid_roi_report");
+  roiReportCache=report;
+  return report;
+}
+function renderRoiLeaderboard(){
+  var list=document.getElementById("roiLeaderboardList");
+  if(!list)return;
+  list.innerHTML='<div class="meta">Loading ROI report...</div>';
+  fetchRoiReport().then(function(report){
+    var rows=report.top10||[];
+    var meta=document.getElementById("roiLeaderboardMeta");
+    var cutoff=report.snapshot&&report.snapshot.cutoffLabel?report.snapshot.cutoffLabel:"latest snapshot";
+    if(meta)meta.textContent="Net reward after gas · "+cutoff;
+    if(!rows.length){list.innerHTML='<div class="meta">ROI report has no rows.</div>';return;}
+    var html=rows.slice(0,10).map(function(row,i){
+      var rank=row.rank||i+1;
+      var medal=rank===1?"&#x1F947;":rank===2?"&#x1F948;":rank===3?"&#x1F949;":"#"+rank;
+      var topClass=rank===1?" top-1":rank===2?" top-2":rank===3?" top-3":rank===4?" top-4":rank===5?" top-5":"";
+      var name=row.name||sa(row.address);
+      var bakery=row.bakeryName?row.bakeryName:"Bakery #"+(row.bakeryRank||"--");
+      return '<div class="bakery-row roi-row'+topClass+'">'
+        +'<div class="rank">'+medal+'</div>'
+        +'<div class="roi-chef">'
+          +'<div class="roi-chef-name">'+esc(name)+'</div>'
+          +'<div class="roi-chef-sub">'+esc(sa(row.address))+' &middot; '+esc(bakery)+' &middot; '+esc(fN(row.snapshotBakeTx,0))+' bake tx</div>'
+        +'</div>'
+        +'<div class="roi-metrics">'
+          +'<div class="roi-net">'+esc(fUsd2(row.netUsd))+'</div>'
+          +'<div class="roi-detail"><span>'+esc(fPct(row.roiPct,1))+'</span> ROI</div>'
+          +'<div class="roi-detail">'+esc(fUsd2(row.rewardUsd))+' reward · '+esc(fUsd2(row.gasUsd))+' gas</div>'
+        +'</div>'
+      +'</div>';
+    }).join("");
+    var inputs=report.inputs||{};
+    html+='<div class="roi-report-meta">Prize pool '+esc(fE(inputs.poolEth,4))+' · ETH '+esc(fUsd2(inputs.ethUsd))+' · '+esc(fN(inputs.qualifiedSnapshotChefRows,0))+' matched chefs</div>';
+    list.innerHTML=html;
+  }).catch(function(){
+    list.innerHTML='<div class="meta">Top ROI report unavailable.</div>';
+  });
 }
 // /bakeries sayfasinin kullandigi canli leaderboard sorgusu.
 async function fetchAllBakeries(){
@@ -1848,7 +1917,7 @@ async function analyze(fa,fn,fav,opts){
   }
   closeSug();
   if(!raw){ss(st,"Enter an address or portal name.","error");return;}
-  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-10 23:00 TRT...","loading");
+  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-12 01:00 TRT...","loading");
   try{
     var addr=raw,name=(chosen&&chosen.name)||fn||null,avatar=(chosen&&chosen.avatar)||fav||null;
     var usedCachedProfile=false;
@@ -1949,7 +2018,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-10 23:00 TRT is up to date for this wallet.","success");
+    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-12 01:00 TRT is up to date for this wallet.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
 
@@ -1985,6 +2054,7 @@ document.addEventListener("DOMContentLoaded",function(){
   });
   window.addEventListener("scroll",positionSug,true);
   window.addEventListener("resize",positionSug);
+  renderRoiLeaderboard();
   bootLiveLeaderboard();
   startLiveRefresh();
 });
