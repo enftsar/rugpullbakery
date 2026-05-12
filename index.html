@@ -195,6 +195,10 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 .share-export-frame{display:flex;align-items:center;justify-content:center;padding:0;border-radius:0;background:transparent}
 .share-export-card-wrap{display:flex;align-items:center;justify-content:center}
 .share-export-stage .player-shell{width:786px;min-width:786px;max-width:786px;margin:0;padding:24px 24px 14px;border-radius:0!important}
+.share-export-stage .stats{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.share-export-stage .stat-value{font-size:28px!important}
+.share-export-stage .stat-value.compact{font-size:22px!important}
+.share-export-stage .stat-note.secondary{display:block!important}
 .share-export-stage .player-shell{
   background:#4a2812!important;
   border:1px solid rgba(184,131,72,.72)!important;
@@ -527,6 +531,7 @@ var BAKE_SNAPSHOT_URL = "data/s5-bake-snapshot.json";
 var BAKE_SNAPSHOT_VERSION = "2026-05-12-1200-trt";
 var ROI_REPORT_URL = "reports/top-roi-chefs.json";
 var ROI_REPORT_VERSION = BAKE_SNAPSHOT_VERSION;
+var FALLBACK_ETH_USD = 2284.79;
 var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
 var LIVE_REFRESH_MS = 30*1000;
@@ -548,6 +553,7 @@ var participantCache={};
 var bakeSnapshotCache=null;
 var roiReportCache=null;
 var roiAvatarCache={};
+var gReportEthUsd=null;
 function cacheFresh(entry,ttl){
   return !!(entry&&entry.ts&&(Date.now()-entry.ts)<ttl);
 }
@@ -771,8 +777,9 @@ function syncShareExportCard(){
   var logo=document.querySelector(".logo-wrap img");
   if(!source||!exportCard||!exportFrame||!exportWrap)return null;
   var rect=source.getBoundingClientRect();
+  var exportWidth=786;
   var ratio=4/3;
-  var frameWidth=Math.ceil(rect.width);
+  var frameWidth=exportWidth;
   var frameHeight=Math.ceil(frameWidth/ratio);
   if(frameHeight<Math.ceil(rect.height)){
     frameHeight=Math.ceil(rect.height);
@@ -789,16 +796,19 @@ function syncShareExportCard(){
       exportInfo.appendChild(brand);
     }
   }
-  exportCard.style.width=Math.ceil(rect.width)+"px";
-  exportCard.style.minWidth=Math.ceil(rect.width)+"px";
-  exportCard.style.maxWidth=Math.ceil(rect.width)+"px";
+  exportCard.style.width=exportWidth+"px";
+  exportCard.style.minWidth=exportWidth+"px";
+  exportCard.style.maxWidth=exportWidth+"px";
   exportCard.style.height="auto";
   exportCard.style.minHeight="auto";
   exportCard.style.maxHeight="none";
   exportCard.style.boxSizing="border-box";
-  exportWrap.style.width=Math.ceil(rect.width)+"px";
-  exportWrap.style.minWidth=Math.ceil(rect.width)+"px";
-  exportWrap.style.maxWidth=Math.ceil(rect.width)+"px";
+  exportWrap.style.width=exportWidth+"px";
+  exportWrap.style.minWidth=exportWidth+"px";
+  exportWrap.style.maxWidth=exportWidth+"px";
+  var exportHeight=Math.ceil(exportCard.scrollHeight||exportCard.getBoundingClientRect().height||rect.height);
+  frameHeight=Math.max(Math.ceil(exportWidth/ratio),exportHeight);
+  frameWidth=Math.ceil(frameHeight*ratio);
   exportFrame.style.width=frameWidth+"px";
   exportFrame.style.height=frameHeight+"px";
   exportFrame.style.minWidth=frameWidth+"px";
@@ -898,8 +908,10 @@ function buildShareText(){
   Array.prototype.forEach.call(stats,function(stat){
     var label=stat.querySelector(".stat-label");
     var value=stat.querySelector(".stat-value");
+    var note=stat.querySelector(".stat-note.secondary");
     if(label&&value){
       var txt=value.textContent.replace(/\s+/g," ").trim();
+      if(note&&note.textContent.trim())txt+=" ("+note.textContent.replace(/\s+/g," ").trim()+")";
       if(txt)parts.push(label.textContent.trim()+": "+txt);
     }
   });
@@ -1343,6 +1355,7 @@ function renderRoiLeaderboard(){
   list.innerHTML='<div class="meta">Loading ROI report...</div>';
   fetchRoiReport().then(function(report){
     var rows=report.top10||[];
+    if(report.inputs&&toN(report.inputs.ethUsd)!=null)gReportEthUsd=toN(report.inputs.ethUsd);
     var meta=document.getElementById("roiLeaderboardMeta");
     if(meta)meta.textContent=utcSnapshotLabel(report);
     if(!rows.length){list.innerHTML='<div class="meta">ROI report has no rows.</div>';return;}
@@ -1630,7 +1643,7 @@ async function computeNetProfitEntry(address,cutoffTs){
   var reward=bakeryReward*share;
   var gas=toN(chain.gas)||0;
   var netProfit=reward-gas;
-  var ethUsd=toN(gEthUsd)||0;
+  var ethUsd=toN(gEthUsd)||toN(gReportEthUsd)||FALLBACK_ETH_USD;
   var rewardUsd=reward*ethUsd;
   var gasUsd=gas*ethUsd;
   var netProfitUsd=rewardUsd-gasUsd;
@@ -1912,17 +1925,18 @@ function renderPlayer(data,name,avatar,address,chain){
   // COOK puanini fCook ile formatla (site referansi: 10.9M, 875.1K)
   var bakeryShareRaw=bakPay!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT?(toN(bakPay)!=null?toN(bakPay).toFixed(4):"--"):"";
   var bakeryRankSub=bakeryShareRaw?'<span class="eth-inline"><span>'+esc(bakeryShareRaw)+'</span><span class="unit">ETH</span></span>':"";
+  var ethUsd=toN(gEthUsd)||toN(gReportEthUsd)||toN(chain&&chain.ethUsd)||FALLBACK_ETH_USD;
   var gasEthRaw=txVerified&&gas!=null?(toN(gas)!=null?toN(gas).toFixed(5):"--"):"--";
   var gasEth=txVerified&&gas!=null?'<span class="eth-inline"><span>'+esc(gasEthRaw)+'</span><span class="unit">ETH</span></span>':"--";
-  var gasUsd=txVerified&&gas!=null&&gEthUsd!=null?fUsd(gas*gEthUsd):"";
+  var gasUsd=txVerified&&gas!=null&&ethUsd!=null?fUsd(gas*ethUsd):"";
   var rewardEthRaw=myPay!=null?(toN(myPay)!=null?toN(myPay).toFixed(4):"--"):"--";
   var rewardEth=myPay!=null?'<span class="eth-inline"><span>'+esc(rewardEthRaw)+'</span><span class="unit">ETH</span></span>':(rank>QUALIFIED_BAKERY_COUNT?"Not Eligible":"--");
-  var rewardUsd=myPay!=null&&gEthUsd!=null?fUsd(myPay*gEthUsd):"";
+  var rewardUsd=myPay!=null&&ethUsd!=null?fUsd(myPay*ethUsd):"";
   var roiPct=txVerified&&roi!=null?fPct(roi,1):(rank>QUALIFIED_BAKERY_COUNT?"Unavailable":"--");
-  var roiUsd=txVerified&&net!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&gEthUsd!=null?fUsd(net*gEthUsd):"";
+  var roiUsd=txVerified&&net!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&ethUsd!=null?fUsd(net*ethUsd):"";
   var stats=[
     {l:"Bake TX",v:txVerified?fN(realTx,0):"--",s:"",t:"cookie",k:"stat-cookie"},
-    {l:"Bakery Payout",v:bakeryRankSub||"--",h:bakeryRankSub||"",n:bakeryRankSub&&gEthUsd!=null&&bakPay!=null?fUsd(bakPay*gEthUsd):"",s:"",t:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"amber":"",c:bakeryRankSub?"compact":"",k:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"stat-reward":""},
+    {l:"Bakery Payout",v:bakeryRankSub||"--",h:bakeryRankSub||"",n:bakeryRankSub&&ethUsd!=null&&bakPay!=null?fUsd(bakPay*ethUsd):"",s:"",t:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"amber":"",c:bakeryRankSub?"compact":"",k:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"stat-reward":""},
     {l:"Cookies Baked",v:cookieBalance!=null&&cookieBalance>0?fCook(cookieBalance):"--",s:"",t:"cookie",k:"stat-cookie"},
     {l:"Gas Cost",v:gasEth,h:txVerified&&gas!=null?gasEth:"",n:gasUsd,s:"",t:"negative",k:"stat-negative"},
     {l:"Est. Reward",v:rewardEth,h:myPay!=null?rewardEth:"",n:rewardUsd,t:myPay!=null?"amber":(rank>QUALIFIED_BAKERY_COUNT?"negative":""),c:rank>QUALIFIED_BAKERY_COUNT?"compact":"",k:myPay!=null?"stat-reward":(rank>QUALIFIED_BAKERY_COUNT?"stat-negative":"")},
