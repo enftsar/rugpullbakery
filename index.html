@@ -54,7 +54,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 .hero-stage .summary-grid{margin:0;max-width:none;align-self:stretch}
 .dashboard{display:grid;grid-template-columns:minmax(380px,1.1fr) minmax(340px,.9fr);gap:20px;align-items:start}
 .left-stack,.right-stack{display:grid;gap:18px}
-.right-stack{position:sticky;top:24px;align-self:start}
+.right-stack{position:relative;top:auto;align-self:start}
 .dashboard>.right-stack{order:2}
 .dashboard>.left-stack{order:1}
 .right-stack>.card:first-child{position:relative;z-index:30}
@@ -421,12 +421,6 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
           <div class="section-head" style="width:100%;margin-bottom:0">
             <div><h2 class="section-title">Player ROI Card</h2><div class="meta">Analyze a wallet or portal profile after selection.</div></div>
           </div>
-        </div>
-
-        <div class="stack-grid">
-          <div class="tile"><div class="tile-label">Season 5 Prize Pool</div><div class="tile-value" id="heroPool">Loading...</div></div>
-          <div class="tile"><div class="tile-label">Total Members</div><div class="tile-value" id="heroRegs">--</div></div>
-          <a class="tile link-tile" href="https://www.rugpullbakery.com/invite?ref=0x4Ed266c11f8fd74712862EA3545DBf32a6928c60" target="_blank" rel="noopener noreferrer"><div class="tile-label">Join Season 5</div><div class="tile-value">PLAY NOW</div></a>
         </div>
 
         <div class="search-wrap">
