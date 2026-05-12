@@ -306,7 +306,9 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 .bakery-payout{color:var(--ambersoft)}
 .roi-leaderboard-card .section-head{margin-bottom:10px}
 .roi-list{gap:10px}
-.roi-row{grid-template-columns:auto minmax(0,1fr) auto}
+.roi-row{grid-template-columns:auto auto minmax(0,1fr) auto}
+.roi-avatar{width:42px;height:42px;border-radius:15px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 30% 28%,rgba(255,241,204,.2),transparent 30%),linear-gradient(180deg,#75401a,#32180a);border:1px solid rgba(255,207,122,.52);box-shadow:0 10px 22px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,248,230,.08);color:var(--ambersoft);font-size:13px;font-weight:900;flex-shrink:0}
+.roi-avatar img{width:100%;height:100%;display:block;object-fit:cover}
 .roi-chef{min-width:0}
 .roi-chef-name{font-weight:900;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .roi-chef-sub{margin-top:5px;color:rgba(228,195,138,.76);font-size:12px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -314,7 +316,6 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 .roi-net{font-size:18px;font-weight:900;color:var(--green);line-height:1.05}
 .roi-detail{font-size:11px;color:var(--muted);font-weight:800;line-height:1.25}
 .roi-detail span{color:var(--ambersoft)}
-.roi-report-meta{margin-top:2px;padding:10px 12px;border-radius:16px;background:rgba(255,255,255,.025);border:1px solid rgba(255,223,161,.08);color:var(--muted);font-size:11px;line-height:1.4}
 /* Top-5 row accents */
 .bakery-row.top-1,.bakery-row.top-2,.bakery-row.top-3,.bakery-row.top-4,.bakery-row.top-5{
   transition:transform .18s ease,box-shadow .22s ease,border-color .18s ease,filter .18s ease;
@@ -367,8 +368,8 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
   .search-row,.stats,.summary-grid{grid-template-columns:1fr}
   .lookup-btn{width:100%}
   .bakery-row{grid-template-columns:auto 1fr}
-  .roi-row{grid-template-columns:auto 1fr}
-  .roi-metrics{grid-column:2;grid-template-columns:repeat(2,minmax(0,auto));justify-content:start;min-width:0;text-align:left}
+  .roi-row{grid-template-columns:auto auto 1fr}
+  .roi-metrics{grid-column:3;grid-template-columns:repeat(2,minmax(0,auto));justify-content:start;min-width:0;text-align:left}
   .roi-net{font-size:16px}
   .bakery-cookies,.bakery-payout{grid-column:2}
   .brand-card{min-height:auto;padding:20px}
@@ -414,16 +415,6 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
         </div>
         <div class="list" id="leaderboardList"></div>
       </div>
-    </div>
-
-    <div class="right-stack">
-      <div class="card roi-leaderboard-card">
-        <div class="section-head">
-          <div><h2 class="section-title">Top 10 Net ROI USD</h2><div class="meta" id="roiLeaderboardMeta">Snapshot net USD</div></div>
-          <div class="ghost live-pill">Top 10</div>
-        </div>
-        <div class="list roi-list" id="roiLeaderboardList"><div class="meta">Loading ROI report...</div></div>
-      </div>
 
       <div class="card">
         <div class="hero-top">
@@ -449,6 +440,16 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
           <div class="selected-profile" id="selectedProfile"></div>
           <div class="status" id="playerStatus"></div>
         </div>
+      </div>
+    </div>
+
+    <div class="right-stack">
+      <div class="card roi-leaderboard-card">
+        <div class="section-head">
+          <div><h2 class="section-title">Top 10 Net ROI USD</h2><div class="meta" id="roiLeaderboardMeta">Snapshot net USD</div></div>
+          <div class="ghost live-pill">Top 10</div>
+        </div>
+        <div class="list roi-list" id="roiLeaderboardList"><div class="meta">Loading ROI report...</div></div>
       </div>
 
       <div class="card player-shell" id="playerCardCapture">
@@ -552,6 +553,7 @@ var memberRowCache={};
 var participantCache={};
 var bakeSnapshotCache=null;
 var roiReportCache=null;
+var roiAvatarCache={};
 function cacheFresh(entry,ttl){
   return !!(entry&&entry.ts&&(Date.now()-entry.ts)<ttl);
 }
@@ -1294,6 +1296,53 @@ async function fetchRoiReport(){
   roiReportCache=report;
   return report;
 }
+function utcSnapshotLabel(report){
+  var ts=report&&report.snapshot?Number(report.snapshot.cutoffTs):0;
+  if(!ts)return"Snapshot date: latest UTC; net reward after gas is calculated up to this point.";
+  var d=new Date(ts*1000);
+  var y=d.getUTCFullYear();
+  var m=String(d.getUTCMonth()+1).padStart(2,"0");
+  var day=String(d.getUTCDate()).padStart(2,"0");
+  var h=String(d.getUTCHours()).padStart(2,"0");
+  var min=String(d.getUTCMinutes()).padStart(2,"0");
+  return"Snapshot date: "+y+"-"+m+"-"+day+" "+h+":"+min+" UTC; net reward after gas is calculated up to this point.";
+}
+function roiAvatarMarkup(row,name){
+  var address=(row.address||"").toLowerCase();
+  if(row.avatar)return'<div class="roi-avatar" data-roi-avatar="'+esc(address)+'"><img src="'+esc(row.avatar)+'" alt="'+esc(name)+'"></div>';
+  return'<div class="roi-avatar" data-roi-avatar="'+esc(address)+'"><span>'+esc(ini(name||address))+'</span></div>';
+}
+function setRoiAvatar(address,url,alt){
+  if(!address||!url)return;
+  var key=address.toLowerCase();
+  var nodes=document.querySelectorAll("[data-roi-avatar]");
+  for(var i=0;i<nodes.length;i++){
+    if((nodes[i].getAttribute("data-roi-avatar")||"").toLowerCase()===key){
+      nodes[i].innerHTML='<img src="'+esc(url)+'" alt="'+esc(alt||"Profile")+'" onerror="this.parentNode.innerHTML=this.parentNode.getAttribute(\'data-fallback\')||\'\';">';
+    }
+  }
+}
+async function fetchRoiAvatar(address){
+  var key=(address||"").toLowerCase();
+  if(!key)return null;
+  if(Object.prototype.hasOwnProperty.call(roiAvatarCache,key))return roiAvatarCache[key];
+  var avatar=null;
+  try{
+    var raw=await pFetch(PORTAL+"/user/address/"+encodeURIComponent(key));
+    var user=(raw&&raw.user)?raw.user:raw;
+    avatar=user&&(user.overrideProfilePictureUrl||user.profilePictureUrl||user.avatar)||null;
+  }catch(e){}
+  roiAvatarCache[key]=avatar||null;
+  return roiAvatarCache[key];
+}
+function hydrateRoiAvatars(rows){
+  (rows||[]).slice(0,10).forEach(function(row){
+    if(row.avatar){setRoiAvatar(row.address,row.avatar,row.name||row.address);return;}
+    fetchRoiAvatar(row.address).then(function(url){
+      if(url)setRoiAvatar(row.address,url,row.name||row.address);
+    });
+  });
+}
 function renderRoiLeaderboard(){
   var list=document.getElementById("roiLeaderboardList");
   if(!list)return;
@@ -1301,8 +1350,7 @@ function renderRoiLeaderboard(){
   fetchRoiReport().then(function(report){
     var rows=report.top10||[];
     var meta=document.getElementById("roiLeaderboardMeta");
-    var cutoff=report.snapshot&&report.snapshot.cutoffLabel?report.snapshot.cutoffLabel:"latest snapshot";
-    if(meta)meta.textContent="Net reward after gas · "+cutoff;
+    if(meta)meta.textContent=utcSnapshotLabel(report);
     if(!rows.length){list.innerHTML='<div class="meta">ROI report has no rows.</div>';return;}
     var html=rows.slice(0,10).map(function(row,i){
       var rank=row.rank||i+1;
@@ -1312,6 +1360,7 @@ function renderRoiLeaderboard(){
       var bakery=row.bakeryName?row.bakeryName:"Bakery #"+(row.bakeryRank||"--");
       return '<div class="bakery-row roi-row'+topClass+'">'
         +'<div class="rank">'+medal+'</div>'
+        +roiAvatarMarkup(row,name)
         +'<div class="roi-chef">'
           +'<div class="roi-chef-name">'+esc(name)+'</div>'
           +'<div class="roi-chef-sub">'+esc(sa(row.address))+' &middot; '+esc(bakery)+' &middot; '+esc(fN(row.snapshotBakeTx,0))+' bake tx</div>'
@@ -1323,9 +1372,8 @@ function renderRoiLeaderboard(){
         +'</div>'
       +'</div>';
     }).join("");
-    var inputs=report.inputs||{};
-    html+='<div class="roi-report-meta">Prize pool '+esc(fE(inputs.poolEth,4))+' · ETH '+esc(fUsd2(inputs.ethUsd))+' · '+esc(fN(inputs.qualifiedSnapshotChefRows,0))+' matched chefs</div>';
     list.innerHTML=html;
+    hydrateRoiAvatars(rows);
   }).catch(function(){
     list.innerHTML='<div class="meta">Top ROI report unavailable.</div>';
   });
