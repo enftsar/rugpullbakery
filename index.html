@@ -526,9 +526,9 @@ var CONTRACTS = {
 var SEASON5_TX_START_TS = 1778252400; // 2026-05-08 10:00 UTC / 13:00 TRT
 var SEASON5_TX_START_MINUTE = Math.floor(SEASON5_TX_START_TS/60);
 var SEASON5_TX_START_LABEL = "May 8, 2026 13:00 TRT";
-var BAKE_SNAPSHOT_CUTOFF_TS = 1778625900; // 2026-05-13 01:45 TRT
+var BAKE_SNAPSHOT_CUTOFF_TS = 1778711400; // 2026-05-14 01:30 TRT
 var BAKE_SNAPSHOT_URL = "data/s5-bake-snapshot.json";
-var BAKE_SNAPSHOT_VERSION = "2026-05-13-0145-trt";
+var BAKE_SNAPSHOT_VERSION = "2026-05-14-0130-trt";
 var ROI_REPORT_URL = "reports/top-roi-chefs.json";
 var ROI_REPORT_VERSION = BAKE_SNAPSHOT_VERSION;
 var FALLBACK_ETH_USD = 2284.79;
@@ -1972,7 +1972,7 @@ async function analyze(fa,fn,fav,opts){
   }
   closeSug();
   if(!raw){ss(st,"Enter an address or portal name.","error");return;}
-  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-13 01:45 TRT...","loading");
+  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-14 01:30 TRT...","loading");
   try{
     var addr=raw,name=(chosen&&chosen.name)||fn||null,avatar=(chosen&&chosen.avatar)||fav||null;
     var usedCachedProfile=false;
@@ -2073,7 +2073,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-13 01:45 TRT is up to date for this wallet.","success");
+    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-14 01:30 TRT is up to date for this wallet.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
 
