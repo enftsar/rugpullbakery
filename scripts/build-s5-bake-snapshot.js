@@ -6,7 +6,7 @@ const EKEY = process.env.ETHERSCAN_API_KEY || "WX9V4F65TXJNZYESEI4NWAFFRNID61KIU
 const CHAIN_ID = 2741;
 const BAKE_TO = "0xfeb79a841d69c08afcdc7b2beec8a6fbbe46c455";
 const START_TS = 1778252400;
-const CUTOFF_TS = 1778625900;
+const CUTOFF_TS = 1778711400;
 const OUT_FILE = path.resolve(__dirname, "../data/s5-bake-snapshot.json");
 const PAGE_SIZE = Number(process.env.PAGE_SIZE || 10000);
 
@@ -60,6 +60,7 @@ async function buildSnapshot() {
   let retries = 0;
   let earliestTimestamp = null;
   let latestTimestamp = null;
+  let reachedScanStart = false;
 
   const maxBatches = Number(process.env.MAX_BATCHES || 1200);
   while (endBlock >= scanStartBlock && batches < maxBatches) {
@@ -74,6 +75,7 @@ async function buildSnapshot() {
         continue;
       }
       console.log(`Stopped at endBlock=${endBlock}: ${data.message || "empty"} ${typeof data.result === "string" ? data.result : ""}`);
+      reachedScanStart = true;
       break;
     }
     batches += 1;
@@ -104,7 +106,10 @@ async function buildSnapshot() {
       if (ts > players[from].lastTs) players[from].lastTs = ts;
     }
 
-    if (rows.length < PAGE_SIZE || oldestBlock <= scanStartBlock) break;
+    if (rows.length < PAGE_SIZE || oldestBlock <= scanStartBlock) {
+      reachedScanStart = true;
+      break;
+    }
     endBlock = oldestBlock - 1;
     await sleep(120);
   }
@@ -116,14 +121,14 @@ async function buildSnapshot() {
     timezone: "Europe/Istanbul",
     startTs: START_TS,
     cutoffTs: CUTOFF_TS,
-    cutoffLabel: "2026-05-13 01:45 TRT",
+    cutoffLabel: "2026-05-14 01:30 TRT",
     startBlock,
     cutoffBlock,
     generatedAt: new Date().toISOString(),
     batches,
     retries,
     extendedFromCutoffTs: canExtend ? existing.cutoffTs : null,
-    complete: endBlock < scanStartBlock || earliestTimestamp <= scanStartTs,
+    complete: reachedScanStart || endBlock < scanStartBlock || earliestTimestamp <= scanStartTs,
     totalPlayers: Object.keys(players).length,
     totalBakeTx: Object.values(players).reduce((sum, player) => sum + player.bakeTx, 0),
     earliestTimestamp,
