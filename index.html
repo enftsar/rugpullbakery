@@ -526,11 +526,12 @@ var CONTRACTS = {
 var SEASON5_TX_START_TS = 1778252400; // 2026-05-08 10:00 UTC / 13:00 TRT
 var SEASON5_TX_START_MINUTE = Math.floor(SEASON5_TX_START_TS/60);
 var SEASON5_TX_START_LABEL = "May 8, 2026 13:00 TRT";
-var BAKE_SNAPSHOT_CUTOFF_TS = 1778711400; // 2026-05-14 01:30 TRT
+var BAKE_SNAPSHOT_CUTOFF_TS = 1778796000; // 2026-05-15 01:00 TRT
 var BAKE_SNAPSHOT_URL = "data/s5-bake-snapshot.json";
-var BAKE_SNAPSHOT_VERSION = "2026-05-14-0130-trt";
+var BAKE_SNAPSHOT_VERSION = "2026-05-15-0100-trt";
 var ROI_REPORT_URL = "reports/top-roi-chefs.json";
 var ROI_REPORT_VERSION = BAKE_SNAPSHOT_VERSION;
+var ROI_REPORT_FALLBACK = {"generatedAt":"2026-05-14T22:33:46.600Z","snapshot":{"cutoffTs":1778796000,"cutoffLabel":"2026-05-15 01:00 TRT","totalPlayers":509,"totalBakeTx":12647882},"inputs":{"poolEth":81.1185,"ethUsd":2296.94533722,"totalTop10BakeryScore":229606487947,"topChefRows":509,"qualifiedSnapshotChefRows":456},"top10":[{"rank":1,"address":"0xaafc32b2c918524e53816aeea56029c93733a03b","bakeryId":1307,"bakeryName":"Stable Bakery","bakeryRank":8,"chefScore":1189936650,"topChefTxCount":636643856,"snapshotBakeTx":57863,"rewardEth":0.4203969888050639,"gasEth":0.36240399430774534,"netEth":0.05799299449731854,"rewardUsd":965.6289032171201,"gasUsd":832.4221649150791,"netUsd":133.20673830204095,"roiPct":16.002305550769453,"name":""},{"rank":2,"address":"0xc2f6087b7eaf24f4d3a64f668d1528ddb9ecd427","bakeryId":1307,"bakeryName":"Stable Bakery","bakeryRank":8,"chefScore":679468950,"topChefTxCount":100226878,"snapshotBakeTx":30006,"rewardEth":0.24005202341363174,"gasEth":0.1851312778494729,"netEth":0.05492074556415885,"rewardUsd":551.3863758701677,"gasUsd":425.236425429927,"netUsd":126.14995044024067,"roiPct":29.665838318695116,"name":""},{"rank":3,"address":"0x85c8e3955771da9369e55a3416b7bb62db15baef","bakeryId":1307,"bakeryName":"Stable Bakery","bakeryRank":8,"chefScore":678240450,"topChefTxCount":113796799,"snapshotBakeTx":29945,"rewardEth":0.2396180022405323,"gasEth":0.18477083644047376,"netEth":0.05484716580005855,"rewardUsd":550.3894529603622,"gasUsd":424.4085112161855,"netUsd":125.98094174417675,"roiPct":29.683886730538372,"name":""},{"rank":4,"address":"0xf680700b183a4cdcbabfadfca7a071cd4b9af986","bakeryId":1307,"bakeryName":"Stable Bakery","bakeryRank":8,"chefScore":678374550,"topChefTxCount":87635288,"snapshotBakeTx":29960,"rewardEth":0.23966537891070944,"gasEth":0.18486900133797324,"netEth":0.0547963775727362,"rewardUsd":550.4982745820186,"gasUsd":424.6339906197756,"netUsd":125.864283962243,"roiPct":29.640652124559665,"name":""},{"rank":5,"address":"0xe89c3c605b49e29e532bcdc914e5713141cde866","bakeryId":1307,"bakeryName":"Stable Bakery","bakeryRank":8,"chefScore":676945950,"topChefTxCount":101270588,"snapshotBakeTx":29887,"rewardEth":0.2391606636906119,"gasEth":0.18443850279297413,"netEth":0.05472216089763776,"rewardUsd":549.3389713105915,"gasUsd":423.6451589941599,"netUsd":125.69381231643167,"roiPct":29.669597220197293,"name":""},{"rank":6,"address":"0x56edbbdf30160973d263df96bf3d0ce760fddef7","bakeryId":1307,"bakeryName":"Stable Bakery","bakeryRank":8,"chefScore":676647350,"topChefTxCount":114964643,"snapshotBakeTx":29894,"rewardEth":0.2390551702251764,"gasEth":0.18445566652522402,"netEth":0.05459950369995237,"rewardUsd":549.0966585870523,"gasUsd":423.6845831489206,"netUsd":125.41207543813174,"roiPct":29.60033959839665,"name":""},{"rank":7,"address":"0x1cd147897fee7db7568f1afcfaabb21568f25959","bakeryId":1307,"bakeryName":"Stable Bakery","bakeryRank":8,"chefScore":513183050,"topChefTxCount":217122975,"snapshotBakeTx":21664,"rewardEth":0.18130428113614164,"gasEth":0.13142954343925642,"netEth":0.04987473769688522,"rewardUsd":416.4460231736845,"gasUsd":301.88647697575345,"netUsd":114.55954619793107,"roiPct":37.94788933428512,"name":""},{"rank":8,"address":"0x1ce2e43a69239b8a9c6d2ad4e3e04d303f11d395","bakeryId":1310,"bakeryName":"Circle Jerk","bakeryRank":9,"chefScore":849131750,"topChefTxCount":429816928,"snapshotBakeTx":41055,"rewardEth":0.2999928028091028,"gasEth":0.25736903994760224,"netEth":0.04262376286150055,"rewardUsd":689.0670696119275,"gasUsd":591.1626162524329,"netUsd":97.9044533594947,"roiPct":16.561340427806826,"name":""},{"rank":9,"address":"0x0aba1ca18a9259a1e23dc5adf1696c3eef4e0a44","bakeryId":1301,"bakeryName":"The Cookie Burglars","bakeryRank":3,"chefScore":1348564300,"topChefTxCount":274846687,"snapshotBakeTx":69275,"rewardEth":0.47643912046074793,"gasEth":0.4346179204700807,"netEth":0.041821199990667246,"rewardUsd":1094.3546162115128,"gasUsd":998.2936058960047,"netUsd":96.06101031550824,"roiPct":9.622520844385257,"name":""},{"rank":10,"address":"0x7e2e92ed93bbb859b6d191059a1725509ac52609","bakeryId":1301,"bakeryName":"The Cookie Burglars","bakeryRank":3,"chefScore":1365161225,"topChefTxCount":163440451,"snapshotBakeTx":70220,"rewardEth":0.48230270764702665,"gasEth":0.44055510441630685,"netEth":0.0417476032307198,"rewardUsd":1107.8229554584186,"gasUsd":1011.9309928775062,"netUsd":95.89196258091245,"roiPct":9.476136540520024,"name":""}]};
 var FALLBACK_ETH_USD = 2284.79;
 var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
@@ -1297,10 +1298,18 @@ function renderLB(){
 }
 async function fetchRoiReport(){
   if(roiReportCache)return roiReportCache;
-  var report=await pFetch(ROI_REPORT_URL+"?v="+encodeURIComponent(ROI_REPORT_VERSION));
-  if(!report||!Array.isArray(report.top10))throw new Error("invalid_roi_report");
-  roiReportCache=report;
-  return report;
+  try{
+    var report=await pFetch(ROI_REPORT_URL+"?v="+encodeURIComponent(ROI_REPORT_VERSION)+"&t="+Date.now());
+    if(report&&Array.isArray(report.top10)&&report.snapshot&&Number(report.snapshot.cutoffTs)===BAKE_SNAPSHOT_CUTOFF_TS){
+      roiReportCache=report;
+      return report;
+    }
+  }catch(e){}
+  if(ROI_REPORT_FALLBACK&&Array.isArray(ROI_REPORT_FALLBACK.top10)){
+    roiReportCache=ROI_REPORT_FALLBACK;
+    return roiReportCache;
+  }
+  throw new Error("invalid_roi_report");
 }
 function utcSnapshotLabel(report){
   var ts=report&&report.snapshot?Number(report.snapshot.cutoffTs):0;
@@ -1972,7 +1981,7 @@ async function analyze(fa,fn,fav,opts){
   }
   closeSug();
   if(!raw){ss(st,"Enter an address or portal name.","error");return;}
-  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-14 01:30 TRT...","loading");
+  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-15 01:00 TRT...","loading");
   try{
     var addr=raw,name=(chosen&&chosen.name)||fn||null,avatar=(chosen&&chosen.avatar)||fav||null;
     var usedCachedProfile=false;
@@ -2073,7 +2082,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-14 01:30 TRT is up to date for this wallet.","success");
+    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-15 01:00 TRT is up to date for this wallet.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
 
