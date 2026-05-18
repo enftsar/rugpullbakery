@@ -1939,7 +1939,7 @@ function renderPlayer(data,name,avatar,address,chain){
   var stats=[
     {l:"Bake TX",v:txVerified?fN(realTx,0):"--",s:"",t:"cookie",k:"stat-cookie"},
     {l:"Bakery Payout",v:bakeryRankSub||"--",h:bakeryRankSub||"",n:bakeryRankSub&&ethUsd!=null&&bakPay!=null?fUsd(bakPay*ethUsd):"",s:"",t:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"amber":"",c:bakeryRankSub?"compact":"",k:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"stat-reward":""},
-    {l:"Cookies Baked",v:cookieBalance!=null&&cookieBalance>0?fCook(cookieBalance):"--",s:"",t:"cookie",k:"stat-cookie"},
+    {l:"Score",v:playerScore!=null&&playerScore>0?fCook(playerScore):"--",s:"",t:"cookie",k:"stat-cookie"},
     {l:"Gas Cost",v:gasEth,h:txVerified&&gas!=null?gasEth:"",n:gasUsd,s:"",t:"negative",k:"stat-negative"},
     {l:"Est. Reward",v:rewardEth,h:myPay!=null?rewardEth:"",n:rewardUsd,t:myPay!=null?"amber":(rank>QUALIFIED_BAKERY_COUNT?"negative":""),c:rank>QUALIFIED_BAKERY_COUNT?"compact":"",k:myPay!=null?"stat-reward":(rank>QUALIFIED_BAKERY_COUNT?"stat-negative":"")},
     {l:"Net ROI",v:roiPct,n:roiUsd,t:roi==null?(rank>QUALIFIED_BAKERY_COUNT?"negative":""):(roi>=0?"positive":"negative"),c:rank>QUALIFIED_BAKERY_COUNT?"compact":"",k:roi==null?(rank>QUALIFIED_BAKERY_COUNT?"stat-negative":""):(roi>=0?"stat-positive":"stat-negative")}
