@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-05-18T20:57:21.303Z",
+  "snapshot": {
+    "cutoffTs": 1779116399,
+    "cutoffLabel": "2026-05-18 17:59:59 TRT",
+    "totalPlayers": 0,
+    "totalBakeTx": 0
+  },
+  "inputs": {
+    "poolEth": 0,
+    "ethUsd": null,
+    "totalTop10BakeryScore": 0,
+    "topChefRows": 0,
+    "qualifiedSnapshotChefRows": 0
+  },
+  "top10": []
+}

@@ -1,5 +1,5 @@
 {
-  "name": "rugpull-bakery-s5-calculator",
+  "name": "rugpull-bakery-s6-calculator",
   "version": "1.0.0",
   "private": true,
   "engines": {
@@ -8,7 +8,10 @@
   "scripts": {
     "dev": "vercel dev",
     "start": "vercel dev",
-    "snapshot": "node scripts/build-s5-bake-snapshot.js",
+    "snapshot": "node scripts/build-s6-bake-snapshot.js",
+    "snapshot:s5": "node scripts/build-s5-bake-snapshot.js",
+    "roi:s6": "node scripts/build-top-roi-chefs-s6.js",
+    "roi:s5": "node scripts/build-top-roi-chefs.js",
     "deploy": "vercel --prod"
   }
 }
