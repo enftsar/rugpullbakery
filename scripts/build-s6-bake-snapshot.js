@@ -6,7 +6,7 @@ const EKEY = process.env.ETHERSCAN_API_KEY || "WX9V4F65TXJNZYESEI4NWAFFRNID61KIU
 const CHAIN_ID = 2741;
 const BAKE_TO = "0xfeb79a841d69c08afcdc7b2beec8a6fbbe46c455";
 const START_TS = 1779116400;
-const CUTOFF_TS = 1779138000;
+const CUTOFF_TS = 1779284700;
 const OUT_FILE = path.resolve(__dirname, "../data/s6-bake-snapshot.json");
 const PAGE_SIZE = Number(process.env.PAGE_SIZE || 10000);
 
@@ -121,7 +121,7 @@ async function buildSnapshot() {
     timezone: "Europe/Istanbul",
     startTs: START_TS,
     cutoffTs: CUTOFF_TS,
-    cutoffLabel: "2026-05-19 00:00:00 TRT",
+    cutoffLabel: "2026-05-20 16:45:00 TRT",
     startBlock,
     cutoffBlock,
     generatedAt: new Date().toISOString(),
