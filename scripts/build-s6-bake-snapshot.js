@@ -6,8 +6,8 @@ const EKEY = process.env.ETHERSCAN_API_KEY || "WX9V4F65TXJNZYESEI4NWAFFRNID61KIU
 const CHAIN_ID = 2741;
 const BAKE_TO = "0xfeb79a841d69c08afcdc7b2beec8a6fbbe46c455";
 const START_TS = 1779116400;
-const CUTOFF_TS = Number(process.env.CUTOFF_TS || 1779490800);
-const CUTOFF_LABEL = process.env.CUTOFF_LABEL || "2026-05-23 02:00:00 TRT";
+const CUTOFF_TS = Number(process.env.CUTOFF_TS || 1779705900);
+const CUTOFF_LABEL = process.env.CUTOFF_LABEL || "2026-05-25 13:45:00 TRT";
 const OUT_FILE = path.resolve(__dirname, "../data/s6-bake-snapshot.json");
 const PAGE_SIZE = Number(process.env.PAGE_SIZE || 10000);
 
