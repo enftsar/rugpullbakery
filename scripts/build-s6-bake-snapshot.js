@@ -6,8 +6,8 @@ const EKEY = process.env.ETHERSCAN_API_KEY || "WX9V4F65TXJNZYESEI4NWAFFRNID61KIU
 const CHAIN_ID = 2741;
 const BAKE_TO = "0xfeb79a841d69c08afcdc7b2beec8a6fbbe46c455";
 const START_TS = 1779116400;
-const CUTOFF_TS = Number(process.env.CUTOFF_TS || 1779705900);
-const CUTOFF_LABEL = process.env.CUTOFF_LABEL || "2026-05-25 13:45:00 TRT";
+const CUTOFF_TS = Number(process.env.CUTOFF_TS || 1779721200);
+const CUTOFF_LABEL = process.env.CUTOFF_LABEL || "2026-05-25 18:00:00 TRT";
 const OUT_FILE = path.resolve(__dirname, "../data/s6-bake-snapshot.json");
 const PAGE_SIZE = Number(process.env.PAGE_SIZE || 10000);
 
@@ -92,8 +92,6 @@ async function buildSnapshot() {
       const block = Number(tx.blockNumber || 0);
       const ts = Number(tx.timeStamp || 0);
       if (block > 0 && block < oldestBlock) oldestBlock = block;
-      if (ts > 0 && (!earliestTimestamp || ts < earliestTimestamp)) earliestTimestamp = ts;
-      if (ts > 0 && (!latestTimestamp || ts > latestTimestamp)) latestTimestamp = ts;
       if (ts < scanStartTs || ts > CUTOFF_TS) continue;
       if (tx.isError === "1" || tx.txreceipt_status === "0") continue;
       const to = String(tx.to || "").toLowerCase();
@@ -101,6 +99,8 @@ async function buildSnapshot() {
       const hash = String(tx.hash || "").toLowerCase();
       if (to !== BAKE_TO || !from || !hash || seen.has(hash)) continue;
       seen.add(hash);
+      if (ts > 0 && (!earliestTimestamp || ts < earliestTimestamp)) earliestTimestamp = ts;
+      if (ts > 0 && (!latestTimestamp || ts > latestTimestamp)) latestTimestamp = ts;
 
       if (!players[from]) {
         players[from] = { bakeTx: 0, gasEth: 0, firstTs: ts, lastTs: ts };
