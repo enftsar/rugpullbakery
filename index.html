@@ -410,9 +410,9 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
       </div>
     </div>
     <div class="summary-grid">
-    <a class="tile link-tile tile-emphasis" href="https://www.rugpullbakery.com/invite?ref=0x4Ed266c11f8fd74712862EA3545DBf32a6928c60" target="_blank" rel="noopener noreferrer"><span class="tile-icon" aria-hidden="true">+</span><div class="tile-label">Join Season 6</div><div class="tile-value">PLAY NOW</div></a>
-    <div class="tile tile-cool tile-live"><span class="tile-icon" aria-hidden="true">&#9716;</span><div class="tile-label">Season 6 Ends In</div><div class="tile-value" id="heroCountdownTop">Loading...</div></div>
-    <div class="tile tile-emphasis tile-warm"><span class="tile-icon" aria-hidden="true">$</span><div class="tile-label">Season 6 Prize Pool</div><div class="tile-value" id="heroPoolTop">Loading...</div></div>
+    <a class="tile link-tile tile-emphasis" href="https://www.rugpullbakery.com/invite?ref=0x4Ed266c11f8fd74712862EA3545DBf32a6928c60" target="_blank" rel="noopener noreferrer"><span class="tile-icon" aria-hidden="true">+</span><div class="tile-label">Join Season 7</div><div class="tile-value">PLAY NOW</div></a>
+    <div class="tile tile-cool tile-live"><span class="tile-icon" aria-hidden="true">&#9716;</span><div class="tile-label">Season 7 Ends In</div><div class="tile-value" id="heroCountdownTop">Loading...</div></div>
+    <div class="tile tile-emphasis tile-warm"><span class="tile-icon" aria-hidden="true">$</span><div class="tile-label">Season 7 Prize Pool</div><div class="tile-value" id="heroPoolTop">Loading...</div></div>
     <div class="tile tile-members"><span class="tile-icon" aria-hidden="true">&#9786;</span><div class="tile-label">Total Members</div><div class="tile-value" id="heroRegsTop">--</div></div>
     </div>
   </div>
@@ -430,13 +430,6 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
     </div>
 
     <div class="right-stack">
-      <div class="card roi-leaderboard-card">
-        <div class="section-head">
-          <div><h2 class="section-title">Top 10 Net ROI USD</h2><div class="meta" id="roiLeaderboardMeta">Snapshot date loading...</div></div>
-        </div>
-        <div class="list roi-list" id="roiLeaderboardList"></div>
-      </div>
-
       <div class="card">
         <div class="hero-top">
           <div class="section-head" style="width:100%;margin-bottom:0">
@@ -451,7 +444,7 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
             </div>
             <button id="lookupBtn" class="lookup-btn"><span>Analyze</span><span class="lookup-icon" aria-hidden="true">&gt;</span></button>
           </div>
-        <div class="hint"><span class="data-pill">Snapshot + Live</span> Snapshot base: 2026-05-25 15:00:00 UTC. Later transactions are completed with a live contract scan.</div>
+        <div class="hint"><span class="data-pill">Snapshot + Live</span> Snapshot base: 2026-05-30 15:56:23 UTC. Later transactions are completed with a live contract scan.</div>
           <div class="selected-profile" id="selectedProfile"></div>
           <div class="status" id="playerStatus"></div>
         </div>
@@ -526,25 +519,22 @@ var HOME_URL = SITE_ORIGIN + "/";
 var AGENT_URL = SITE_ORIGIN + "/agent.json";
 var EKEY     = "WX9V4F65TXJNZYESEI4NWAFFRNID61KIUT";
 var QUALIFIED_BAKERY_COUNT = 10;
-var BAKE_TO  = "0xfeb79a841d69c08afcdc7b2beec8a6fbbe46c455";
+var BAKE_TO  = "0x30b49389d5271712b7e539a690b2f7b92afa3c31";
 var CONTRACTS = {
   seasonManager:"0x327E83B8517f60973473B2f2cA0eC3a0FEBB5676",
   prizePool:"0x7FDF300dbe9588faB6787C2875376C8a0521Eb72",
   playerRegistry:"0x663D69eCFF14b4dbD245cdac03f2e1DEb68Ed250",
   clanRegistry:"0xbffCc2C852f6b6E5CFeF8630a43B6CD06194E1AC",
   boostManager:"0x4F97015601863C256892e0a5e2710b48E149948C",
-  bakery:"0xFEB79a841D69C08aFCDC7B2BEEC8a6fbbe46C455",
+  bakery:"0x30b49389D5271712b7e539a690B2F7b92afA3c31",
   bakeryUpgrades:"0x19B12968f846A13B95Ac13EEea6c5acD0cC153F7"
 };
-var SEASON_TX_START_TS = 1779116400; // Season 6: 2026-05-18 15:00 UTC / 18:00 TRT
+var SEASON_TX_START_TS = 1779908400; // Season 7: 2026-05-27 15:00 UTC / 18:00 TRT
 var SEASON_TX_START_MINUTE = Math.floor(SEASON_TX_START_TS/60);
-var SEASON_TX_START_LABEL = "May 18, 2026 18:00 TRT";
-var BAKE_SNAPSHOT_CUTOFF_TS = 1779721200; // Season 6 snapshot: 2026-05-25 18:00:00 TRT
-var BAKE_SNAPSHOT_URL = "data/s6-bake-snapshot.json";
-var BAKE_SNAPSHOT_VERSION = "2026-05-25-s6-final-1500-utc";
-var ROI_REPORT_URL = "reports/top-roi-chefs-s6.json";
-var ROI_REPORT_VERSION = BAKE_SNAPSHOT_VERSION;
-var ROI_REPORT_FALLBACK = {"generatedAt":"2026-05-25T22:07:38.256Z","snapshot":{"cutoffTs":1779721200,"cutoffLabel":"2026-05-25 18:00:00 TRT","totalPlayers":649,"totalBakeTx":23161001},"inputs":{"poolEth":151.4013,"ethUsd":2109.65701961,"totalTop10BakeryScore":459203524690,"topChefRows":632,"qualifiedSnapshotChefRows":472},"top10":[{"rank":1,"address":"0xc2b176d0f08e0badc520aadf8be279539d7242c7","bakeryId":1358,"bakeryName":"Cockring Cookie Cult","bakeryRank":5,"chefScore":2025023549,"topChefTxCount":65734098,"snapshotBakeTx":97283,"rewardEth":0.667658633622614,"gasEth":0.5726062960661753,"netEth":0.09505233755643872,"rewardUsd":1408.5307231251688,"gasUsd":1208.0028919688887,"netUsd":200.52783115628017,"roiPct":16.599946282367398,"name":""},{"rank":2,"address":"0x8314f1c54488262bb9b0cf7051c726d1764978c8","bakeryId":1358,"bakeryName":"Cockring Cookie Cult","bakeryRank":5,"chefScore":1977824279,"topChefTxCount":45156732,"snapshotBakeTx":94924,"rewardEth":0.6520968392268172,"gasEth":0.5589864801041027,"netEth":0.09311035912271448,"rewardUsd":1375.7006743403485,"gasUsd":1179.2697516187059,"netUsd":196.43092272164262,"roiPct":16.65699662456489,"name":""},{"rank":3,"address":"0x293091f6b91edc944021f1830dce52ebfa9616a5","bakeryId":1358,"bakeryName":"Cockring Cookie Cult","bakeryRank":5,"chefScore":1969193714,"topChefTxCount":55081940,"snapshotBakeTx":94505,"rewardEth":0.6492513062757872,"gasEth":0.556521070325586,"netEth":0.09273023595020125,"rewardUsd":1369.6975757756766,"gasUsd":1174.068582573243,"netUsd":195.62899320243363,"roiPct":16.662484296587465,"name":""},{"rank":4,"address":"0x6c9ce77d1758658f265b84ae2fdb668b7d637685","bakeryId":1365,"bakeryName":"Peaceful Bakery","bakeryRank":6,"chefScore":1922433592,"topChefTxCount":52320598,"snapshotBakeTx":92692,"rewardEth":0.6338343007906095,"gasEth":0.5445227974803102,"netEth":0.08931150331029936,"rewardUsd":1337.1729819325058,"gasUsd":1148.7563420420108,"netUsd":188.4166398904948,"roiPct":16.40179322584356,"name":""},{"rank":5,"address":"0xda062c08f0cd5332a03531498772aac188d17bbd","bakeryId":1365,"bakeryName":"Peaceful Bakery","bakeryRank":6,"chefScore":1904739125,"topChefTxCount":63408359,"snapshotBakeTx":91783,"rewardEth":0.6280003618886476,"gasEth":0.5392424090485122,"netEth":0.08875795284013543,"rewardUsd":1324.8653717760058,"gasUsd":1137.6165335206008,"netUsd":187.24883825540508,"roiPct":16.459750077288607,"name":""},{"rank":6,"address":"0x8ceb4ebc5c4841c2e596c90ee16471967b6e74fe","bakeryId":1358,"bakeryName":"Cockring Cookie Cult","bakeryRank":5,"chefScore":1526490377,"topChefTxCount":56038345,"snapshotBakeTx":72434,"rewardEth":0.5032901863532299,"gasEth":0.4269237053139995,"netEth":0.07636648103923038,"rewardUsd":1061.7696745409164,"gasUsd":900.6625917535902,"netUsd":161.10708278732636,"roiPct":17.88761787848331,"name":""},{"rank":7,"address":"0xb0606b833c93f25073803b6ff4f2d44e8b83b8c8","bakeryId":1358,"bakeryName":"Cockring Cookie Cult","bakeryRank":5,"chefScore":1523122615,"topChefTxCount":55348470,"snapshotBakeTx":72260,"rewardEth":0.5021798213027115,"gasEth":0.42588765470750317,"netEth":0.07629216659520838,"rewardUsd":1059.427185117761,"gasUsd":898.476880318924,"netUsd":160.95030479883692,"roiPct":17.913683515340526,"name":""},{"rank":8,"address":"0xdbfcba742a6e78e932b66cab4f85eae142e29016","bakeryId":1358,"bakeryName":"Cockring Cookie Cult","bakeryRank":5,"chefScore":1468631945,"topChefTxCount":63223933,"snapshotBakeTx":69533,"rewardEth":0.4842140221912165,"gasEth":0.4098305870013131,"netEth":0.07438343518990342,"rewardUsd":1021.5255109092923,"gasUsd":864.601974718207,"netUsd":156.92353619108528,"roiPct":18.149800807733538,"name":""},{"rank":9,"address":"0xfcddd677d742beca8dddce93cb554f5c23d79b1f","bakeryId":1358,"bakeryName":"Cockring Cookie Cult","bakeryRank":5,"chefScore":1463016470,"topChefTxCount":47024216,"snapshotBakeTx":69232,"rewardEth":0.4823625768746949,"gasEth":0.4081096816720701,"netEth":0.07425289520262479,"rewardUsd":1017.6195963008685,"gasUsd":860.9714547102853,"netUsd":156.6481415905831,"roiPct":18.194347876875288,"name":""},{"rank":10,"address":"0xd44b0c0e5b825f6ab7a4db5209218cfd06836592","bakeryId":1371,"bakeryName":"The Cookie Burglars","bakeryRank":9,"chefScore":1601871829,"topChefTxCount":22218797,"snapshotBakeTx":78188,"rewardEth":0.5281437626327068,"gasEth":0.4602703292301613,"netEth":0.06787343340254548,"rewardUsd":1114.2021962013275,"gasUsd":971.0125309786156,"netUsd":143.18966522271194,"roiPct":14.746428151488535,"name":""}]};
+var SEASON_TX_START_LABEL = "May 27, 2026 18:00 TRT";
+var BAKE_SNAPSHOT_CUTOFF_TS = 1780156583; // Season 7 snapshot: 2026-05-30 18:56:23 TRT
+var BAKE_SNAPSHOT_URL = "data/s7-bake-snapshot.json";
+var BAKE_SNAPSHOT_VERSION = "2026-05-30-s7-185623-trt";
 var FALLBACK_ETH_USD = 2284.79;
 var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
@@ -556,7 +546,7 @@ var homeMetricsCache = null;
 var agentBootstrapCache = null;
 var FINAL_LEADERBOARD_LIMIT=10;
 var LIVE_LEADERBOARD_FALLBACK={
-  season:{id:8,prizePool:"0",endTime:"1779721200"},
+  season:{id:9,prizePool:"0",endTime:"1780513200"},
   pool:0,
   participants:0,
   bakeries:[]
@@ -649,7 +639,7 @@ async function bootLiveLeaderboard(opts){
     if(!gBakeries.length)throw new Error("No leaderboard rows returned");
     renderLB();
     }catch(e){
-    gSeason={id:8,startTime:SEASON_TX_START_TS,endTimeUnix:"1779721200"};
+    gSeason={id:9,startTime:SEASON_TX_START_TS,endTimeUnix:"1780513200"};
     gPool=null;
     gBakeries=[];
     gParticipants=null;
@@ -1996,7 +1986,7 @@ async function analyze(fa,fn,fav,opts){
   }
   closeSug();
   if(!raw){ss(st,"Enter an address or portal name.","error");return;}
-  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-25 18:00:00 TRT...","loading");
+  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-30 18:56:23 TRT...","loading");
   try{
     var addr=raw,name=(chosen&&chosen.name)||fn||null,avatar=(chosen&&chosen.avatar)||fav||null;
     var usedCachedProfile=false;
@@ -2097,7 +2087,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-25 18:00:00 TRT is up to date for this wallet.","success");
+    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-30 18:56:23 TRT is up to date for this wallet.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
 
@@ -2133,7 +2123,6 @@ document.addEventListener("DOMContentLoaded",function(){
   });
   window.addEventListener("scroll",positionSug,true);
   window.addEventListener("resize",positionSug);
-  renderRoiLeaderboard();
   bootLiveLeaderboard();
   startLiveRefresh();
 });
