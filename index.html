@@ -444,7 +444,7 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
             </div>
             <button id="lookupBtn" class="lookup-btn"><span>Analyze</span><span class="lookup-icon" aria-hidden="true">&gt;</span></button>
           </div>
-        <div class="hint"><span class="data-pill">Snapshot + Live</span> Snapshot base: 2026-05-30 15:56:23 UTC. Later transactions are completed with a live contract scan.</div>
+        <div class="hint"><span class="data-pill">Snapshot + Live</span> Snapshot base: 2026-05-31 13:30:48 UTC. Later transactions are completed with a live contract scan.</div>
           <div class="selected-profile" id="selectedProfile"></div>
           <div class="status" id="playerStatus"></div>
         </div>
@@ -532,9 +532,9 @@ var CONTRACTS = {
 var SEASON_TX_START_TS = 1779908400; // Season 7: 2026-05-27 15:00 UTC / 18:00 TRT
 var SEASON_TX_START_MINUTE = Math.floor(SEASON_TX_START_TS/60);
 var SEASON_TX_START_LABEL = "May 27, 2026 18:00 TRT";
-var BAKE_SNAPSHOT_CUTOFF_TS = 1780156583; // Season 7 snapshot: 2026-05-30 18:56:23 TRT
+var BAKE_SNAPSHOT_CUTOFF_TS = 1780234248; // Season 7 snapshot: 2026-05-31 16:30:48 TRT
 var BAKE_SNAPSHOT_URL = "data/s7-bake-snapshot.json";
-var BAKE_SNAPSHOT_VERSION = "2026-05-30-s7-185623-trt";
+var BAKE_SNAPSHOT_VERSION = "2026-05-31-s7-163048-trt";
 var FALLBACK_ETH_USD = 2284.79;
 var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
@@ -586,7 +586,7 @@ function updateLiveBootstrapState(agent){
     SEASON_TX_START_MINUTE=Math.floor(start/60);
   }
   if(end!=null&&end>0){
-    gSeason=Object.assign({},gSeason||{},season,{id:toN(season.id)||toN(live.currentSeasonId)||8,endTimeUnix:String(end)});
+    gSeason=Object.assign({},gSeason||{},season,{id:toN(season.id)||toN(live.currentSeasonId)||9,endTimeUnix:String(end)});
   }
 }
 async function fetchAgentBootstrap(){
@@ -628,7 +628,7 @@ async function bootLiveLeaderboard(opts){
     var activeRes=await tRPC("leaderboard.getActiveSeason",{});
     var activeRaw=extr(activeRes)||{};
     var active=Array.isArray(activeRaw)?(activeRaw[0]||{}):activeRaw;
-    var seasonId=toN(active.id)||toN(active.seasonId)||toN(homeMetrics&&homeMetrics.agent&&homeMetrics.agent.liveState&&homeMetrics.agent.liveState.currentSeasonId)||8;
+    var seasonId=toN(active.id)||toN(active.seasonId)||toN(homeMetrics&&homeMetrics.agent&&homeMetrics.agent.liveState&&homeMetrics.agent.liveState.currentSeasonId)||9;
     var liveSeason=homeMetrics&&homeMetrics.agent&&homeMetrics.agent.liveState&&homeMetrics.agent.liveState.season?homeMetrics.agent.liveState.season:null;
     var poolWei=toN(homeMetrics&&homeMetrics.prizePoolWei)||toN(active.prizePool)||toN(active.prizePoolWei)||null;
     gSeason=Object.assign({},liveSeason||{},active||{},{id:seasonId});
@@ -1629,7 +1629,7 @@ async function computeNetProfitEntry(address,cutoffTs){
   var player=(data&&data.player)?data.player:{};
   var bakery=(data&&data.bakery)?data.bakery:((data&&data.clan)?data.clan:{});
   var season=(data&&data.season)?data.season:gSeason||{};
-  var seasonId=toN(season.id)||toN(player.seasonId)||toN(gSeason&&gSeason.id)||8;
+  var seasonId=toN(season.id)||toN(player.seasonId)||toN(gSeason&&gSeason.id)||9;
   var bakeryId=toN(player.bakeryId)||toN(bakery.id)||null;
   var rank=findBakeryRank(bakeryId);
   if(!(rank>0&&rank<=QUALIFIED_BAKERY_COUNT))return null;
@@ -1679,7 +1679,7 @@ async function loadBakeSnapshot(){
   if(bakeSnapshotCache)return bakeSnapshotCache;
   try{
     var snapshot=await pFetch(BAKE_SNAPSHOT_URL+"?v="+encodeURIComponent(BAKE_SNAPSHOT_VERSION));
-    if(!snapshot||snapshot.season!==6||Number(snapshot.cutoffTs)!==BAKE_SNAPSHOT_CUTOFF_TS)throw new Error("invalid_snapshot");
+    if(!snapshot||snapshot.season!==7||Number(snapshot.cutoffTs)!==BAKE_SNAPSHOT_CUTOFF_TS)throw new Error("invalid_snapshot");
     if(String(snapshot.contract||"").toLowerCase()!==BAKE_TO)throw new Error("snapshot_contract_mismatch");
     if(snapshot.complete!==true)throw new Error("snapshot_incomplete");
     bakeSnapshotCache={ok:true,data:snapshot};
@@ -1764,7 +1764,7 @@ async function fetchChain(address,fromTs,toTs){
   var maxTs=Number(toTs||0);
   var gas=0,rtx=0,incomplete=false,reason="verified";
   var counted={};
-  var ckey="w6_"+who+"_"+BAKE_TO+"_"+Math.floor(minTs/86400)+"_"+Math.floor(maxTs/86400||0);
+  var ckey="w7_"+who+"_"+BAKE_TO+"_"+Math.floor(minTs/86400)+"_"+Math.floor(maxTs/86400||0);
   var cached=cacheValue(txCache[ckey],CACHE_TTL_MS);
   if(cached)return cached;
 
@@ -1986,7 +1986,7 @@ async function analyze(fa,fn,fav,opts){
   }
   closeSug();
   if(!raw){ss(st,"Enter an address or portal name.","error");return;}
-  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-30 18:56:23 TRT...","loading");
+  if(!isBackground)ssl(st,"Loading snapshot and scanning Bakery tx after 2026-05-31 16:30:48 TRT...","loading");
   try{
     var addr=raw,name=(chosen&&chosen.name)||fn||null,avatar=(chosen&&chosen.avatar)||fav||null;
     var usedCachedProfile=false;
@@ -2050,7 +2050,7 @@ async function analyze(fa,fn,fav,opts){
     }
     var cacheKey=(addr||"").toLowerCase()+"|"+BAKE_TO+"|"+BAKE_SNAPSHOT_VERSION;
     var seasonStart=SEASON_TX_START_TS;
-    var seasonId=toN(data&&data.season&&data.season.id)||toN(data&&data.player&&data.player.seasonId)||toN(gSeason&&gSeason.id)||4;
+    var seasonId=toN(data&&data.season&&data.season.id)||toN(data&&data.player&&data.player.seasonId)||toN(gSeason&&gSeason.id)||9;
     var bakeryId=toN(data&&data.player&&data.player.bakeryId)||toN(data&&data.bakery&&data.bakery.id)||null;
 
     // Taramayi yap - bitmeden gosterme
@@ -2087,7 +2087,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-30 18:56:23 TRT is up to date for this wallet.","success");
+    else ss(st,isBackground?"ROI card auto-refreshed with snapshot plus latest live data.":"Snapshot loaded. Contract tx after 2026-05-31 16:30:48 TRT is up to date for this wallet.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
 
