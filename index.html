@@ -450,7 +450,7 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
             </div>
             <button id="lookupBtn" class="lookup-btn"><span>Analyze</span><span class="lookup-icon" aria-hidden="true">&gt;</span></button>
           </div>
-        <div class="hint"><span class="data-pill">Snapshot + Live</span> Snapshot date: 2026-06-09 10:46:25 UTC. Later Season 8 transactions are scanned live.</div>
+        <div class="hint"><span class="data-pill">Snapshot + Live</span> Snapshot date: 2026-06-09 22:00:00 UTC. Later Season 8 transactions are scanned live.</div>
           <div class="selected-profile" id="selectedProfile"></div>
           <div class="status" id="playerStatus"></div>
         </div>
@@ -547,9 +547,9 @@ var CONTRACTS = {
 var SEASON_TX_START_TS = 1780693200; // Season 8: 2026-06-05 21:00 UTC / 2026-06-06 00:00 TRT
 var SEASON_TX_START_MINUTE = Math.floor(SEASON_TX_START_TS/60);
 var SEASON_TX_START_LABEL = "June 6, 2026 00:00 TRT";
-var BAKE_SNAPSHOT_CUTOFF_TS = 1781001985; // 2026-06-09 10:46:25 UTC / 13:46:25 TRT
+var BAKE_SNAPSHOT_CUTOFF_TS = 1781042400; // 2026-06-09 22:00:00 UTC / 2026-06-10 01:00:00 TRT
 var BAKE_SNAPSHOT_URL = "data/s8-bake-snapshot.json";
-var BAKE_SNAPSHOT_VERSION = "s8-1781001985";
+var BAKE_SNAPSHOT_VERSION = "s8-1781042400";
 var FALLBACK_ETH_USD = 2284.79;
 var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
@@ -1239,6 +1239,12 @@ function withTimeout(promise,ms,fallbackValue){
   });
 }
 async function fetchJsonTimeout(url,ms){
+  if(String(url).indexOf(EXPLORER)===0){
+    return withTimeout(fetch(PROXY+encodeURIComponent(url)).then(function(r){
+      if(!r.ok)throw new Error("explorer_proxy_failed");
+      return r.json();
+    }),ms);
+  }
   return withTimeout(fetch(url).then(function(r){
     if(!r.ok)throw new Error("fetch_failed");
     return r.json();
@@ -1666,16 +1672,22 @@ async function fetchPlayerBakeChain(address,fromTs,toTs){
   return mergeBakeChains(base,live);
 }
 // Timestamp'e karsilik gelen block numarasini bul
-async function getStartBlock(fromTs){
-  if(!fromTs||fromTs<=0)return 0;
+async function getBlockByTimestamp(timestamp,closest){
+  if(!timestamp||timestamp<=0)return 0;
   var url=EXPLORER+"?chainid=2741&module=block&action=getblocknobytime"+
-    "&timestamp="+Math.floor(fromTs)+"&closest=after&apikey="+EKEY;
+    "&timestamp="+Math.floor(timestamp)+"&closest="+encodeURIComponent(closest||"after")+"&apikey="+EKEY;
   try{
     var d=await fetchJsonTimeout(url,EXPLORER_TIMEOUT_MS);
     var bn=Number(d&&d.result);
     if(bn>0)return bn;
   }catch(e){}
   return 0;
+}
+async function getStartBlock(fromTs){
+  return getBlockByTimestamp(fromTs,"after");
+}
+async function getEndBlock(toTs){
+  return getBlockByTimestamp(toTs,"before");
 }
 
 // Wallet txlist - sort=desc, endblock kaydirarak
@@ -1698,7 +1710,13 @@ async function fetchChain(address,fromTs,toTs){
     if(sb>0)startBlock=sb;
   }catch(e){}
 
-  var endBlock=99999999, batches=0, MAX_BATCHES=200, done=false;
+  var endBlock=99999999, batches=0, MAX_BATCHES=300, done=false;
+  if(maxTs>0){
+    try{
+      var eb=await getEndBlock(maxTs);
+      if(eb>0)endBlock=eb;
+    }catch(e){}
+  }
   while(!done && batches<MAX_BATCHES){
     var url=EXPLORER+"?chainid=2741&module=account&action=txlist"+
       "&address="+encodeURIComponent(who)+
@@ -1710,7 +1728,13 @@ async function fetchChain(address,fromTs,toTs){
     batches++;
 
     var rows=Array.isArray(d.result)?d.result:[];
-    if(d.status!=="1"||!rows.length){ done=true; break; }
+    if(d.status!=="1"||!rows.length){
+      var apiMessage=String((d&&d.message)||"")+" "+String((d&&d.result)||"");
+      if(/no transactions found/i.test(apiMessage)){done=true;break;}
+      incomplete=true;
+      reason="explorer";
+      break;
+    }
 
     var oldestBlock=99999999, oldestTs=Date.now()/1000;
     for(var i=0;i<rows.length;i++){
@@ -2032,6 +2056,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
+    else if(chain&&chain.incomplete)ss(st,"Live Bakery transactions could not be verified through the Explorer proxy. Check ETHERSCAN_API_KEY in Vercel and try again.","warn");
     else ss(st,isBackground?"ROI card auto-refreshed through the current UTC minute.":"Snapshot and live Bakery transactions were combined through the current UTC minute.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }

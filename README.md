@@ -26,7 +26,7 @@ npm run dev
 - No analytics or large embedded images are included.
 - Season 8 starts at `2026-06-05 21:00 UTC` (`2026-06-06 00:00 TRT`) and ends at `2026-06-12 21:00 UTC`.
 - The top 7 bakeries qualify. Bakery and member payouts are calculated from final score shares, not spendable cookies.
-- `data/s8-bake-snapshot.json` covers Season 8 through `2026-06-09 10:46:25 UTC`; Player ROI scans later transactions live.
+- `data/s8-bake-snapshot.json` covers Season 8 through `2026-06-09 22:00:00 UTC`; Player ROI scans later transactions live.
 - Top ROI reporting is not included. A fresh report can be added after the Season 8 snapshot is created.
 
 ## Create Or Refresh The Season 8 Snapshot
