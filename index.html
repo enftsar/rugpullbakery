@@ -52,13 +52,32 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 /* Stat tiles */
 .summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;position:relative;z-index:1}
 .hero-stage .summary-grid{margin:0;max-width:none;align-self:stretch}
-.dashboard{display:grid;grid-template-columns:minmax(380px,1.1fr) minmax(340px,.9fr);gap:20px;align-items:start}
-.left-stack,.right-stack{display:grid;gap:18px}
-.right-stack{position:relative;top:auto;align-self:start}
-.dashboard>.right-stack{order:2}
-.dashboard>.left-stack{order:1}
-.right-stack>.card:first-child{position:relative;z-index:30}
-.right-stack .stack-grid{display:none}
+.roi-workspace{display:grid;grid-template-columns:minmax(360px,.86fr) minmax(0,1.14fr);gap:20px;align-items:stretch;margin-bottom:20px}
+.roi-search-card{display:flex;flex-direction:column;min-height:400px;z-index:40;background:radial-gradient(circle at 100% 0,rgba(69,200,255,.12),transparent 32%),radial-gradient(circle at 0 100%,rgba(255,177,26,.12),transparent 34%),linear-gradient(180deg,rgba(67,37,17,.96),rgba(27,16,10,.98))}
+.roi-search-card .hero-top{margin-bottom:24px}
+.roi-search-card .search-wrap{margin-top:18px;padding:18px;border-color:rgba(255,207,122,.46);background:linear-gradient(180deg,rgba(78,43,19,.9),rgba(30,17,10,.94))}
+.roi-search-card .search-row{grid-template-columns:1fr}
+.roi-search-card .lookup-btn{width:100%}
+.roi-search-card .hint{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,223,161,.12)}
+.roi-result-card{width:100%;min-width:0;margin:0;padding:20px;border-radius:24px;background:radial-gradient(circle at 0 0,rgba(255,213,108,.1),transparent 30%),radial-gradient(circle at 100% 100%,rgba(69,200,255,.08),transparent 30%),linear-gradient(180deg,rgba(61,34,17,.97),rgba(24,14,9,.99))}
+.roi-result-card .player-empty{min-height:358px;border-radius:20px;background:radial-gradient(circle at center,rgba(255,213,108,.055),transparent 52%),rgba(21,12,8,.24)}
+.roi-result-card .player-empty-title{font-size:30px}
+.roi-result-card .player-head{gap:16px;margin-bottom:14px;padding:18px;border-radius:22px}
+.roi-result-card .player-info{gap:14px;align-items:center}
+.roi-result-card .avatar{width:64px;height:64px;border-radius:19px}
+.roi-result-card .player-name{font-size:31px}
+.roi-result-card .player-bakery{font-size:16px}
+.roi-result-card .player-bakery-rank{font-size:13px;line-height:1.2}
+.roi-result-card .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.roi-result-card .stat{min-height:132px;padding:16px;border-radius:18px}
+.roi-result-card .stat-label{min-height:2.5em;font-size:10px;letter-spacing:.14em}
+.roi-result-card .stat-value{font-size:23px}
+.roi-result-card .stat-value.compact{font-size:19px}
+.roi-result-card .stat-note{font-size:21px}
+.roi-result-card .stat-note.secondary{font-size:13px}
+.roi-result-card .player-actions{margin-top:12px}
+.roi-result-card .share-btn{width:100%;justify-content:center}
+.leaderboard-section{width:100%}
 .stack-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(150px,.78fr) minmax(150px,.78fr);gap:16px;position:relative;z-index:1}
 .tile,.stat,.bakery-row{background:radial-gradient(circle at top left,rgba(255,217,135,.075),transparent 34%),linear-gradient(180deg,rgba(42,24,13,.94),rgba(20,12,8,.96));border:1px solid rgba(255,207,122,.54);border-radius:18px;padding:18px 20px;box-shadow:0 14px 30px rgba(0,0,0,.16),0 0 0 1px rgba(255,207,122,.2),inset 0 1px 0 rgba(255,246,221,.05),inset 0 0 0 1px rgba(255,245,215,.025);backdrop-filter:blur(8px)}
 .summary-grid .tile{position:relative;min-height:112px;display:flex;flex-direction:column;justify-content:center;padding:20px 20px 18px 76px;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,filter .18s ease}
@@ -150,7 +169,7 @@ input::placeholder{color:rgba(255,231,186,.58);font-weight:700}
 .live-pill.data-live{border-color:rgba(69,200,255,.38);color:#bdeeff;background:linear-gradient(180deg,rgba(21,48,65,.72),rgba(27,30,25,.88));box-shadow:0 0 0 1px rgba(69,200,255,.12),inset 0 1px 0 rgba(143,227,255,.08)}
 .live-pill.data-live:before{background:var(--blue);box-shadow:0 0 0 0 rgba(69,200,255,.45)}
 @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(128,240,166,.45)}70%{box-shadow:0 0 0 10px rgba(128,240,166,0)}100%{box-shadow:0 0 0 0 rgba(128,240,166,0)}}
-.leaderboard-card .section-head{margin-bottom:10px}
+.leaderboard-card .section-head{margin-bottom:16px}
 
 /* Buttons */
 button{border:1px solid rgba(88,42,9,.9);border-radius:18px;background:linear-gradient(180deg,#ffe08d,#ffb11a 60%,#d88710);color:#2a1207;font-weight:800;cursor:pointer;padding:13px 22px;font-family:"Lilita One","Baloo 2",sans-serif;letter-spacing:.03em;box-shadow:0 12px 24px rgba(157,82,14,.28),0 7px 0 #8c4a14,inset 0 1px 0 rgba(255,250,230,.55);transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}
@@ -306,8 +325,17 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 
 /* Leaderboard */
 .list{display:grid;gap:10px}
+.leaderboard-card .list{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:14px}
 .bakery-row{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(118px,auto);gap:14px;align-items:center;padding:16px;position:relative;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
 .bakery-row.no-payout{grid-template-columns:auto minmax(0,1fr)}
+.leaderboard-card .bakery-row{grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto;min-height:124px;padding:16px 18px;align-content:center}
+.leaderboard-card .bakery-row.no-payout{grid-template-columns:auto minmax(0,1fr)}
+.leaderboard-card .rank{grid-row:1 / span 2}
+.leaderboard-card .bakery-row>div:nth-child(2){min-width:0}
+.leaderboard-card .bakery-name{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.leaderboard-card .bakery-sub{font-size:11px;line-height:1.55;letter-spacing:.025em}
+.leaderboard-card .bakery-payout{grid-column:2;justify-self:start;padding:6px 10px;border-radius:10px;font-size:12px;text-align:left}
+.leaderboard-card .list>.meta:only-child{grid-column:1 / -1}
 .bakery-row:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,246,221,.06);border-color:rgba(255,223,161,.18)}
 .bakery-row:after{content:"";position:absolute;left:16px;right:16px;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,207,122,.18),transparent)}
 .rank{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:radial-gradient(circle at 30% 28%,rgba(255,241,204,.18),transparent 28%),linear-gradient(180deg,#6a3815,#3d1f0e);font-weight:800;color:var(--ambersoft);border:1px solid rgba(255,207,122,.58);box-shadow:0 10px 24px rgba(0,0,0,.2),0 0 0 1px rgba(255,207,122,.2)}
@@ -358,13 +386,18 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 
 /* Responsive */
 @media(max-width:900px){
-  .hero-stage,.stack-grid,.dashboard{grid-template-columns:1fr}
+  .hero-stage,.stack-grid,.roi-workspace{grid-template-columns:1fr}
   .summary-grid{grid-template-columns:1fr 1fr}
-  .right-stack{position:relative;top:auto}
+  .roi-search-card{min-height:auto}
+  .roi-search-card .search-wrap{margin-top:0}
   .brand-card{min-height:180px}
+}
+@media(max-width:760px){
+  .leaderboard-card .list{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   .search-row,.stats,.summary-grid{grid-template-columns:1fr}
+  .roi-result-card .stats{grid-template-columns:1fr}
   .lookup-btn{width:100%}
   .bakery-row{grid-template-columns:auto 1fr}
   .bakery-cookies,.bakery-payout{grid-column:2}
@@ -402,20 +435,8 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
     </div>
   </div>
 
-  <section class="dashboard">
-    <div class="left-stack">
-      <div class="card leaderboard-card">
-        <div class="section-head">
-          <div><h2 class="section-title">Bakery Leaderboard</h2></div>
-          <div class="ghost live-pill data-live" id="refreshBadge" aria-live="polite">Live Data</div>
-        </div>
-        <div class="list" id="leaderboardList"></div>
-      </div>
-
-    </div>
-
-    <div class="right-stack">
-      <div class="card">
+  <section class="roi-workspace">
+      <div class="card roi-search-card">
         <div class="hero-top">
           <div class="section-head" style="width:100%;margin-bottom:0">
             <div><h2 class="section-title">Player ROI Card</h2><div class="meta">Analyze a wallet or portal profile after selection.</div></div>
@@ -435,7 +456,7 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
         </div>
       </div>
 
-      <div class="card player-shell" id="playerCardCapture">
+      <div class="card player-shell roi-result-card" id="playerCardCapture">
         <div class="player-empty" id="playerEmpty">
           <div>
             <div class="player-empty-title">Search a profile</div>
@@ -455,6 +476,15 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
           <button id="shareBtn" class="ghost share-btn" type="button">Share Card</button>
         </div>
       </div>
+  </section>
+
+  <section class="leaderboard-section">
+    <div class="card leaderboard-card">
+      <div class="section-head">
+        <div><h2 class="section-title">Bakery Leaderboard</h2></div>
+        <div class="ghost live-pill data-live" id="refreshBadge" aria-live="polite">Live Data</div>
+      </div>
+      <div class="list" id="leaderboardList"></div>
     </div>
   </section>
 
@@ -1578,14 +1608,19 @@ function readBakeSnapshotEntry(snapshot,address){
   var players=snapshot&&snapshot.players;
   if(!players||!addr)return null;
   var row=players[addr]||players[addr.toLowerCase()];
-  if(!row)return {gas:0,rtx:0,source:"snapshot",snapshotHit:false};
+  if(!row)return {
+    gas:0,rtx:0,source:"snapshot",snapshotHit:false,
+    scanFromTs:SEASON_TX_START_TS,scanToTs:BAKE_SNAPSHOT_CUTOFF_TS
+  };
   return {
     gas:toN(row.gasEth)||0,
     rtx:toN(row.bakeTx)||0,
     incomplete:false,
     reason:"snapshot",
     source:"snapshot",
-    snapshotHit:true
+    snapshotHit:true,
+    scanFromTs:SEASON_TX_START_TS,
+    scanToTs:BAKE_SNAPSHOT_CUTOFF_TS
   };
 }
 
@@ -1602,7 +1637,11 @@ function mergeBakeChains(base,live){
     snapshotRtx:toN(base.rtx)||0,
     liveGas:toN(live.gas)||0,
     liveRtx:toN(live.rtx)||0,
-    snapshotHit:!!base.snapshotHit
+    snapshotHit:!!base.snapshotHit,
+    scanFromTs:toN(base.scanFromTs)||SEASON_TX_START_TS,
+    snapshotCutoffTs:BAKE_SNAPSHOT_CUTOFF_TS,
+    liveFromTs:BAKE_SNAPSHOT_CUTOFF_TS+1,
+    scanToTs:toN(live.scanToTs)||toN(base.scanToTs)||BAKE_SNAPSHOT_CUTOFF_TS
   };
 }
 
@@ -1648,7 +1687,7 @@ async function fetchChain(address,fromTs,toTs){
   var maxTs=Number(toTs||0);
   var gas=0,rtx=0,incomplete=false,reason="verified";
   var counted={};
-  var ckey="w8_"+who+"_"+BAKE_TO+"_"+Math.floor(minTs/86400)+"_"+Math.floor(maxTs/86400||0);
+  var ckey="w8_"+who+"_"+BAKE_TO+"_"+Math.floor(minTs/60)+"_"+Math.floor(maxTs/60||0);
   var cached=cacheValue(txCache[ckey],CACHE_TTL_MS);
   if(cached)return cached;
 
@@ -1703,7 +1742,15 @@ async function fetchChain(address,fromTs,toTs){
   }
   if(batches>=MAX_BATCHES){incomplete=true; reason="limit";}
 
-  var result={gas:gas,rtx:rtx,incomplete:incomplete,reason:reason,source:"wallet"};
+  var result={
+    gas:gas,
+    rtx:rtx,
+    incomplete:incomplete,
+    reason:reason,
+    source:"wallet",
+    scanFromTs:minTs,
+    scanToTs:maxTs||Math.floor(Date.now()/1000)
+  };
   if(rtx>0||incomplete)txCache[ckey]={ts:Date.now(),value:result};
   return result;
 }
@@ -1778,6 +1825,16 @@ function renderPlayer(data,name,avatar,address,chain){
 
   var realTx=chain&&chain.rtx>0?chain.rtx:0;
   var txVerified=!!(chain&&!chain.incomplete);
+  var snapshotTx=chain&&chain.source==="snapshot+wallet"?(toN(chain.snapshotRtx)||0):0;
+  var liveTx=chain&&chain.source==="snapshot+wallet"?(toN(chain.liveRtx)||0):realTx;
+  var snapshotGas=chain&&chain.source==="snapshot+wallet"?(toN(chain.snapshotGas)||0):0;
+  var liveGas=chain&&chain.source==="snapshot+wallet"?(toN(chain.liveGas)||0):(toN(chain&&chain.gas)||0);
+  var scanToTs=toN(chain&&chain.scanToTs)||Math.floor(Date.now()/1000);
+  function utcMinute(ts){
+    if(!ts)return"--";
+    var d=new Date(ts*1000);
+    return d.getUTCFullYear()+"-"+String(d.getUTCMonth()+1).padStart(2,"0")+"-"+String(d.getUTCDate()).padStart(2,"0")+" "+String(d.getUTCHours()).padStart(2,"0")+":"+String(d.getUTCMinutes()).padStart(2,"0")+" UTC";
+  }
 
   var cookieBalance=maxN([
     chain&&chain.cookieBalance,
@@ -1830,11 +1887,14 @@ function renderPlayer(data,name,avatar,address,chain){
   var rewardUsd=myPay!=null&&ethUsd!=null?fUsd(myPay*ethUsd):"";
   var roiPct=txVerified&&roi!=null?fPct(roi,1):(rank>QUALIFIED_BAKERY_COUNT?"Unavailable":"--");
   var roiUsd=txVerified&&net!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&ethUsd!=null?fUsd(net*ethUsd):"";
+  var txSourceLine=txVerified?"Snapshot "+fN(snapshotTx,0)+" · Live "+fN(liveTx,0):"";
+  var scanWindowLine=txVerified?utcMinute(SEASON_TX_START_TS)+" → "+utcMinute(scanToTs):"";
+  var gasSourceLine=txVerified?"Snapshot "+snapshotGas.toFixed(5)+" · Live "+liveGas.toFixed(5)+" ETH":"";
   var stats=[
-    {l:"Bake TX",v:txVerified?fN(realTx,0):"--",s:"",t:"cookie",k:"stat-cookie"},
+    {l:"Total Bake TX",v:txVerified?fN(realTx,0):"--",n:txSourceLine,u:scanWindowLine,s:"",t:"cookie",k:"stat-cookie"},
     {l:"Bakery Payout",v:bakeryRankSub||"--",h:bakeryRankSub||"",n:bakeryRankSub&&ethUsd!=null&&bakPay!=null?fUsd(bakPay*ethUsd):"",s:"",t:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"amber":"",c:bakeryRankSub?"compact":"",k:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"stat-reward":""},
     {l:"Score",v:playerScore!=null&&playerScore>0?fCook(playerScore):"--",s:"",t:"cookie",k:"stat-cookie"},
-    {l:"Gas Cost",v:gasEth,h:txVerified&&gas!=null?gasEth:"",n:gasUsd,s:"",t:"negative",k:"stat-negative"},
+    {l:"Gas Cost",v:gasEth,h:txVerified&&gas!=null?gasEth:"",n:gasUsd,u:gasSourceLine,s:"",t:"negative",k:"stat-negative"},
     {l:"Est. Reward",v:rewardEth,h:myPay!=null?rewardEth:"",n:rewardUsd,t:myPay!=null?"amber":(rank>QUALIFIED_BAKERY_COUNT?"negative":""),c:rank>QUALIFIED_BAKERY_COUNT?"compact":"",k:myPay!=null?"stat-reward":(rank>QUALIFIED_BAKERY_COUNT?"stat-negative":"")},
     {l:"Net ROI",v:roiPct,n:roiUsd,t:roi==null?(rank>QUALIFIED_BAKERY_COUNT?"negative":""):(roi>=0?"positive":"negative"),c:rank>QUALIFIED_BAKERY_COUNT?"compact":"",k:roi==null?(rank>QUALIFIED_BAKERY_COUNT?"stat-negative":""):(roi>=0?"stat-positive":"stat-negative")}
   ];
@@ -1870,7 +1930,7 @@ async function analyze(fa,fn,fav,opts){
   }
   closeSug();
   if(!raw){ss(st,"Enter an address or portal name.","error");return;}
-  if(!isBackground)ssl(st,"Scanning Season 8 Bakery transactions from 2026-06-06 00:00 TRT...","loading");
+  if(!isBackground)ssl(st,"Loading the Season 8 snapshot and scanning later Bakery transactions through the current UTC minute...","loading");
   try{
     var addr=raw,name=(chosen&&chosen.name)||fn||null,avatar=(chosen&&chosen.avatar)||fav||null;
     var usedCachedProfile=false;
@@ -1932,7 +1992,8 @@ async function analyze(fa,fn,fav,opts){
       name=name||playerCacheEntry.profile.name||null;
       avatar=avatar||playerCacheEntry.profile.avatar||null;
     }
-    var cacheKey=(addr||"").toLowerCase()+"|"+BAKE_TO+"|"+BAKE_SNAPSHOT_VERSION;
+    var scanToTs=Math.floor(Date.now()/1000);
+    var cacheKey=(addr||"").toLowerCase()+"|"+BAKE_TO+"|"+BAKE_SNAPSHOT_VERSION+"|"+Math.floor(scanToTs/60);
     var seasonStart=SEASON_TX_START_TS;
     var seasonId=toN(data&&data.season&&data.season.id)||toN(data&&data.player&&data.player.seasonId)||toN(gSeason&&gSeason.id)||10;
     var bakeryId=toN(data&&data.player&&data.player.bakeryId)||toN(data&&data.bakery&&data.bakery.id)||null;
@@ -1942,7 +2003,7 @@ async function analyze(fa,fn,fav,opts){
     var cachedChain=cached&&cached.result||null;
     var chain=cachedChain||{gas:0,rtx:0,incomplete:true,reason:"loading"};
     try{
-      var freshChain=await withTimeout(fetchPlayerBakeChain(addr,seasonStart),PLAYER_SCAN_TIMEOUT_MS,null);
+      var freshChain=await withTimeout(fetchPlayerBakeChain(addr,seasonStart,scanToTs),PLAYER_SCAN_TIMEOUT_MS,null);
       if(freshChain!==null){
         if(freshChain.rtx>=chain.rtx||!cachedChain)chain=freshChain;
         chainCache[cacheKey]={result:chain,ts:Date.now()};
@@ -1971,7 +2032,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else ss(st,isBackground?"ROI card auto-refreshed with the latest Season 8 contract data.":"Season 8 contract transactions are up to date for this wallet.","success");
+    else ss(st,isBackground?"ROI card auto-refreshed through the current UTC minute.":"Snapshot and live Bakery transactions were combined through the current UTC minute.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
 
