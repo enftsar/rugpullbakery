@@ -558,6 +558,7 @@ var SEASON_TX_START_LABEL = "June 6, 2026 00:00 TRT";
 var BAKE_SNAPSHOT_CUTOFF_TS = 1781042400; // 2026-06-09 22:00:00 UTC / 2026-06-10 01:00:00 TRT
 var BAKE_SNAPSHOT_URL = "data/s8-bake-snapshot.json";
 var BAKE_SNAPSHOT_VERSION = "s8-1781042400";
+var LIVE_BAKE_API = "/api/live-bake";
 var FALLBACK_ETH_USD = 2284.79;
 var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
@@ -1688,11 +1689,33 @@ async function fetchPlayerBakeChain(address,fromTs,toTs){
   var liveFrom=BAKE_SNAPSHOT_CUTOFF_TS+1;
   var live=null;
   if(!maxTs||maxTs>BAKE_SNAPSHOT_CUTOFF_TS){
-    live=await fetchChain(address,liveFrom,maxTs);
+    live=await fetchLiveBake(address,liveFrom,maxTs);
   }else{
     live={gas:0,rtx:0,incomplete:false,reason:"snapshot",source:"wallet"};
   }
   return mergeBakeChains(base,live);
+}
+async function fetchLiveBake(address,fromTs,toTs){
+  var url=LIVE_BAKE_API+
+    "?address="+encodeURIComponent(address)+
+    "&fromTs="+encodeURIComponent(Math.floor(fromTs))+
+    "&toTs="+encodeURIComponent(Math.floor(toTs||Date.now()/1000));
+  var response=await withTimeout(fetch(url,{cache:"no-store"}),30000);
+  var payload=null;
+  try{payload=await response.json();}catch(parseErr){}
+  if(!response.ok||!payload||payload.ok!==true){
+    var code=payload&&(payload.error||payload.detail);
+    throw new Error(code||"live_bake_api_failed");
+  }
+  return {
+    gas:toN(payload.gasEth)||0,
+    rtx:toN(payload.bakeTx)||0,
+    incomplete:!!payload.incomplete,
+    reason:payload.incomplete?"limit":"verified",
+    source:"live-api",
+    scanFromTs:toN(payload.fromTs)||fromTs,
+    scanToTs:toN(payload.toTs)||toTs
+  };
 }
 // Timestamp'e karsilik gelen block numarasini bul
 async function getBlockByTimestamp(timestamp,closest){
