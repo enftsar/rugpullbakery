@@ -1,7 +1,6 @@
 const ALLOWED_HOSTS = new Set([
   "www.rugpullbakery.com",
   "api.coingecko.com",
-  "api.etherscan.io",
   "backend.portal.abs.xyz",
   "abscope.live"
 ]);
@@ -13,9 +12,6 @@ function first(value) {
 function cacheHeaderFor(url) {
   if (url.hostname === "api.coingecko.com") {
     return "public, s-maxage=300, stale-while-revalidate=600";
-  }
-  if (url.hostname === "api.etherscan.io") {
-    return "public, s-maxage=60, stale-while-revalidate=120";
   }
   return "public, s-maxage=30, stale-while-revalidate=120";
 }
@@ -53,15 +49,6 @@ module.exports = async function handler(req, res) {
   if (target.protocol !== "https:" || !ALLOWED_HOSTS.has(target.hostname)) {
     res.status(403).json({ error: "host_not_allowed" });
     return;
-  }
-
-  if (target.hostname === "api.etherscan.io" && !target.searchParams.get("apikey")) {
-    const apiKey = process.env.ETHERSCAN_API_KEY;
-    if (!apiKey) {
-      res.status(503).json({ error: "etherscan_api_key_missing" });
-      return;
-    }
-    target.searchParams.set("apikey", apiKey);
   }
 
   const controller = new AbortController();

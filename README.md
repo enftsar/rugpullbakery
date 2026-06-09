@@ -15,13 +15,12 @@ npm run dev
 3. Keep the framework preset as `Other` or `Static`.
 4. Leave the build command empty.
 5. Leave the output directory empty.
-6. Add `ETHERSCAN_API_KEY` in the Vercel project environment variables.
-7. Deploy.
+6. Deploy. Live Bake TX data uses the public Abstract RPC and needs no Vercel environment variable.
 
 ## Notes
 
 - `/api/proxy` is a small Vercel function with a strict host allowlist and edge cache headers.
-- The Etherscan key is injected by the proxy and is never exposed in `index.html`.
+- Live Bake TX and gas data are read from the official Abstract JSON-RPC endpoint without an API key.
 - Leaderboard and live metrics use short cache windows to stay Hobby-plan friendly.
 - No analytics or large embedded images are included.
 - Season 8 starts at `2026-06-05 21:00 UTC` (`2026-06-06 00:00 TRT`) and ends at `2026-06-12 21:00 UTC`.
@@ -35,7 +34,7 @@ npm run dev
 npm run snapshot
 ```
 
-Set an Etherscan API key first. To stop at an exact Unix timestamp:
+Snapshot generation still uses Etherscan locally. To stop at an exact Unix timestamp:
 
 ```powershell
 $env:ETHERSCAN_API_KEY="your-key"

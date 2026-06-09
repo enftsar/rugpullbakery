@@ -537,10 +537,8 @@ var SITE_ORIGIN = "https://www.rugpullbakery.com";
 var TRPC     = SITE_ORIGIN + "/api/trpc";
 var PORTAL   = "https://backend.portal.abs.xyz/api";
 var ABSCOPE  = "https://abscope.live/api/suggest";
-var EXPLORER = "https://api.etherscan.io/v2/api";
 var HOME_URL = SITE_ORIGIN + "/";
 var AGENT_URL = SITE_ORIGIN + "/agent.json";
-var EKEY     = "";
 var QUALIFIED_BAKERY_COUNT = 7;
 var BAKE_TO  = "0x30b49389d5271712b7e539a690b2f7b92afa3c31";
 var CONTRACTS = {
@@ -560,11 +558,9 @@ var BAKE_SNAPSHOT_URL = "data/s8-bake-snapshot.json";
 var BAKE_SNAPSHOT_VERSION = "s8-1781042400";
 var LIVE_BAKE_API = "/api/live-bake";
 var FALLBACK_ETH_USD = 2284.79;
-var EXPLORER_TIMEOUT_MS = 12000;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
 var LIVE_REFRESH_MS = 30*1000;
 var CACHE_TTL_MS = 60*1000;
-var txCache = {};
 var chainCache = {};
 var homeMetricsCache = null;
 var agentBootstrapCache = null;
@@ -577,7 +573,6 @@ var LIVE_LEADERBOARD_FALLBACK={
 };
 var playerCache={};
 var memberRowCache={};
-var participantCache={};
 var bakeSnapshotCache=null;
 function cacheFresh(entry,ttl){
   return !!(entry&&entry.ts&&(Date.now()-entry.ts)<ttl);
@@ -1248,12 +1243,6 @@ function withTimeout(promise,ms,fallbackValue){
   });
 }
 async function fetchJsonTimeout(url,ms){
-  if(String(url).indexOf(EXPLORER)===0){
-    return withTimeout(fetch(PROXY+encodeURIComponent(url)).then(function(r){
-      if(!r.ok)throw new Error("explorer_proxy_failed");
-      return r.json();
-    }),ms);
-  }
   return withTimeout(fetch(url).then(function(r){
     if(!r.ok)throw new Error("fetch_failed");
     return r.json();
@@ -1432,55 +1421,6 @@ async function fetchPlayerCookieBalance(address,bakeryId,seasonId){
     findNestedMetric(row,["cookiesbaked","cookies_baked","txcount","cookiebalance","cookie_balance","cookiecount","cookie_count"],0)
   ]);
 }
-async function fetchBakeParticipants(fromTs,toTs){
-  var minTs=Number(fromTs||0);
-  var maxTs=Number(toTs||0);
-  var cacheKey="participants_"+Math.floor(minTs/86400)+"_"+Math.floor(maxTs/86400||0);
-  var cached=cacheValue(participantCache[cacheKey],CACHE_TTL_MS);
-  if(cached)return cached;
-  var startBlock=0;
-  try{
-    var sb=await getStartBlock(minTs);
-    if(sb>0)startBlock=sb;
-  }catch(e){}
-  var endBlock=99999999, batches=0, MAX_BATCHES=200, done=false;
-  var seen={}, out=[];
-  while(!done&&batches<MAX_BATCHES){
-    var url=EXPLORER+"?chainid=2741&module=account&action=txlist"+
-      "&address="+encodeURIComponent(BAKE_TO)+
-      "&sort=desc&startblock="+startBlock+"&endblock="+endBlock+
-      "&page=1&offset=1000&apikey="+EKEY;
-    var d=await fetchJsonTimeout(url,EXPLORER_TIMEOUT_MS);
-    batches++;
-    var rows=Array.isArray(d.result)?d.result:[];
-    if(d.status!=="1"||!rows.length)break;
-    var oldestBlock=99999999, oldestTs=Date.now()/1000;
-    for(var i=0;i<rows.length;i++){
-      var tx=rows[i];
-      var bn=Number(tx.blockNumber||0);
-      var ts=Number(tx.timeStamp||0);
-      if(bn<oldestBlock)oldestBlock=bn;
-      if(ts>0&&ts<oldestTs)oldestTs=ts;
-      if(minTs&&ts>0&&ts<minTs)continue;
-      if(maxTs&&ts>maxTs)continue;
-      if(tx.isError==="1"||tx.txreceipt_status==="0")continue;
-      var to=(tx.to||"").toLowerCase();
-      if(to!==BAKE_TO)continue;
-      var from=(tx.from||"").toLowerCase();
-      if(!isW(from)||seen[from])continue;
-      seen[from]=1;
-      out.push(from);
-    }
-    if(minTs&&oldestTs>0&&oldestTs<minTs)break;
-    if(rows.length<1000)break;
-    if(oldestBlock<=startBlock||oldestBlock<=0)break;
-    endBlock=oldestBlock-1;
-    await txSleep(150);
-  }
-  participantCache[cacheKey]={ts:Date.now(),value:out};
-  return out;
-}
-
 function findBakeryRank(bakeryId){
   var bid=String(bakeryId||"");
   if(!bid)return 0;
@@ -1679,11 +1619,11 @@ async function fetchPlayerBakeChain(address,fromTs,toTs){
   var minTs=Number(fromTs||0);
   var maxTs=Number(toTs||0);
   if(minTs>BAKE_SNAPSHOT_CUTOFF_TS || (maxTs&&maxTs<=BAKE_SNAPSHOT_CUTOFF_TS)){
-    return fetchChain(address,minTs,maxTs);
+    return fetchLiveBake(address,Math.max(minTs,BAKE_SNAPSHOT_CUTOFF_TS+1),maxTs);
   }
   var snapshotState=await loadBakeSnapshot();
   if(!snapshotState.ok||!snapshotState.data){
-    return fetchChain(address,minTs,maxTs);
+    throw new Error("snapshot_unavailable");
   }
   var base=readBakeSnapshotEntry(snapshotState.data,address);
   var liveFrom=BAKE_SNAPSHOT_CUTOFF_TS+1;
@@ -1716,113 +1656,6 @@ async function fetchLiveBake(address,fromTs,toTs){
     scanFromTs:toN(payload.fromTs)||fromTs,
     scanToTs:toN(payload.toTs)||toTs
   };
-}
-// Timestamp'e karsilik gelen block numarasini bul
-async function getBlockByTimestamp(timestamp,closest){
-  if(!timestamp||timestamp<=0)return 0;
-  var url=EXPLORER+"?chainid=2741&module=block&action=getblocknobytime"+
-    "&timestamp="+Math.floor(timestamp)+"&closest="+encodeURIComponent(closest||"after")+"&apikey="+EKEY;
-  try{
-    var d=await fetchJsonTimeout(url,EXPLORER_TIMEOUT_MS);
-    var bn=Number(d&&d.result);
-    if(bn>0)return bn;
-  }catch(e){}
-  return 0;
-}
-async function getStartBlock(fromTs){
-  return getBlockByTimestamp(fromTs,"after");
-}
-async function getEndBlock(toTs){
-  return getBlockByTimestamp(toTs,"before");
-}
-
-// Wallet txlist - sort=desc, endblock kaydirarak
-// Her batch 1000 tx, en yeni tx'ten geriye dogru, minTs'e ulasinca dur
-async function fetchChain(address,fromTs,toTs){
-  var who=(address||"").toLowerCase();
-  if(!isW(who))return{gas:0,rtx:0,incomplete:true,source:"wallet"};
-  var minTs=Number(fromTs||0);
-  var maxTs=Number(toTs||0);
-  var gas=0,rtx=0,incomplete=false,reason="verified";
-  var counted={};
-  var ckey="w8_"+who+"_"+BAKE_TO+"_"+Math.floor(minTs/60)+"_"+Math.floor(maxTs/60||0);
-  var cached=cacheValue(txCache[ckey],CACHE_TTL_MS);
-  if(cached)return cached;
-
-  // startblock'u al - basarisiz olursa 0 ile devam et
-  var startBlock=0;
-  try{
-    var sb=await getStartBlock(minTs);
-    if(sb>0)startBlock=sb;
-  }catch(e){}
-
-  var endBlock=99999999, batches=0, MAX_BATCHES=300, done=false;
-  if(maxTs>0){
-    try{
-      var eb=await getEndBlock(maxTs);
-      if(eb>0)endBlock=eb;
-    }catch(e){}
-  }
-  while(!done && batches<MAX_BATCHES){
-    var url=EXPLORER+"?chainid=2741&module=account&action=txlist"+
-      "&address="+encodeURIComponent(who)+
-      "&sort=desc&startblock="+startBlock+"&endblock="+endBlock+
-      "&page=1&offset=1000&apikey="+EKEY;
-    var d;
-    try{ d=await fetchJsonTimeout(url,EXPLORER_TIMEOUT_MS); }
-    catch(e){ incomplete=true; reason="timeout"; break; }
-    batches++;
-
-    var rows=Array.isArray(d.result)?d.result:[];
-    if(d.status!=="1"||!rows.length){
-      var apiMessage=String((d&&d.message)||"")+" "+String((d&&d.result)||"");
-      if(/no transactions found/i.test(apiMessage)){done=true;break;}
-      incomplete=true;
-      reason="explorer";
-      break;
-    }
-
-    var oldestBlock=99999999, oldestTs=Date.now()/1000;
-    for(var i=0;i<rows.length;i++){
-      var tx=rows[i];
-      var bn=Number(tx.blockNumber||0);
-      var ts=Number(tx.timeStamp||0);
-      if(bn<oldestBlock){oldestBlock=bn;}
-      if(ts>0&&ts<oldestTs)oldestTs=ts;
-      if(minTs&&ts>0&&ts<minTs)continue;
-      if(maxTs&&ts>maxTs)continue;
-      if(tx.isError==="1"||tx.txreceipt_status==="0")continue;
-      var from=(tx.from||"").toLowerCase();
-      if(from!==who)continue;
-      var hash=(tx.hash||"").toLowerCase();
-      if(hash&&counted[hash])continue;
-      var to=(tx.to||"").toLowerCase();
-      if(to!==BAKE_TO)continue;
-      if(hash)counted[hash]=1;
-      var gu=Number(tx.gasUsed||0),gp=Number(tx.gasPrice||0);
-      if(gu&&gp)gas+=(gu*gp)/1e18;
-      rtx++;
-    }
-
-    if(minTs&&oldestTs>0&&oldestTs<minTs){done=true;break;}
-    if(rows.length<1000){done=true;break;}
-    if(oldestBlock<=startBlock||oldestBlock<=0){done=true;break;}
-    endBlock=oldestBlock-1;
-    await txSleep(150);
-  }
-  if(batches>=MAX_BATCHES){incomplete=true; reason="limit";}
-
-  var result={
-    gas:gas,
-    rtx:rtx,
-    incomplete:incomplete,
-    reason:reason,
-    source:"wallet",
-    scanFromTs:minTs,
-    scanToTs:maxTs||Math.floor(Date.now()/1000)
-  };
-  if(rtx>0||incomplete)txCache[ckey]={ts:Date.now(),value:result};
-  return result;
 }
 function closeSug(){document.getElementById("suggestions").classList.remove("open");sugFocus=-1;}
 function positionSug(){
@@ -2126,7 +1959,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else if(chain&&chain.incomplete)ss(st,"Snapshot Bake TX is shown as a verified minimum. Live Bakery transactions could not be verified; check ETHERSCAN_API_KEY in Vercel and try again.","warn");
+    else if(chain&&chain.incomplete)ss(st,"Snapshot Bake TX is shown as a verified minimum. Live Bakery transactions could not be verified through Abstract RPC; try again.","warn");
     else ss(st,isBackground?"ROI card auto-refreshed through the current UTC minute.":"Snapshot and live Bakery transactions were combined through the current UTC minute.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
