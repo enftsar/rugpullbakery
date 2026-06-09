@@ -1,0 +1,15 @@
+{
+  "name": "rugpull-bakery-s8-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev",
+    "snapshot": "node scripts/build-s8-bake-snapshot.js",
+    "snapshot:s8": "node scripts/build-s8-bake-snapshot.js",
+    "deploy": "vercel --prod"
+  }
+}
