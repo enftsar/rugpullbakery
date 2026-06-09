@@ -77,6 +77,14 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:lin
 .roi-result-card .stat-note.secondary{font-size:13px}
 .roi-result-card .player-actions{margin-top:12px}
 .roi-result-card .share-btn{width:100%;justify-content:center}
+.roi-result-card .stat-primary{grid-column:1 / -1;min-height:154px;background:radial-gradient(circle at 92% 20%,rgba(255,154,68,.2),transparent 32%),linear-gradient(180deg,rgba(67,31,11,.98),rgba(31,16,9,.99));border-color:rgba(255,176,91,.72);box-shadow:0 18px 38px rgba(0,0,0,.2),0 0 0 2px rgba(157,82,14,.38),inset 0 1px 0 rgba(255,239,205,.08)}
+.roi-result-card .stat-primary .stat-label{min-height:auto;color:#ffd28a}
+.roi-result-card .stat-primary .stat-value{font-size:38px;line-height:1;color:#ff9a44}
+.roi-result-card .stat-primary .stat-note.secondary{font-size:15px;color:#ffd28a}
+.roi-result-card .stat-primary .stat-note.tertiary{margin-top:5px;font-size:11px;color:rgba(255,235,198,.72)}
+.roi-result-card .stat-net{grid-column:1 / -1}
+.share-export-stage .stat-primary{grid-column:auto!important}
+.share-export-stage .stat-net{grid-column:auto!important}
 .leaderboard-section{width:100%}
 .stack-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(150px,.78fr) minmax(150px,.78fr);gap:16px;position:relative;z-index:1}
 .tile,.stat,.bakery-row{background:radial-gradient(circle at top left,rgba(255,217,135,.075),transparent 34%),linear-gradient(180deg,rgba(42,24,13,.94),rgba(20,12,8,.96));border:1px solid rgba(255,207,122,.54);border-radius:18px;padding:18px 20px;box-shadow:0 14px 30px rgba(0,0,0,.16),0 0 0 1px rgba(255,207,122,.2),inset 0 1px 0 rgba(255,246,221,.05),inset 0 0 0 1px rgba(255,245,215,.025);backdrop-filter:blur(8px)}
@@ -1651,6 +1659,21 @@ function mergeBakeChains(base,live){
   };
 }
 
+async function snapshotBakeFallback(address,scanToTs,reason){
+  var snapshotState=await loadBakeSnapshot();
+  if(!snapshotState.ok||!snapshotState.data)return null;
+  var base=readBakeSnapshotEntry(snapshotState.data,address);
+  return mergeBakeChains(base,{
+    gas:0,
+    rtx:0,
+    incomplete:true,
+    reason:reason||"live_unavailable",
+    source:"wallet",
+    scanFromTs:BAKE_SNAPSHOT_CUTOFF_TS+1,
+    scanToTs:scanToTs||Math.floor(Date.now()/1000)
+  });
+}
+
 async function fetchPlayerBakeChain(address,fromTs,toTs){
   var minTs=Number(fromTs||0);
   var maxTs=Number(toTs||0);
@@ -1847,8 +1870,10 @@ function renderPlayer(data,name,avatar,address,chain){
   var bakCook=readBakeryCookies(bakery,null);
   var bakScore=readBakeryScore(bakery,null);
 
-  var realTx=chain&&chain.rtx>0?chain.rtx:0;
+  var realTx=chain&&toN(chain.rtx)!=null?toN(chain.rtx):0;
   var txVerified=!!(chain&&!chain.incomplete);
+  var snapshotAvailable=!!(chain&&(chain.source==="snapshot+wallet"||chain.source==="snapshot"));
+  var txAvailable=txVerified||snapshotAvailable;
   var snapshotTx=chain&&chain.source==="snapshot+wallet"?(toN(chain.snapshotRtx)||0):0;
   var liveTx=chain&&chain.source==="snapshot+wallet"?(toN(chain.liveRtx)||0):realTx;
   var snapshotGas=chain&&chain.source==="snapshot+wallet"?(toN(chain.snapshotGas)||0):0;
@@ -1888,7 +1913,9 @@ function renderPlayer(data,name,avatar,address,chain){
   var pp=toN(season.prizePool); var pool=(pp!=null&&pp>0)?pp/1e18:gPool;
   var totalTopScore=gBakeries.slice(0,QUALIFIED_BAKERY_COUNT).reduce(function(sum,b){return sum+(readBakeryScore(b)||0);},0);
   var bakPay=rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&pool!=null&&bakScore>0&&totalTopScore>0?pool*(bakScore/totalTopScore):null;
-  var myPay=bakPay!=null&&share!=null?bakPay*share:null;  var gas=txVerified&&chain?toN(chain.gas)||0:null;
+  var myPay=bakPay!=null&&share!=null?bakPay*share:null;
+  var knownGas=chain&&toN(chain.gas)!=null?toN(chain.gas):null;
+  var gas=txVerified?knownGas:null;
   var net=myPay!=null&&gas!=null?myPay-gas:null;
   var roi=net!=null&&gas!=null&&gas>0?(net/gas)*100:null;
   var el=document.getElementById("playerAvatar");
@@ -1903,24 +1930,32 @@ function renderPlayer(data,name,avatar,address,chain){
   var bakeryShareRaw=bakPay!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT?(toN(bakPay)!=null?toN(bakPay).toFixed(4):"--"):"";
   var bakeryRankSub=bakeryShareRaw?'<span class="eth-inline"><span>'+esc(bakeryShareRaw)+'</span><span class="unit">ETH</span></span>':"";
   var ethUsd=toN(gEthUsd)||toN(chain&&chain.ethUsd)||FALLBACK_ETH_USD;
-  var gasEthRaw=txVerified&&gas!=null?(toN(gas)!=null?toN(gas).toFixed(5):"--"):"--";
-  var gasEth=txVerified&&gas!=null?'<span class="eth-inline"><span>'+esc(gasEthRaw)+'</span><span class="unit">ETH</span></span>':"--";
+  var gasDisplayValue=txVerified?gas:(snapshotAvailable?knownGas:null);
+  var gasEthRaw=gasDisplayValue!=null?gasDisplayValue.toFixed(5)+(txVerified?"":"+"):"--";
+  var gasEth=gasDisplayValue!=null?'<span class="eth-inline"><span>'+esc(gasEthRaw)+'</span><span class="unit">ETH</span></span>':"--";
   var gasUsd=txVerified&&gas!=null&&ethUsd!=null?fUsd(gas*ethUsd):"";
   var rewardEthRaw=myPay!=null?(toN(myPay)!=null?toN(myPay).toFixed(4):"--"):"--";
   var rewardEth=myPay!=null?'<span class="eth-inline"><span>'+esc(rewardEthRaw)+'</span><span class="unit">ETH</span></span>':(rank>QUALIFIED_BAKERY_COUNT?"Not Eligible":"--");
   var rewardUsd=myPay!=null&&ethUsd!=null?fUsd(myPay*ethUsd):"";
   var roiPct=txVerified&&roi!=null?fPct(roi,1):(rank>QUALIFIED_BAKERY_COUNT?"Unavailable":"--");
   var roiUsd=txVerified&&net!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&ethUsd!=null?fUsd(net*ethUsd):"";
-  var txSourceLine=txVerified?"Snapshot "+fN(snapshotTx,0)+" · Live "+fN(liveTx,0):"";
-  var scanWindowLine=txVerified?utcMinute(SEASON_TX_START_TS)+" → "+utcMinute(scanToTs):"";
-  var gasSourceLine=txVerified?"Snapshot "+snapshotGas.toFixed(5)+" · Live "+liveGas.toFixed(5)+" ETH":"";
+  var txSourceLine=txAvailable
+    ?"Snapshot "+fN(snapshotTx,0)+" · Live "+(txVerified?fN(liveTx,0):"not verified")
+    :"Transaction data unavailable";
+  var scanWindowLine=txAvailable
+    ?utcMinute(SEASON_TX_START_TS)+" → "+utcMinute(txVerified?scanToTs:BAKE_SNAPSHOT_CUTOFF_TS)
+    :"";
+  var gasSourceLine=gasDisplayValue!=null
+    ?"Snapshot "+snapshotGas.toFixed(5)+" · Live "+(txVerified?liveGas.toFixed(5):"not verified")+" ETH"
+    :"";
+  var txDisplay=txAvailable?fN(realTx,0)+(txVerified?"":"+"):"--";
   var stats=[
-    {l:"Total Bake TX",v:txVerified?fN(realTx,0):"--",n:txSourceLine,u:scanWindowLine,s:"",t:"cookie",k:"stat-cookie"},
+    {l:"Total Bake TX",v:txDisplay,n:txSourceLine,u:scanWindowLine,s:"",t:"cookie",k:"stat-cookie stat-primary"},
     {l:"Bakery Payout",v:bakeryRankSub||"--",h:bakeryRankSub||"",n:bakeryRankSub&&ethUsd!=null&&bakPay!=null?fUsd(bakPay*ethUsd):"",s:"",t:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"amber":"",c:bakeryRankSub?"compact":"",k:rank>0&&rank<=QUALIFIED_BAKERY_COUNT?"stat-reward":""},
     {l:"Score",v:playerScore!=null&&playerScore>0?fCook(playerScore):"--",s:"",t:"cookie",k:"stat-cookie"},
-    {l:"Gas Cost",v:gasEth,h:txVerified&&gas!=null?gasEth:"",n:gasUsd,u:gasSourceLine,s:"",t:"negative",k:"stat-negative"},
+    {l:"Gas Cost",v:gasEth,h:gasDisplayValue!=null?gasEth:"",n:gasUsd,u:gasSourceLine,s:"",t:"negative",k:"stat-negative"},
     {l:"Est. Reward",v:rewardEth,h:myPay!=null?rewardEth:"",n:rewardUsd,t:myPay!=null?"amber":(rank>QUALIFIED_BAKERY_COUNT?"negative":""),c:rank>QUALIFIED_BAKERY_COUNT?"compact":"",k:myPay!=null?"stat-reward":(rank>QUALIFIED_BAKERY_COUNT?"stat-negative":"")},
-    {l:"Net ROI",v:roiPct,n:roiUsd,t:roi==null?(rank>QUALIFIED_BAKERY_COUNT?"negative":""):(roi>=0?"positive":"negative"),c:rank>QUALIFIED_BAKERY_COUNT?"compact":"",k:roi==null?(rank>QUALIFIED_BAKERY_COUNT?"stat-negative":""):(roi>=0?"stat-positive":"stat-negative")}
+    {l:"Net ROI",v:roiPct,n:roiUsd,t:roi==null?(rank>QUALIFIED_BAKERY_COUNT?"negative":""):(roi>=0?"positive":"negative"),c:rank>QUALIFIED_BAKERY_COUNT?"compact":"",k:(roi==null?(rank>QUALIFIED_BAKERY_COUNT?"stat-negative":""):(roi>=0?"stat-positive":"stat-negative"))+" stat-net"}
   ];
   document.getElementById("playerStats").innerHTML=stats.map(function(s){
     return '<div class="stat'+(s.k?' '+s.k:'')+'"><div class="stat-label">'+esc(s.l)+'</div>'+
@@ -2025,16 +2060,28 @@ async function analyze(fa,fn,fav,opts){
     // Taramayi yap - bitmeden gosterme
     var cached=cacheFresh(chainCache[cacheKey],CACHE_TTL_MS)?chainCache[cacheKey]:null;
     var cachedChain=cached&&cached.result||null;
-    var chain=cachedChain||{gas:0,rtx:0,incomplete:true,reason:"loading"};
+    var snapshotChain=null;
+    try{
+      snapshotChain=await snapshotBakeFallback(addr,scanToTs,"live_pending");
+    }catch(e){}
+    var chain=cachedChain||snapshotChain||{gas:0,rtx:0,incomplete:true,reason:"snapshot_unavailable"};
     try{
       var freshChain=await withTimeout(fetchPlayerBakeChain(addr,seasonStart,scanToTs),PLAYER_SCAN_TIMEOUT_MS,null);
       if(freshChain!==null){
         if(freshChain.rtx>=chain.rtx||!cachedChain)chain=freshChain;
         chainCache[cacheKey]={result:chain,ts:Date.now()};
+      }else if(!cachedChain&&snapshotChain){
+        chain=snapshotChain;
+        chain.reason="timeout";
       }else if(!cachedChain){
         chain={gas:0,rtx:0,incomplete:true,reason:"timeout"};
       }
-    }catch(e){}
+    }catch(e){
+      if(!cachedChain&&snapshotChain){
+        chain=snapshotChain;
+        chain.reason="explorer";
+      }
+    }
     try{
       var liveCookieBalance=await withTimeout(fetchPlayerCookieBalance(addr,bakeryId,seasonId),8000,null);
       if(liveCookieBalance!=null)chain.cookieBalance=liveCookieBalance;
@@ -2056,7 +2103,7 @@ async function analyze(fa,fn,fav,opts){
     if(usedCachedProfile)ss(st,"Latest live profile request failed. Card updated with the last saved player snapshot.","warn");
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
-    else if(chain&&chain.incomplete)ss(st,"Live Bakery transactions could not be verified through the Explorer proxy. Check ETHERSCAN_API_KEY in Vercel and try again.","warn");
+    else if(chain&&chain.incomplete)ss(st,"Snapshot Bake TX is shown as a verified minimum. Live Bakery transactions could not be verified; check ETHERSCAN_API_KEY in Vercel and try again.","warn");
     else ss(st,isBackground?"ROI card auto-refreshed through the current UTC minute.":"Snapshot and live Bakery transactions were combined through the current UTC minute.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
