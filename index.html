@@ -1861,6 +1861,13 @@ async function doSug(q){
 }
 
 function renderPlayer(data,name,avatar,address,chain){
+  var finalRoiEntry=BAKE_SNAPSHOT_FINAL&&roiBoardData&&Array.isArray(roiBoardData.players)
+    ?roiBoardData.players.find(function(row){return row.address===String(address||"").toLowerCase();})
+    :null;
+  if(finalRoiEntry){
+    name=finalRoiEntry.name||name;
+    avatar=finalRoiEntry.avatar||avatar;
+  }
   gLastPlayerRender={
     data:data,
     name:name,
@@ -1909,41 +1916,47 @@ function renderPlayer(data,name,avatar,address,chain){
     findNestedMetric(player,["cookiesbaked","cookies_baked","txcount","cookiebalance","cookie_balance","cookiecount","cookie_count","cookies","cookietotal","cookie_total","totalcookies","total_cookies"],0),
     data&&data.player&&data.player.txCount
   ]);
-  var playerScore=readPlayerScore(player,memberRow,cookieBalance);
+  var playerScore=finalRoiEntry?toN(finalRoiEntry.score):readPlayerScore(player,memberRow,cookieBalance);
   var share=playerScore>0&&bakScore>0?playerScore/bakScore:null;
   var bakeryMemberRank=player.bakeryRank||player.memberRank||player.rankInBakery||player.bakeryMemberRank||player.clanRank||player.groupRank||null;
 
   var rank=0;
   if(bakery.id){var idx=gBakeries.findIndex(function(b){return String(b.id)===String(bakery.id);});if(idx>=0)rank=idx+1;}
-  var pp=toN(season.prizePool); var pool=(pp!=null&&pp>0)?pp/1e18:gPool;
-  var totalTopScore=gBakeries.slice(0,QUALIFIED_BAKERY_COUNT).reduce(function(sum,b){return sum+(readBakeryScore(b)||0);},0);
+  if(finalRoiEntry&&toN(finalRoiEntry.bakeryRank)!=null)rank=toN(finalRoiEntry.bakeryRank)||0;
+  var pp=toN(season.prizePool);
+  var pool=finalRoiEntry&&roiBoardData?(toN(roiBoardData.prizePoolEth)||0):((pp!=null&&pp>0)?pp/1e18:gPool);
+  var totalTopScore=finalRoiEntry&&roiBoardData
+    ?(toN(roiBoardData.totalQualifiedScore)||0)
+    :gBakeries.slice(0,QUALIFIED_BAKERY_COUNT).reduce(function(sum,b){return sum+(readBakeryScore(b)||0);},0);
   var bakPay=rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&pool!=null&&bakScore>0&&totalTopScore>0?pool*(bakScore/totalTopScore):null;
-  var myPay=bakPay!=null&&share!=null?bakPay*share:null;
+  var myPay=finalRoiEntry?toN(finalRoiEntry.rewardEth):(bakPay!=null&&share!=null?bakPay*share:null);
   var knownGas=chain&&toN(chain.gas)!=null?toN(chain.gas):null;
-  var gas=txVerified?knownGas:null;
-  var net=myPay!=null&&gas!=null?myPay-gas:null;
-  var roi=net!=null&&gas!=null&&gas>0?(net/gas)*100:null;
+  var gas=finalRoiEntry?toN(finalRoiEntry.gasEth):(txVerified?knownGas:null);
+  var net=finalRoiEntry?toN(finalRoiEntry.netEth):(myPay!=null&&gas!=null?myPay-gas:null);
+  var roi=finalRoiEntry?toN(finalRoiEntry.roiPercent):(net!=null&&gas!=null&&gas>0?(net/gas)*100:null);
   var el=document.getElementById("playerAvatar");
   el.textContent=ini(name||address);
   if(avatar){el.style.cssText="background-image:url('"+avatar+"');background-size:cover;background-position:center;color:transparent;width:54px;height:54px;border-radius:16px;border:1px solid var(--border);flex-shrink:0";}
   else{el.style.cssText="";}
   document.getElementById("playerName").textContent=name||sa(address);
-  document.getElementById("playerBakery").textContent=(bakery.name||"--");
+  document.getElementById("playerBakery").textContent=(finalRoiEntry&&finalRoiEntry.bakeryName)||bakery.name||"--";
   document.getElementById("playerBakeryRank").textContent="Bakery Rank: "+(rank>0?"#"+rank:"Outside top 10");
 
   // COOK puanini fCook ile formatla (site referansi: 10.9M, 875.1K)
   var bakeryShareRaw=bakPay!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT?(toN(bakPay)!=null?toN(bakPay).toFixed(4):"--"):"";
   var bakeryRankSub=bakeryShareRaw?'<span class="eth-inline"><span>'+esc(bakeryShareRaw)+'</span><span class="unit">ETH</span></span>':"";
-  var ethUsd=toN(gEthUsd)||toN(chain&&chain.ethUsd)||FALLBACK_ETH_USD;
+  var ethUsd=finalRoiEntry&&roiBoardData
+    ?toN(roiBoardData.ethUsd)
+    :(toN(gEthUsd)||toN(chain&&chain.ethUsd)||FALLBACK_ETH_USD);
   var gasDisplayValue=txVerified?gas:(snapshotAvailable?knownGas:null);
   var gasEthRaw=gasDisplayValue!=null?gasDisplayValue.toFixed(5)+(txVerified?"":"+"):"--";
   var gasEth=gasDisplayValue!=null?'<span class="eth-inline"><span>'+esc(gasEthRaw)+'</span><span class="unit">ETH</span></span>':"--";
-  var gasUsd=txVerified&&gas!=null&&ethUsd!=null?fUsd(gas*ethUsd):"";
+  var gasUsd=gas!=null&&ethUsd!=null?(finalRoiEntry?fUsd2(finalRoiEntry.gasUsd):fUsd(gas*ethUsd)):"";
   var rewardEthRaw=myPay!=null?(toN(myPay)!=null?toN(myPay).toFixed(4):"--"):"--";
   var rewardEth=myPay!=null?'<span class="eth-inline"><span>'+esc(rewardEthRaw)+'</span><span class="unit">ETH</span></span>':(rank>QUALIFIED_BAKERY_COUNT?"Not Eligible":"--");
-  var rewardUsd=myPay!=null&&ethUsd!=null?fUsd(myPay*ethUsd):"";
-  var roiPct=txVerified&&roi!=null?fPct(roi,1):(rank>QUALIFIED_BAKERY_COUNT?"Unavailable":"--");
-  var roiUsd=txVerified&&net!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&ethUsd!=null?fUsd(net*ethUsd):"";
+  var rewardUsd=myPay!=null&&ethUsd!=null?(finalRoiEntry?fUsd2(finalRoiEntry.rewardUsd):fUsd(myPay*ethUsd)):"";
+  var roiPct=roi!=null?fPct(roi,1):(rank>QUALIFIED_BAKERY_COUNT?"Unavailable":"--");
+  var roiUsd=net!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&ethUsd!=null?(finalRoiEntry?fUsd2(finalRoiEntry.netUsd):fUsd(net*ethUsd)):"";
   var txSourceLine=txAvailable
     ?(BAKE_SNAPSHOT_FINAL
       ?"Final snapshot "+fN(snapshotTx,0)+" · Season complete"
