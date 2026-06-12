@@ -26,6 +26,7 @@ const OUT_FILE = path.resolve(__dirname, "../data/s8-bake-snapshot.json");
 const CHECKPOINT_FILE = `${OUT_FILE}.checkpoint`;
 const PAGE_SIZE = Number(process.env.PAGE_SIZE || 10000);
 const BLOCK_WINDOW = Number(process.env.BLOCK_WINDOW || 50000);
+const CHECKPOINT_EVERY = Math.max(1, Number(process.env.CHECKPOINT_EVERY || 1));
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -172,12 +173,12 @@ async function buildSnapshot() {
         break;
       }
       endBlock = queryStartBlock - 1;
-      if (batches % 10 === 0) saveCheckpoint(endBlock);
+      if (batches % CHECKPOINT_EVERY === 0) saveCheckpoint(endBlock);
       await sleep(120);
       continue;
     }
     endBlock = oldestBlock - 1;
-    if (batches % 10 === 0) saveCheckpoint(endBlock);
+    if (batches % CHECKPOINT_EVERY === 0) saveCheckpoint(endBlock);
     await sleep(120);
   }
 

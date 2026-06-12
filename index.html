@@ -458,7 +458,7 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
             </div>
             <button id="lookupBtn" class="lookup-btn"><span>Analyze</span><span class="lookup-icon" aria-hidden="true">&gt;</span></button>
           </div>
-        <div class="hint"><span class="data-pill">Snapshot + Live</span> Snapshot date: 2026-06-09 22:00:00 UTC. Later Season 8 transactions are scanned live.</div>
+        <div class="hint"><span class="data-pill">Final Snapshot</span> Snapshot date: 2026-06-12 21:00:00 UTC. Season 8 transactions are complete through the final second.</div>
           <div class="selected-profile" id="selectedProfile"></div>
           <div class="status" id="playerStatus"></div>
         </div>
@@ -553,9 +553,10 @@ var CONTRACTS = {
 var SEASON_TX_START_TS = 1780693200; // Season 8: 2026-06-05 21:00 UTC / 2026-06-06 00:00 TRT
 var SEASON_TX_START_MINUTE = Math.floor(SEASON_TX_START_TS/60);
 var SEASON_TX_START_LABEL = "June 6, 2026 00:00 TRT";
-var BAKE_SNAPSHOT_CUTOFF_TS = 1781042400; // 2026-06-09 22:00:00 UTC / 2026-06-10 01:00:00 TRT
+var BAKE_SNAPSHOT_CUTOFF_TS = 1781298000; // 2026-06-12 21:00:00 UTC / 2026-06-13 00:00:00 TRT
 var BAKE_SNAPSHOT_URL = "data/s8-bake-snapshot.json";
-var BAKE_SNAPSHOT_VERSION = "s8-1781042400";
+var BAKE_SNAPSHOT_VERSION = "s8-1781298000";
+var BAKE_SNAPSHOT_FINAL = true;
 var LIVE_BAKE_API = "/api/live-bake";
 var FALLBACK_ETH_USD = 2284.79;
 var PLAYER_SCAN_TIMEOUT_MS = 180000; // 3 dakika - cok tx olan cuzdanlar icin
@@ -1628,7 +1629,9 @@ async function fetchPlayerBakeChain(address,fromTs,toTs){
   var base=readBakeSnapshotEntry(snapshotState.data,address);
   var liveFrom=BAKE_SNAPSHOT_CUTOFF_TS+1;
   var live=null;
-  if(!maxTs||maxTs>BAKE_SNAPSHOT_CUTOFF_TS){
+  if(BAKE_SNAPSHOT_FINAL){
+    live={gas:0,rtx:0,incomplete:false,reason:"final_snapshot",source:"snapshot",scanToTs:BAKE_SNAPSHOT_CUTOFF_TS};
+  }else if(!maxTs||maxTs>BAKE_SNAPSHOT_CUTOFF_TS){
     live=await fetchLiveBake(address,liveFrom,maxTs);
   }else{
     live={gas:0,rtx:0,incomplete:false,reason:"snapshot",source:"wallet"};
@@ -1796,13 +1799,17 @@ function renderPlayer(data,name,avatar,address,chain){
   var roiPct=txVerified&&roi!=null?fPct(roi,1):(rank>QUALIFIED_BAKERY_COUNT?"Unavailable":"--");
   var roiUsd=txVerified&&net!=null&&rank>0&&rank<=QUALIFIED_BAKERY_COUNT&&ethUsd!=null?fUsd(net*ethUsd):"";
   var txSourceLine=txAvailable
-    ?"Snapshot "+fN(snapshotTx,0)+" · Live "+(txVerified?fN(liveTx,0):"not verified")
+    ?(BAKE_SNAPSHOT_FINAL
+      ?"Final snapshot "+fN(snapshotTx,0)+" · Season complete"
+      :"Snapshot "+fN(snapshotTx,0)+" · Live "+(txVerified?fN(liveTx,0):"not verified"))
     :"Transaction data unavailable";
   var scanWindowLine=txAvailable
     ?utcMinute(SEASON_TX_START_TS)+" → "+utcMinute(txVerified?scanToTs:BAKE_SNAPSHOT_CUTOFF_TS)
     :"";
   var gasSourceLine=gasDisplayValue!=null
-    ?"Snapshot "+snapshotGas.toFixed(5)+" · Live "+(txVerified?liveGas.toFixed(5):"not verified")+" ETH"
+    ?(BAKE_SNAPSHOT_FINAL
+      ?"Final snapshot "+snapshotGas.toFixed(5)+" ETH"
+      :"Snapshot "+snapshotGas.toFixed(5)+" · Live "+(txVerified?liveGas.toFixed(5):"not verified")+" ETH")
     :"";
   var txDisplay=txAvailable?fN(realTx,0)+(txVerified?"":"+"):"--";
   var stats=[
@@ -1960,6 +1967,7 @@ async function analyze(fa,fn,fav,opts){
     else if(chain&&chain.reason==="limit")ss(st,"Partial: too many Bakery transactions to verify right now. COOK TX and Gas Cost are hidden until a full scan succeeds.","warn");
     else if(chain&&chain.reason==="timeout")ss(st,"Partial: Bakery transaction scan timed out. Try Analyze again in a few seconds.","warn");
     else if(chain&&chain.incomplete)ss(st,"Snapshot Bake TX is shown as a verified minimum. Live Bakery transactions could not be verified through Abstract RPC; try again.","warn");
+    else if(BAKE_SNAPSHOT_FINAL)ss(st,"Final Season 8 snapshot verified through 2026-06-12 21:00:00 UTC.","success");
     else ss(st,isBackground?"ROI card auto-refreshed through the current UTC minute.":"Snapshot and live Bakery transactions were combined through the current UTC minute.","success");
   }catch(e){ss(st,"Error: "+e.message,"error");}
 }
