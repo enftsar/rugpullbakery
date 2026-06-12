@@ -26,7 +26,8 @@ npm run dev
 - Season 8 starts at `2026-06-05 21:00 UTC` (`2026-06-06 00:00 TRT`) and ends at `2026-06-12 21:00 UTC`.
 - The top 7 bakeries qualify. Bakery and member payouts are calculated from final score shares, not spendable cookies.
 - `data/s8-bake-snapshot.json` covers the complete Season 8 through `2026-06-12 21:00:00 UTC` (`2026-06-13 00:00:00 TRT`).
-- Top ROI reporting is not included. A fresh report can be added after the Season 8 snapshot is created.
+- `data/s8-roi-leaderboard.json` contains all final snapshot players ranked by net ROI in USD.
+- The ROI table supports search, eligibility filters, metric sorting, pagination, and direct Player ROI Card lookup.
 
 ## Create Or Refresh The Season 8 Snapshot
 
@@ -43,3 +44,11 @@ npm run snapshot
 ```
 
 Without `CUTOFF_TS`, the script snapshots up to the current time, capped at the Season 8 end.
+
+## Refresh The Season 8 ROI Leaderboard
+
+```bash
+npm run roi:s8
+```
+
+The generator checkpoints every processed player and combines final Bake TX gas cost with the final score-based payout calculation.

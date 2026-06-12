@@ -351,6 +351,35 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 .bakery-sub{margin-top:5px;color:rgba(228,195,138,.76);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
 .bakery-cookies{color:var(--cookie)}
 .bakery-payout{padding:10px 12px;border-radius:14px;background:rgba(255,213,108,.055);border:1px solid rgba(255,223,161,.12);font-weight:900;font-size:14px;white-space:nowrap;color:var(--ambersoft);text-align:right}
+.roi-board-head{align-items:flex-start;gap:18px}
+.roi-board-meta{margin-top:5px;color:var(--muted);font-size:12px}
+.roi-board-summary{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.roi-summary-pill{padding:7px 10px;border:1px solid rgba(255,207,122,.22);background:rgba(255,213,108,.055);border-radius:8px;color:var(--muted);font-size:11px;font-weight:800}
+.roi-summary-pill strong{color:var(--ambersoft)}
+.roi-controls{display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:10px;margin:18px 0 12px}
+.roi-controls input,.roi-controls select{width:100%;min-height:42px;border:1px solid rgba(255,207,122,.24);border-radius:8px;background:rgba(20,12,8,.82);color:var(--text);padding:9px 12px;font:inherit;font-size:13px;outline:none}
+.roi-controls input:focus,.roi-controls select:focus{border-color:rgba(69,200,255,.58);box-shadow:0 0 0 2px rgba(69,200,255,.1)}
+.roi-table-wrap{overflow-x:auto;border:1px solid rgba(255,207,122,.18);border-radius:8px;background:rgba(15,9,6,.45)}
+.roi-table{width:100%;border-collapse:collapse;table-layout:fixed;min-width:900px}
+.roi-table th{padding:11px 12px;text-align:left;color:var(--muted);font-size:10px;letter-spacing:.11em;text-transform:uppercase;border-bottom:1px solid rgba(255,207,122,.2);background:rgba(45,25,13,.78)}
+.roi-table td{padding:11px 12px;border-bottom:1px solid rgba(255,207,122,.09);font-size:13px;vertical-align:middle}
+.roi-table tbody tr{transition:background .15s ease}
+.roi-table tbody tr:hover{background:rgba(255,213,108,.045)}
+.roi-table tbody tr:last-child td{border-bottom:0}
+.roi-rank{width:56px;color:var(--ambersoft);font-weight:900}
+.roi-player{display:flex;align-items:center;gap:10px;min-width:0}
+.roi-avatar{width:34px;height:34px;border-radius:8px;object-fit:cover;border:1px solid rgba(255,207,122,.25);background:#3b2111;flex:0 0 auto}
+.roi-avatar-fallback{display:flex;align-items:center;justify-content:center;color:var(--ambersoft);font-size:11px;font-weight:900}
+.roi-player-copy{min-width:0}
+.roi-player-name{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.roi-player-address{margin-top:2px;color:var(--muted);font-family:monospace;font-size:10px}
+.roi-bakery{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.roi-net{font-weight:900}.roi-net.positive{color:var(--green)}.roi-net.negative{color:var(--red)}
+.roi-action{min-height:32px;padding:5px 9px;border-radius:7px;font-size:11px}
+.roi-pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px}
+.roi-page-info{color:var(--muted);font-size:12px}
+.roi-page-actions{display:flex;gap:8px}
+.roi-page-actions button{min-width:38px;min-height:36px;padding:6px 10px;border-radius:8px}
 /* Top-5 row accents */
 .bakery-row.top-1,.bakery-row.top-2,.bakery-row.top-3,.bakery-row.top-4,.bakery-row.top-5{
   transition:transform .18s ease,box-shadow .22s ease,border-color .18s ease,filter .18s ease;
@@ -402,6 +431,8 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 }
 @media(max-width:760px){
   .leaderboard-card .list{grid-template-columns:1fr}
+  .roi-controls{grid-template-columns:1fr 1fr}
+  .roi-controls input{grid-column:1 / -1}
 }
 @media(max-width:640px){
   .search-row,.stats,.summary-grid{grid-template-columns:1fr}
@@ -411,6 +442,27 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
   .bakery-cookies,.bakery-payout{grid-column:2}
   .brand-card{min-height:auto;padding:20px}
   .logo-wrap img{height:126px}
+  .roi-board-head{display:block}
+  .roi-board-summary{justify-content:flex-start;margin-top:12px}
+  .roi-table{display:block;min-width:0;table-layout:auto}
+  .roi-table colgroup{display:none}
+  .roi-table thead{display:none}
+  .roi-table tbody,.roi-table tr,.roi-table td{display:block;width:100%}
+  .roi-table tbody{padding:8px}
+  .roi-table tr{padding:12px;margin-bottom:8px;border:1px solid rgba(255,207,122,.16);border-radius:8px;background:rgba(34,19,10,.72)}
+  .roi-table tr:last-child{margin-bottom:0}
+  .roi-table td{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 4px;border:0;text-align:right}
+  .roi-table td:before{color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .roi-table td:nth-child(1){padding-bottom:2px}
+  .roi-table td:nth-child(1):before{content:"Rank"}
+  .roi-table td:nth-child(2){display:block;text-align:left;padding:8px 4px 10px}
+  .roi-table td:nth-child(3):before{content:"Bakery"}
+  .roi-table td:nth-child(4):before{content:"Net ROI"}
+  .roi-table td:nth-child(5):before{content:"Reward"}
+  .roi-table td:nth-child(6):before{content:"Gas"}
+  .roi-table td:nth-child(7):before{content:"Bake TX"}
+  .roi-table td:nth-child(8){justify-content:flex-end;padding-top:10px}
+  .roi-action{width:100%}
   .share-grid{grid-template-columns:1fr}
   .summary-grid .tile,.tile.link-tile{padding-left:68px}
   .tile-icon{left:16px;top:16px;width:38px;height:38px;font-size:18px}
@@ -488,11 +540,43 @@ button:active{transform:translateY(4px);box-shadow:0 6px 16px rgba(157,82,14,.22
 
   <section class="leaderboard-section">
     <div class="card leaderboard-card">
-      <div class="section-head">
-        <div><h2 class="section-title">Bakery Leaderboard</h2></div>
-        <div class="ghost live-pill data-live" id="refreshBadge" aria-live="polite">Live Data</div>
+      <div class="section-head roi-board-head">
+        <div>
+          <h2 class="section-title">Season 8 Net ROI USD</h2>
+          <div class="roi-board-meta" id="roiBoardMeta">Loading final snapshot ROI data...</div>
+        </div>
+        <div class="roi-board-summary" id="roiBoardSummary"></div>
       </div>
-      <div class="list" id="leaderboardList"></div>
+      <div class="roi-controls">
+        <input id="roiSearch" type="search" placeholder="Search wallet, player or bakery" autocomplete="off">
+        <select id="roiFilter" aria-label="ROI filter">
+          <option value="all">All players</option>
+          <option value="profitable">Profitable only</option>
+          <option value="eligible">Eligible bakeries</option>
+          <option value="ineligible">Not eligible</option>
+        </select>
+        <select id="roiSort" aria-label="ROI sort">
+          <option value="netUsd">Net ROI USD</option>
+          <option value="rewardUsd">Reward USD</option>
+          <option value="roiPercent">ROI percent</option>
+          <option value="bakeTx">Bake TX</option>
+          <option value="gasUsd">Gas cost USD</option>
+        </select>
+      </div>
+      <div class="roi-table-wrap">
+        <table class="roi-table">
+          <colgroup><col style="width:6%"><col style="width:25%"><col style="width:15%"><col style="width:12%"><col style="width:12%"><col style="width:12%"><col style="width:10%"><col style="width:10%"></colgroup>
+          <thead><tr><th>Rank</th><th>Player</th><th>Bakery</th><th>Net ROI</th><th>Reward</th><th>Gas</th><th>Bake TX</th><th></th></tr></thead>
+          <tbody id="roiTableBody"><tr><td colspan="8" class="meta">Loading...</td></tr></tbody>
+        </table>
+      </div>
+      <div class="roi-pagination">
+        <div class="roi-page-info" id="roiPageInfo"></div>
+        <div class="roi-page-actions">
+          <button class="ghost" id="roiPrev" type="button" aria-label="Previous page">&larr;</button>
+          <button class="ghost" id="roiNext" type="button" aria-label="Next page">&rarr;</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -575,6 +659,9 @@ var LIVE_LEADERBOARD_FALLBACK={
 var playerCache={};
 var memberRowCache={};
 var bakeSnapshotCache=null;
+var roiBoardData=null;
+var roiBoardPage=1;
+var ROI_PAGE_SIZE=25;
 function cacheFresh(entry,ttl){
   return !!(entry&&entry.ts&&(Date.now()-entry.ts)<ttl);
 }
@@ -661,8 +748,6 @@ async function bootLiveLeaderboard(opts){
     gBakeries=[];
     gParticipants=null;
     renderLB();
-    var list=document.getElementById("leaderboardList");
-    if(list)list.innerHTML='<div class="meta">rugpullbakery.com live data unavailable. Prize pool and leaderboard are not using fallback data.</div>';
     }
   })();
   try{return await gLbLoadPromise;}finally{gLbLoadPromise=null;}
@@ -1282,7 +1367,6 @@ function extr(payload){
 }
 
 function renderLB(){
-  var list=document.getElementById("leaderboardList");
   var poolText=gPool!=null?fEU(gPool,4):"Unavailable";
   animateCount(document.getElementById("heroPool"),poolText,"heroPool");
   var heroPoolTopEl=document.getElementById("heroPoolTop");
@@ -1291,30 +1375,92 @@ function renderLB(){
   var heroRegsTopEl=document.getElementById("heroRegsTop");
   if(heroRegsTopEl)animateCount(heroRegsTopEl,gParticipants!=null?fN(gParticipants,0):"--","heroRegsTop");
   startSeasonCountdown();
-  if(!gBakeries.length){list.innerHTML='<div class="meta">Veri yok.</div>';return;}
-  var qualified=gBakeries.slice(0,QUALIFIED_BAKERY_COUNT);
-  var totalTopScore=qualified.reduce(function(sum,b){return sum+(readBakeryScore(b)||0);},0);
-  list.innerHTML=gBakeries.slice(0,FINAL_LEADERBOARD_LIMIT).map(function(b,i){
-    var rank=i+1;
-    var scoreRaw=readBakeryScore(b)||0;
-    var pay=gPool!=null&&rank<=QUALIFIED_BAKERY_COUNT&&totalTopScore>0?gPool*(scoreRaw/totalTopScore):null;
-    var splitLabel=pay!=null?(scoreRaw/totalTopScore*100).toFixed(2)+"%":"";
-    var cookRaw=readBakeryCookies(b,null)||0;
-    var medal=rank===1?"&#x1F947;":rank===2?"&#x1F948;":rank===3?"&#x1F949;":"#"+rank;
-    var topClass=rank===1?" top-1":rank===2?" top-2":rank===3?" top-3":rank===4?" top-4":rank===5?" top-5":"";
-    return '<div class="bakery-row'+(pay==null?' no-payout':'')+topClass+'">'
-      +'<div class="rank">'+medal+'</div>'+
-      '<div>'+
-        '<div class="bakery-name">'+esc(b.name||"Bakery #"+rank)+'</div>'+
-        '<div class="bakery-sub">'+
-          '<span style="color:var(--ambersoft)">'+esc(fN(b.memberCount,0))+'</span> members'+
-          ' &nbsp;&middot;&nbsp; score <span style="color:var(--blue)">'+esc(fCook(scoreRaw))+'</span>'+
-          ' &nbsp;&middot;&nbsp; cookies <span class="bakery-cookies">'+esc(fCook(cookRaw))+'</span>'
-        +'</div>'+
-      '</div>'+
-      (pay!=null?'<div class="bakery-payout">'+esc(splitLabel+" "+fE(pay,4))+'</div>':'')+
-    '</div>';
-  }).join("");
+}
+
+function roiMoney(value){
+  var n=toN(value);
+  if(n==null)return"--";
+  return(n<0?"-$":"$")+Math.abs(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+function roiPct(value){
+  var n=toN(value);
+  if(n==null)return"--";
+  return(n>0?"+":"")+n.toFixed(1)+"%";
+}
+function roiPlayerLabel(player){
+  return player.name||sa(player.address);
+}
+function filteredRoiPlayers(){
+  if(!roiBoardData||!Array.isArray(roiBoardData.players))return[];
+  var query=(document.getElementById("roiSearch").value||"").trim().toLowerCase();
+  var filter=document.getElementById("roiFilter").value;
+  var sort=document.getElementById("roiSort").value;
+  var rows=roiBoardData.players.filter(function(player){
+    if(filter==="profitable"&&!(player.netUsd>0))return false;
+    if(filter==="eligible"&&!player.eligible)return false;
+    if(filter==="ineligible"&&player.eligible)return false;
+    if(!query)return true;
+    return[player.name,player.address,player.bakeryName].some(function(value){
+      return String(value||"").toLowerCase().indexOf(query)!==-1;
+    });
+  });
+  rows.sort(function(a,b){
+    var av=toN(a[sort]),bv=toN(b[sort]);
+    if(av==null)av=-Infinity;
+    if(bv==null)bv=-Infinity;
+    return bv-av||(toN(b.netUsd)||0)-(toN(a.netUsd)||0);
+  });
+  return rows;
+}
+function renderRoiBoard(){
+  var body=document.getElementById("roiTableBody");
+  if(!body)return;
+  if(!roiBoardData){
+    body.innerHTML='<tr><td colspan="8" class="meta">ROI data unavailable.</td></tr>';
+    return;
+  }
+  var rows=filteredRoiPlayers();
+  var pages=Math.max(1,Math.ceil(rows.length/ROI_PAGE_SIZE));
+  roiBoardPage=Math.min(Math.max(1,roiBoardPage),pages);
+  var start=(roiBoardPage-1)*ROI_PAGE_SIZE;
+  var visible=rows.slice(start,start+ROI_PAGE_SIZE);
+  body.innerHTML=visible.map(function(player,index){
+    var displayRank=start+index+1;
+    var netClass=player.netUsd>=0?"positive":"negative";
+    var avatar=player.avatar
+      ?'<img class="roi-avatar" src="'+esc(player.avatar)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
+      :'<span class="roi-avatar roi-avatar-fallback">'+esc(ini(roiPlayerLabel(player)))+'</span>';
+    return'<tr>'+
+      '<td class="roi-rank">#'+displayRank+'</td>'+
+      '<td><div class="roi-player">'+avatar+'<div class="roi-player-copy"><div class="roi-player-name">'+esc(roiPlayerLabel(player))+'</div><div class="roi-player-address">'+esc(sa(player.address))+'</div></div></div></td>'+
+      '<td><div class="roi-bakery">'+esc(player.bakeryName||"No bakery")+'</div><div class="roi-player-address">'+(player.eligible?"Eligible · #"+esc(player.bakeryRank):"Not eligible")+'</div></td>'+
+      '<td><div class="roi-net '+netClass+'">'+esc(roiMoney(player.netUsd))+'</div><div class="roi-player-address">'+esc(roiPct(player.roiPercent))+'</div></td>'+
+      '<td>'+esc(roiMoney(player.rewardUsd))+'</td>'+
+      '<td>'+esc(roiMoney(player.gasUsd))+'</td>'+
+      '<td>'+esc(fN(player.bakeTx,0))+'</td>'+
+      '<td><button class="ghost roi-action" type="button" data-roi-address="'+esc(player.address)+'">Analyze</button></td>'+
+    '</tr>';
+  }).join("")||'<tr><td colspan="8" class="meta">No players match these filters.</td></tr>';
+  document.getElementById("roiPageInfo").textContent=rows.length
+    ?fN(start+1,0)+"-"+fN(Math.min(start+ROI_PAGE_SIZE,rows.length),0)+" of "+fN(rows.length,0)
+    :"0 players";
+  document.getElementById("roiPrev").disabled=roiBoardPage<=1;
+  document.getElementById("roiNext").disabled=roiBoardPage>=pages;
+}
+async function loadRoiBoard(){
+  try{
+    roiBoardData=await pFetch("data/s8-roi-leaderboard.json?v=s8-final-1781298000");
+    document.getElementById("roiBoardMeta").textContent=
+      "Final snapshot · "+roiBoardData.snapshotCutoffUtc+" · ETH "+roiMoney(roiBoardData.ethUsd);
+    document.getElementById("roiBoardSummary").innerHTML=
+      '<span class="roi-summary-pill"><strong>'+esc(fN(roiBoardData.totalPlayers,0))+'</strong> players</span>'+
+      '<span class="roi-summary-pill"><strong>'+esc(fN(roiBoardData.profitablePlayers,0))+'</strong> profitable</span>'+
+      '<span class="roi-summary-pill"><strong>'+esc(roiMoney(roiBoardData.prizePoolEth*roiBoardData.ethUsd))+'</strong> pool</span>';
+    renderRoiBoard();
+  }catch(e){
+    document.getElementById("roiBoardMeta").textContent="Final ROI dataset could not be loaded.";
+    renderRoiBoard();
+  }
 }
 // /bakeries sayfasinin kullandigi canli leaderboard sorgusu.
 async function fetchAllBakeries(){
@@ -1980,6 +2126,20 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementById("shareCopyTextBtn").addEventListener("click",function(){copyShareText();});
   document.getElementById("shareNativeBtn").addEventListener("click",function(){nativeShareCard();});
   document.getElementById("shareCloseBtn").addEventListener("click",function(){closeShareModal();});
+  document.getElementById("roiSearch").addEventListener("input",function(){roiBoardPage=1;renderRoiBoard();});
+  document.getElementById("roiFilter").addEventListener("change",function(){roiBoardPage=1;renderRoiBoard();});
+  document.getElementById("roiSort").addEventListener("change",function(){roiBoardPage=1;renderRoiBoard();});
+  document.getElementById("roiPrev").addEventListener("click",function(){if(roiBoardPage>1){roiBoardPage--;renderRoiBoard();}});
+  document.getElementById("roiNext").addEventListener("click",function(){roiBoardPage++;renderRoiBoard();});
+  document.getElementById("roiTableBody").addEventListener("click",function(e){
+    var button=e.target.closest("[data-roi-address]");
+    if(!button||!roiBoardData)return;
+    var address=button.getAttribute("data-roi-address");
+    var player=roiBoardData.players.find(function(row){return row.address===address;});
+    document.getElementById("searchInput").value=player&&player.name||address;
+    analyze(address,player&&player.name||null,player&&player.avatar||null);
+    document.getElementById("playerCardCapture").scrollIntoView({behavior:"smooth",block:"start"});
+  });
   document.getElementById("searchInput").addEventListener("keydown",function(e){
     var box=document.getElementById("suggestions"),items=box.querySelectorAll(".sug-item");
     if(e.key==="ArrowDown"){e.preventDefault();if(sugFocus<items.length-1){if(sugFocus>=0)items[sugFocus].classList.remove("focused");sugFocus++;items[sugFocus].classList.add("focused");}}
@@ -2004,6 +2164,7 @@ document.addEventListener("DOMContentLoaded",function(){
   });
   window.addEventListener("scroll",positionSug,true);
   window.addEventListener("resize",positionSug);
+  loadRoiBoard();
   bootLiveLeaderboard();
   startLiveRefresh();
 });

@@ -10,6 +10,7 @@
     "start": "vercel dev",
     "snapshot": "node scripts/build-s8-bake-snapshot.js",
     "snapshot:s8": "node scripts/build-s8-bake-snapshot.js",
+    "roi:s8": "node scripts/build-s8-roi-leaderboard.js",
     "deploy": "vercel --prod"
   }
 }
